@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/Mapa.css" />
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/nervo.js"></script>
+    <script src="js/zoo.js"></script>
 
-    <title>Acervo artístico de Amado Nervo</title>
+    <title>Control Veterinario</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
