@@ -1,0 +1,235 @@
+﻿body {
+    background-image: url(../imgs/pattern56.jpg);
+}
+
+.mainButton {
+    background-color: #066983;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.mainButton:hover {
+    background-color: #5891a0;
+}
+
+.mainButton:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    visibility: hidden;
+    border-radius: 0px;
+    transform: scaleX(0);
+    transition: .25s linear;
+}
+
+.mainButton:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.divElecciones {
+    visibility: hidden;
+}
+
+.yearButton {
+    background-color: #580018;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.yearButton:hover {
+    background-color: #821936;
+}
+
+.yearButton:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    visibility: hidden;
+    border-radius: 0px;
+    transform: scaleX(0);
+    transition: .25s linear;
+}
+
+.yearButton:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.tbsingle {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+.container {
+    background: #ffffff;
+}
+.divLogo {
+    background: url(../imgs/logo.png) no-repeat 0px 0px;
+    width: 220px;
+    height: 85px;
+}
+.divMargin {
+    margin-bottom: 5px;
+}
+
+.divBackgroundBlue {    
+    color: #000000;
+    
+    font-size: 20px;
+    border-bottom: 3px solid #066983;
+    margin-bottom: 20px;
+}
+
+.divBackgroundBlue2 {
+    background-color: #066983;
+    color: #ffffff;
+    
+    font-size: 16px;
+}
+
+.divBackgroundBlue3 {
+    background-color: #5891a0;
+    color: #ffffff;
+    
+    font-size: 16px;
+}
+
+.divBackgroundBlack {
+    background-color: #000000;
+}
+
+.tableLocalidades {
+    margin: 5px;
+}
+
+.tableLocalidades td {
+    margin: 5px;
+}
+
+.labelType01 {
+    font-size: 14px;    
+}
+
+.textbox-center {
+    text-align: center;
+}
+
+.mainMenu {
+    padding: 5px;    
+}
+
+.mainMenuElement {
+    transition: all 0.5s;    
+}
+
+.mainMenuElement:hover {
+    text-decoration: none;
+    background-color: #000000;
+    color: #ffffff !important;
+}
+
+.tag {
+    border: 1px solid #a5d24a;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    display: block;
+    float: left;
+    padding: 5px;
+    text-decoration: none;
+    background: #cde69c;
+    color: #638421;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-family: helvetica;
+    font-size: 13px;
+}
+
+.closeTag {
+    font-weight: bold;
+    color: #82ad2b;
+    text-decoration: none;
+    font-size: 11px;
+    padding: 5px;
+}
+
+.closeTag:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.divTarjetaInstitucion {
+    background-color: #a5d24a;
+    margin: 3px;
+    border: 2px solid #638421;
+    transition: .25s linear;
+}
+
+.divTarjetaInstitucion:hover {
+    background-color: #cde69c;
+    cursor: pointer;
+}
+
+.divTarjetaInstitucionHeader {
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.divTarjetaInstitucionBody {
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.divTarjetaContacto {
+    background-color: #a5d24a;
+    margin: 3px;
+    border: 2px solid #638421;
+    transition: .25s linear;
+}
+
+.divTarjetaContacto:hover {
+    background-color: #cde69c;
+    cursor: pointer;
+}
+
+.divTarjetaContactoHeader {
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.divTarjetaContactoBody {
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100;
+    font-size: 15px;
+}
