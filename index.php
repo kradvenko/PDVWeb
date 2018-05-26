@@ -10,7 +10,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/zoo.js"></script>
 
-    <title>Control Veterinario</title>
+    <title>Punto de Venta</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
