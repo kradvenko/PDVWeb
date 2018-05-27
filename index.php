@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
+    <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/pdv.js"></script>
