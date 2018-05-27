@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url(../imgs/pattern56.jpg);
+    background-image: url(../imgs/hex-pattern-orange.png);
 }
 
 .mainButton {
@@ -83,9 +83,9 @@
     background: #ffffff;
 }
 .divLogo {
-    background: url(../imgs/logo.png) no-repeat 0px 0px;
-    width: 220px;
-    height: 85px;
+    background: url(../imgs/header-mini.png) no-repeat 0px 0px;
+    width: 500px;
+    height: 91px;
 }
 .divMargin {
     margin-bottom: 5px;
@@ -138,13 +138,14 @@
 }
 
 .mainMenuElement {
-    transition: all 0.5s;    
+    transition: all 0.5s;
+    font-weight: bold;
 }
 
 .mainMenuElement:hover {
     text-decoration: none;
     background-color: #000000;
-    color: #ffffff !important;
+    color: #FFBF00 !important;
 }
 
 .tag {

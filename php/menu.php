@@ -23,10 +23,10 @@
                         <a class="nav-link mainMenuElement" href="menu.php">Menú principal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mainMenuElement" href="localidades.php">Control de localidades</a>
+                        <a class="nav-link mainMenuElement" href="nuevaventa.php">Nueva venta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mainMenuElement" href="instituciones.php">Control de instituciones</a>
+                        <a class="nav-link mainMenuElement" href="instituciones.php"></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
