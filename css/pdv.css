@@ -113,6 +113,28 @@
     font-size: 16px;
 }
 
+.divBackgroundOrange {    
+    color: #000000;
+    
+    font-size: 20px;
+    border-bottom: 3px solid #FFBF00;
+    margin-bottom: 20px;
+}
+
+.divBackgroundOrange2 {
+    background-color: #FFBF00;
+    color: #ffffff;
+    
+    font-size: 16px;
+}
+
+.divBackgroundOrange3 {
+    background-color: #FFBF00;
+    color: #ffffff;
+    
+    font-size: 16px;
+}
+
 .divBackgroundBlack {
     background-color: #000000;
 }
