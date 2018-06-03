@@ -12,6 +12,7 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/pdv.js"></script>
+    <script src="js/nuevaventa.js"></script>
     <script src="js/jquery-ui.min.js"></script>
 
     <title>Punto de Venta</title>
@@ -45,6 +46,51 @@
                 <input type="text" class="form-control textbox-center" id="tbArticulo"></input>
             </div>
         </div>
+        <div class="row divMargin">
+            <div class="col-3">
+                <label class="labelType01">Descuento Porcentaje</label>
+            </div>
+            <div class="col-3">
+                <label class="labelType01">Descuento Cantidad</label>
+            </div>
+            <div class="col-3">
+                <label class="labelType01">SubTotal</label>
+            </div>
+            <div class="col-3">
+                <label class="labelType01">Total</label>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-3">
+                <input type="text" id="tbDescuentoPorcentajeVenta" class="form-control textbox-center" value="0" onchange="cambiarDescuentoPorcentajeVenta()"></input>
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbDescuentoCantidadVenta" class="form-control textbox-center" value="0" onchange="cambiarDescuentoCantidadVenta()"></input>
+            </div>
+            <div class="col-3">
+                <label class="labelType02" id="lblSubTotal">-</label>
+            </div>
+            <div class="col-3">
+                <label class="labelType02" id="lblTotal">-</label>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-3">
+                
+            </div>
+            <div class="col-3">
+            
+            </div>
+            <div class="col-3">
+            
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary btn-success">Realizar venta</button>
+            </div>
+        </div>
+        <div class="row divMargin" id="divVenta">
+
+        </div>
     </div>
 </body>
 <script>
@@ -55,7 +101,9 @@
                 source: "php/sin_obtenerArticulosJSON.php",
                 minLength: 2,
                 select: function(event, ui) {
-
+                    agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio);
+                    this.value = '';
+                    return false;
                 }
             });
         });

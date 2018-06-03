@@ -108,9 +108,9 @@
 
 .divBackgroundBlue3 {
     background-color: #5891a0;
-    color: #ffffff;
-    
+    color: #ffffff;    
     font-size: 16px;
+    font-weight: bold;
 }
 
 .divBackgroundOrange {    
@@ -149,6 +149,11 @@
 
 .labelType01 {
     font-size: 14px;    
+}
+
+.labelType02 {
+    font-size: 18px;
+    font-weight: bold;    
 }
 
 .textbox-center {
