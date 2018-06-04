@@ -118,6 +118,9 @@ function calcularTotal() {
     nv_subTotal = total;
     total = total - (total * (descuentoPorcentaje/100));
     total = total - descuentoCantidad;
+    if ($("#cbIva").is(":checked")) {
+        total = total * 1.16;
+    }
     nv_total = total;
     $("#lblTotal").text("$ " + total);
 }

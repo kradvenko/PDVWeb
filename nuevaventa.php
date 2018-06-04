@@ -76,7 +76,7 @@
         </div>
         <div class="row divMargin">
             <div class="col-3">
-                
+                <input type="checkbox" id="cbIva" onclick="calcularTotal()"><label for="cbIva" class="labelType01">Incluir I.V.A.</label>
             </div>
             <div class="col-3">
             
