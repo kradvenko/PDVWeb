@@ -98,7 +98,7 @@
         checkSession();
         $(function() {     
             $("#tbArticulo").autocomplete({
-                source: "php/sin_obtenerArticulosJSON.php",
+                source: "php/obtenerArticulosJSON.php",
                 minLength: 2,
                 select: function(event, ui) {
                     agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio);

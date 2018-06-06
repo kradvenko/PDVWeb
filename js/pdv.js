@@ -45,6 +45,9 @@ function userLogin() {
                 document.cookie = "usuario=" + $(this).find("usuario").text() + "; Path=/;";
                 document.cookie = "tipo=" + $(this).find("tipo").text() + "; Path=/;";
                 document.cookie = "nombre=" + $(this).find("nombre").text() + "; Path=/;";
+                document.cookie = "tienda=" + $(this).find("tienda").text() + "; Path=/;";
+                document.cookie = "prefijo=" + $(this).find("prefijo").text() + "; Path=/;";
+                document.cookie = "tipotienda=" + $(this).find("tipotienda").text() + "; Path=/;";
                 document.location = "menu.php";
             } else {
                 alert("Usuario o contraseña incorrectos.");

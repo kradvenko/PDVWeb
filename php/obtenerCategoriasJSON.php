@@ -11,14 +11,21 @@
 
         $data = array();
 
-        $sql = "Select * From articulos " .
-                "Where articulos.nombre Like '%$term%' And estado = 'ACTIVO'";
+        $prefijo = $_COOKIE["prefijo"];
+
+        if (!$prefijo) {
+            return;
+        }
+
+        $sql = "Select * 
+                From " . $prefijo . "categorias 
+                Where " . $prefijo . "categorias.categoria Like '%$term%' And estado = 'ACTIVO'";
 
         $result = $con->query($sql);
 
         while ($row = $result->fetch_array()) {
-            $ciudad = array("id" => $row["idarticulo"] , "value" => $row["nombre"], "precio" => $row["costopublico"]);
-            array_push($data, $ciudad);
+            $item = array("id" => $row["idcategoria"] , "value" => $row["categoria"]);
+            array_push($data, $item);
         }
         
         echo json_encode($data);

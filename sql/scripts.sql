@@ -89,3 +89,22 @@ CREATE TABLE `articulos` (
   `estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idarticulo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+--05/06/2018
+--Cambio a tabla usuarios
+--agregar idtienda int
+--agregar prefijo varchar(5)
+
+--Cambio tabla articulos
+--Llevará prefijo mat_articulos para matriz
+--agregar campo local varchar(4)
+CREATE TABLE `tiendas` (
+  `idtienda` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
+  `prefijo` varchar(5) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idtienda`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--Cambio tabla categorias
+--Llevará prefijo mat_
