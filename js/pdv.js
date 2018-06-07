@@ -1,12 +1,4 @@
-﻿//Variables globales para módulo de localidades
-var idPaisSeleccionado;
-var idRegionSeleccionada;
-var idTipoRegionSeleccionada;
-var idPaisRegionSeleccionado;
-var idCiudadSeleccionada;
-var idRegionCiudadSeleccionada;
-var idPaisCiudadSeleccionada;
-//Funciones misceláneas
+﻿//Funciones misceláneas
 function getCookie(cookie) {
 	//Separar el arreglo de cookies
 	var cookies = document.cookie.split(/;\s*/);

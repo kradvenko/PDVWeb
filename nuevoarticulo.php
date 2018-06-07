@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jsgrid.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jsgrid-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
     <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
@@ -14,6 +16,7 @@
     <script src="js/pdv.js"></script>
     <script src="js/nuevoarticulo.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jsgrid.min.js"></script>
 
     <title>Punto de Venta</title>
 </head>
@@ -103,32 +106,67 @@
                 <input type="text" class="form-control textbox-center" id="tbCantidadMinima" maxlength="5"></input>
             </div>
         </div>
+        <div class="row divMargin divBackgroundBlue2">
+            <div class="col-12">
+                Matriz y sucursales
+            </div>
+        </div>
         <div class="row divMargin">
             <div class="col-2">
-                <label class="labelType01">Costo público menudeo</label>
+                <label class="labelType01">Replicar en sucursales</label>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
+                <select class="form-control" id="sReplicar">
+                    <option value="SI" selected>SI</option>
+                    <option value="NO">NO</option>                    
+                </select>
             </div>
-            <div class="col-2">
-                <label class="labelType01">Costo público mayoreo</label>
+        </div>
+        <div class="row divMargin divBackgroundBlue2">
+            <div class="col-12">
+                Costos
             </div>
+        </div>
+        <div class="row divMargin">
             <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMayoreo" maxlength="5"></input>
-            </div>
-            <div class="col-2">
-                <label class="labelType01">Costo real</label>
+                    <label class="labelType01">Costo real</label>
             </div>
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="5"></input>
             </div>
-        </div>
-        <div class="row divMargin">
             <div class="col-2">
                 <label class="labelType01">Costo distribuidor</label>
             </div>
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCostoDistribuidor" maxlength="5"></input>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Costo público menudeo</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
+            </div> 
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                <label class="labelType01">Costos público mayoreo</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMayoreoDe" maxlength="5" placeholder="De"></input>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMayoreoA" maxlength="5" placeholder="A"></input>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMayoreoCosto" maxlength="5" placeholder="Costo"></input>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="agregarPrecioMayoreo()">+</button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-12" id="divPreciosMayoreo">
+
             </div>
         </div>
     </div>
