@@ -20,7 +20,7 @@
         
         $sql = "Select * 
                 From categorias 
-                Where categorias.categoria Like '%$term%' And estado = 'ACTIVO' And idtienda = $idTienda";
+                Where categorias.categoria Like '%$term%' And estado = 'ACTIVO'";
 
         $result = $con->query($sql);
 

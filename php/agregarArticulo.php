@@ -16,7 +16,7 @@
         $costoReal = $_POST["costoReal"];
         $costoDistribuidor = $_POST["costoDistribuidor"];
         $estado = $_POST["estado"];
-        $preciosMayoreo = $_POST["preciosMayoreo"];
+        $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
 
         $prefijo = $_COOKIE["prefijo"];
         $tipoTienda = $_COOKIE["tipotienda"];
@@ -80,7 +80,14 @@
                 $con->query($sql);
             }            
         } else {
-
+            $sql = "INSERT INTO " . $prefijo . "articulos
+                    (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado)
+                    VALUES
+                    ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado')";
+            
+            $con->query($sql);
         }        
 
         echo "OK";

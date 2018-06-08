@@ -57,6 +57,11 @@
             </div>
         </div>
         <div class="row divMargin">
+            <div class="col-12" id="divUltimosArticulos">
+
+            </div>
+        </div>
+        <div class="row divMargin">
             <div class="col-2">
                 <label class="labelType01">Categoría</label>
             </div>
@@ -64,7 +69,7 @@
                 <input type="text" class="form-control textbox-center" id="tbCategoria"></input>
             </div>
             <div class="col-1">
-                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarMarca'>+</button>
+                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarCategoria'>+</button>
             </div>
             <div class="col-2">
                 <label class="labelType01">Código</label>
@@ -126,6 +131,7 @@
                 <input type="text" class="form-control textbox-center" id="tbCantidadMinima" maxlength="5"></input>
             </div>
         </div>
+        <!--
         <div class="row divMargin divBackgroundBlue2">
             <div class="col-12">
                 Matriz y sucursales
@@ -136,6 +142,7 @@
                 
             </div>
         </div>
+        -->
         <div class="row divMargin divBackgroundBlue2">
             <div class="col-12">
                 Costos
@@ -161,7 +168,7 @@
                 <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
             </div> 
         </div>
-        <div class="row divMargin">
+        <div class="row divMargin" id="divCostosMayoreo">
             <div class="col-2">
                 <label class="labelType01">Costos público mayoreo</label>
             </div>
@@ -181,6 +188,54 @@
         <div class="row divMargin">
             <div class="col-12" id="divPreciosMayoreo">
 
+            </div>
+        </div>
+    </div>
+    <!--Ventana modal para agregar un nueva categoría-->
+    <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCategoria" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar nueva categoría</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">                        
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="tbNuevaCategoria"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="agregarNuevaCategoria()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Ventana modal para agregar un nueva marca-->
+    <div class="modal fade" id="modalAgregarMarca" tabindex="-1" role="dialog" aria-labelledby="modalAgregarMarca" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar nueva marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">                        
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="tbNuevaMarca"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="agregarNuevaMarca()">Guardar cambios</button>
+                </div>
             </div>
         </div>
     </div>
@@ -214,6 +269,14 @@
                 }
             });
         });
+        verificarCamposMatriz();
+        obtenerUltimosArticulos();
+    });
+    $('#modalAgregarCategoria').on('shown.bs.modal', function() {
+        $('#tbNuevaCategoria').focus();
+    });
+    $('#modalAgregarMarca').on('shown.bs.modal', function() {
+        $('#tbNuevaMarca').focus();
     });
 </script>
 </html>
