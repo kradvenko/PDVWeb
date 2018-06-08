@@ -6,6 +6,7 @@
         header('Content-type: application/json');
 
         $term = $_GET["term"];
+        $idTienda = $_GET["idTienda"];
 
         $con = new mysqli($hn, $un, $pw, $db);
 
@@ -16,10 +17,10 @@
         if (!$prefijo) {
             return;
         }
-
+        
         $sql = "Select * 
-                From " . $prefijo . "categorias 
-                Where " . $prefijo . "categorias.categoria Like '%$term%' And estado = 'ACTIVO'";
+                From categorias 
+                Where categorias.categoria Like '%$term%' And estado = 'ACTIVO' And idtienda = $idTienda";
 
         $result = $con->query($sql);
 

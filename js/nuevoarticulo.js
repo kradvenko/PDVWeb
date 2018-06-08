@@ -13,6 +13,18 @@ function limpiarCamposNuevoArticulo() {
     $("#tbMarca").val("");
     $("#tbColor").val("");
     $("#tbCantidad").val("");
+    $("#tbCantidadMinima").val("");
+    $("#tbCostoReal").val("");
+    $("#tbCostoDistribuidor").val("");
+    $("#tbCostoPublicoMenudeo").val("");
+    $("#tbCostoPublicoMayoreoDe").val("");
+    $("#tbCostoPublicoMayoreoA").val("");
+    $("#tbCostoPublicoMayoreoCosto").val("");
+    na_IdCategoriaElegida = 0;
+    na_IdMarcaElegida = 0;
+    na_PreciosMayoreo = [];
+    na_PrecioMayoreo;
+    mostrarPreciosMayoreo();
 }
 
 function elegirCategoria(id) {
@@ -20,7 +32,7 @@ function elegirCategoria(id) {
 }
 
 function elegirMarca(id) {
-    na_IdMarcaElegida = 0;
+    na_IdMarcaElegida = id;
 }
 
 function agregarPrecioMayoreo() {
@@ -43,6 +55,9 @@ function agregarPrecioMayoreo() {
     na_PrecioMayoreo = { id: 0, De: precioDe, A: precioA, Costo: costoMayoreo};
     na_PreciosMayoreo[na_PreciosMayoreo.length] = na_PrecioMayoreo;
     mostrarPreciosMayoreo();
+    $("#tbCostoPublicoMayoreoDe").val("");
+    $("#tbCostoPublicoMayoreoA").val("");
+    $("#tbCostoPublicoMayoreoCosto").val("");
 }
 
 function mostrarPreciosMayoreo() {
@@ -64,4 +79,32 @@ function mostrarPreciosMayoreo() {
             { type: "control" }
         ]
     });
+}
+
+function agregarArticulo() {
+    var idCategoria = na_IdCategoriaElegida;
+    var codigo = $("#tbCodigo").val();
+    var nombre = $("#tbNombre").val();
+    var descripcion = $("#taDescripcion").val();
+    var modelo = $("#tbModelo").val();
+    var idMarca = na_IdMarcaElegida;
+    var color = $("#tbColor").val();
+    var cantidad = $("#tbCantidad").val();
+    var minimo = $("#tbCantidadMinima").val();
+    var costoReal = $("#tbCostoReal").val();
+    var costoDistribuidor = $("#tbCostoDistribuidor").val();
+    var costoPublico = $("#tbCostoPublicoMenudeo").val();
+    var estado = "ACTIVO";
+    var preciosMayoreo = na_PreciosMayoreo;
+
+    //TODO validaciones
+
+    $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
+        if (res == "OK") {
+            alert("Se ha agregado el artículo.");
+            limpiarCamposNuevoArticulo();
+        } else {
+            
+        }
+    }});
 }

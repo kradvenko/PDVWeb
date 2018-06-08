@@ -38,6 +38,26 @@
         </div>
         <div class="row divMargin">
             <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="agregarArticulo()">Guardar</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="limpiarCamposNuevoArticulo()">Limpiar campos</button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
                 <label class="labelType01">Categoría</label>
             </div>
             <div class="col-3">
@@ -113,13 +133,7 @@
         </div>
         <div class="row divMargin">
             <div class="col-2">
-                <label class="labelType01">Replicar en sucursales</label>
-            </div>
-            <div class="col-2">
-                <select class="form-control" id="sReplicar">
-                    <option value="SI" selected>SI</option>
-                    <option value="NO">NO</option>                    
-                </select>
+                
             </div>
         </div>
         <div class="row divMargin divBackgroundBlue2">
@@ -178,7 +192,13 @@
 
         $(function() {     
             $("#tbCategoria").autocomplete({
-                source: "php/obtenerCategoriasJSON.php",
+                source: 
+                function(request, response) {
+                $.getJSON(
+                    "php/obtenerCategoriasJSON.php",
+                    { term: request.term, idTienda: getIdTienda() }, 
+                    response
+                );},
                 minLength: 2,
                 select: function(event, ui) {
                     elegirCategoria(ui.item.id);
@@ -194,6 +214,6 @@
                 }
             });
         });
-    });    
+    });
 </script>
 </html>

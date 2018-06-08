@@ -1,4 +1,6 @@
-﻿//Funciones misceláneas
+﻿pdv_IdTienda = 0;
+
+//Funciones misceláneas
 function getCookie(cookie) {
 	//Separar el arreglo de cookies
 	var cookies = document.cookie.split(/;\s*/);
@@ -37,6 +39,7 @@ function userLogin() {
                 document.cookie = "usuario=" + $(this).find("usuario").text() + "; Path=/;";
                 document.cookie = "tipo=" + $(this).find("tipo").text() + "; Path=/;";
                 document.cookie = "nombre=" + $(this).find("nombre").text() + "; Path=/;";
+                document.cookie = "idtienda=" + $(this).find("idtienda").text() + "; Path=/;";
                 document.cookie = "tienda=" + $(this).find("tienda").text() + "; Path=/;";
                 document.cookie = "prefijo=" + $(this).find("prefijo").text() + "; Path=/;";
                 document.cookie = "tipotienda=" + $(this).find("tipotienda").text() + "; Path=/;";
@@ -54,11 +57,19 @@ function checkSession() {
     }
 }
 
+function getIdTienda() {
+    return getCookie("idtienda");
+}
+
 function cerrarSesion() {
-    document.cookie = "idusuario=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;"
-    document.cookie = "usuario=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;"
-    document.cookie = "tipo=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;"
-    document.cookie = "nombre=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;"
+    document.cookie = "idusuario=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "usuario=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "tipo=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "nombre=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "idtienda=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "tienda=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "prefijo=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "tipotienda=; Path=/; Expires= Thu, 01 Jan 1970 00:00:01 GMT;";
     document.location = "index.php";
 }
 
