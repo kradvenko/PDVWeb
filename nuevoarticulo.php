@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/jsgrid.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jsgrid-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
     <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -57,8 +58,16 @@
             </div>
         </div>
         <div class="row divMargin">
+            <div class="col-12">
+                <label class="labelType01">Últimos artículos agregados (haga click para seleccionar)</label>
+            </div>
             <div class="col-12" id="divUltimosArticulos">
 
+            </div>
+        </div>
+        <div class="row divMargin divBackgroundOrange2">
+            <div class="col-12">
+                Datos del artículo
             </div>
         </div>
         <div class="row divMargin">
@@ -69,7 +78,9 @@
                 <input type="text" class="form-control textbox-center" id="tbCategoria"></input>
             </div>
             <div class="col-1">
-                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarCategoria'>+</button>
+                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarCategoria'>
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
             <div class="col-2">
                 <label class="labelType01">Código</label>
@@ -106,7 +117,9 @@
                 <input type="text" class="form-control textbox-center" id="tbMarca"></input>
             </div>
             <div class="col-1">
-                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarMarca'>+</button>
+                <button class="btn btn-success" data-toggle='modal' data-target='#modalAgregarMarca'>
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
         </div>
         <div class="row divMargin">
@@ -130,9 +143,12 @@
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCantidadMinima" maxlength="5"></input>
             </div>
+            <div class="col-4" id="divArticuloDeMatriz" class="divOrangeText3">
+                
+            </div>
         </div>
         <!--
-        <div class="row divMargin divBackgroundBlue2">
+        <div class="row divMargin divBackgroundOrange2">
             <div class="col-12">
                 Matriz y sucursales
             </div>
@@ -143,14 +159,14 @@
             </div>
         </div>
         -->
-        <div class="row divMargin divBackgroundBlue2">
+        <div class="row divMargin divBackgroundOrange2">
             <div class="col-12">
                 Costos
             </div>
         </div>
         <div class="row divMargin">
             <div class="col-2">
-                    <label class="labelType01">Costo real</label>
+                <label class="labelType01">Costo real</label>
             </div>
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="5"></input>
@@ -182,7 +198,9 @@
                 <input type="text" class="form-control textbox-center" id="tbCostoPublicoMayoreoCosto" maxlength="5" placeholder="Costo"></input>
             </div>
             <div class="col-2">
-                <button class="btn btn-success" onclick="agregarPrecioMayoreo()">+</button>
+                <button class="btn btn-success" onclick="agregarPrecioMayoreo()">
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
         </div>
         <div class="row divMargin">

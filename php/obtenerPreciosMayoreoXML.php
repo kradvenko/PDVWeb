@@ -10,13 +10,11 @@
             exit(1);
         }
 
-        $prefijo = $_COOKIE["prefijo"];
-
         $con = new mysqli($hn, $un, $pw, $db);
 
         $sql = "Select * 
-                From " . $prefijo . "preciosmayoreo                 
-                Where " . $prefijo . "preciosmayoreo.idarticulo = $idArticulo";
+                From mat_preciosmayoreo
+                Where mat_preciosmayoreo.idarticulo = $idArticulo";
 
         $result = $con->query($sql);
 

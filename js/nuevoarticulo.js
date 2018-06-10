@@ -26,6 +26,8 @@ function limpiarCamposNuevoArticulo() {
     na_IdMarcaElegida = 0;
     na_PreciosMayoreo = [];
     na_PrecioMayoreo;
+    na_IdArticuloElegido = 0;
+    na_IdMatrizArticulo = 0;
     mostrarPreciosMayoreo();
 }
 
@@ -81,6 +83,8 @@ function mostrarPreciosMayoreo() {
         editing: true,
         sorting: true,
         paging: true,
+
+        deleteConfirm: "¿Eliminar el costo de mayoreo?",
  
         data: na_PreciosMayoreo,
  
@@ -94,6 +98,11 @@ function mostrarPreciosMayoreo() {
 }
 
 function agregarArticulo() {
+    if (na_IdMatrizArticulo > 0) {
+        alert("No es posible modificar un artículo que ha sido dado de alta en la tienda matriz.");
+        return;
+    }
+
     var idCategoria = na_IdCategoriaElegida;
     var codigo = $("#tbCodigo").val();
     var nombre = $("#tbNombre").val();
@@ -123,14 +132,27 @@ function agregarArticulo() {
         return;
     }
 
-    $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
-        if (res == "OK") {
-            alert("Se ha agregado el artículo.");
-            limpiarCamposNuevoArticulo();
-        } else {
-            
-        }
-    }});
+    if (na_IdArticuloElegido == 0) {
+        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha agregado el artículo.");
+                limpiarCamposNuevoArticulo();
+                obtenerUltimosArticulos();
+            } else {
+                
+            }
+        }});
+    } else {
+        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha actualizado el artículo.");
+                limpiarCamposNuevoArticulo();
+                obtenerUltimosArticulos();
+            } else {
+                
+            }
+        }});
+    }
 }
 
 function agregarNuevaCategoria() {
@@ -168,8 +190,8 @@ function agregarNuevaMarca() {
 }
 
 function elegirArticulo(id, idmatriz) {
-    var na_IdArticuloElegido = id;
-    var na_IdMatrizArticulo = idmatriz;
+    na_IdArticuloElegido = id;
+    na_IdMatrizArticulo = idmatriz;
 
     $.ajax({url: "php/obtenerArticuloXML.php", async: false, type: "POST", data: { idArticulo : id }, success: function(res) {
         $('resultado', res).each(function(index, element) {
@@ -190,7 +212,24 @@ function elegirArticulo(id, idmatriz) {
             $("#tbCostoPublicoMenudeo").val($(this).find("costopublico").text());
         });
     }});
-    if (getCookie("tipotienda") == "MATRIZ") {
+
+    if (na_IdMatrizArticulo > 0) {
+        $("#divArticuloDeMatriz").html('<label class="orangeText3">Artículo de matriz.</label>');
+    } else {
+        $("#divArticuloDeMatriz").html("");
+    }
+
+    if (na_IdMatrizArticulo > 0 && getCookie("tipotienda") == "SUCURSAL") {
+        $("#divCostosMayoreo").css("visibility", "visible");
+        $("#divPreciosMayoreo").css("visibility", "visible");
+        $.ajax({url: "php/obtenerPreciosMayoreoXML.php", async: false, type: "POST", data: { idArticulo : na_IdMatrizArticulo }, success: function(res) {
+            na_PreciosMayoreo = [];
+            $('cat', res).each(function(index, element) {
+                na_PrecioMayoreo =  { id: $(this).find("id").text(), De: $(this).find("de").text(), A: $(this).find("a").text(), Costo: $(this).find("precio").text() };
+                na_PreciosMayoreo[na_PreciosMayoreo.length] = na_PrecioMayoreo;
+            });
+        }});
+    } else if (na_IdMatrizArticulo == 0 && getCookie("tipotienda") == "MATRIZ") {
         $.ajax({url: "php/obtenerPreciosMayoreoXML.php", async: false, type: "POST", data: { idArticulo : id }, success: function(res) {
             na_PreciosMayoreo = [];
             $('cat', res).each(function(index, element) {
@@ -198,6 +237,9 @@ function elegirArticulo(id, idmatriz) {
                 na_PreciosMayoreo[na_PreciosMayoreo.length] = na_PrecioMayoreo;
             });
         }});
+    } else {
+        $("#divCostosMayoreo").css("visibility", "hidden");
+        $("#divPreciosMayoreo").css("visibility", "hidden");
     }
     mostrarPreciosMayoreo();
 }

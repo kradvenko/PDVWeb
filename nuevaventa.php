@@ -7,13 +7,18 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jsgrid.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jsgrid-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
+    <link rel="stylesheet" type="text/css" href="css/slider.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
     <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/pdv.js"></script>
     <script src="js/nuevaventa.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jsgrid.min.js"></script>
 
     <title>Punto de Venta</title>
 </head>
@@ -75,8 +80,11 @@
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-3">
-                <input type="checkbox" id="cbIva" onclick="calcularTotal()"><label for="cbIva" class="labelType01">Incluir I.V.A.</label>
+            <div class="col-2">
+                <label class="labelType01">Incluir I.V.A.</label>
+            </div>
+            <div class="col-1">
+                <label class="switch"><input id="cbIva" type="checkbox" onclick="calcularTotal()"><span class="slider round"></span></label></input>
             </div>
             <div class="col-3">
             
@@ -92,6 +100,29 @@
 
         </div>
     </div>
+    <!--Ventana modal para ver los precios de mayore-->
+    <div class="modal fade" id="modalVerPreciosMayoreo" tabindex="-1" role="dialog" aria-labelledby="modalVerPreciosMayoreo" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ver precios mayoreo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">                        
+                            <div class="col-12" id="divPreciosMayoreo">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 <script>
     $( document ).ready(function() {

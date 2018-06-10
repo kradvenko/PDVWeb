@@ -30,6 +30,7 @@
             echo "<cat>";
             echo "<idarticulo>" . $row['idarticulo'] . "</idarticulo>\n";
             echo "<idcategoria>" . $row['idcategoria'] . "</idcategoria>\n";
+            echo "<idmatriz>" . $row['idmatriz'] . "</idmatriz>\n";
             echo "<categoria>" . $row['categoria'] . "</categoria>\n";
             echo "<codigo>" . $row['codigo'] . "</codigo>\n";
             echo "<nombre>" . $row['nombre'] . "</nombre>\n";
