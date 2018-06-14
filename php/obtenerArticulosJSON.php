@@ -24,7 +24,7 @@
         $result = $con->query($sql);
 
         while ($row = $result->fetch_array()) {
-            $ciudad = array("id" => $row["idarticulo"] , "value" => $row["nombre"], "precio" => $row["costopublico"]);
+            $ciudad = array("id" => $row["idarticulo"] , "value" => $row["nombre"], "precio" => $row["costopublico"], "preciodistribuidor" => $row["preciodistribuidor"]);
             array_push($data, $ciudad);
         }
         

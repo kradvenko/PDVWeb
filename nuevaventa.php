@@ -100,7 +100,7 @@
 
         </div>
     </div>
-    <!--Ventana modal para ver los precios de mayore-->
+    <!--Ventana modal para ver los precios de mayoreo-->
     <div class="modal fade" id="modalVerPreciosMayoreo" tabindex="-1" role="dialog" aria-labelledby="modalVerPreciosMayoreo" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -132,7 +132,7 @@
                 source: "php/obtenerArticulosJSON.php",
                 minLength: 2,
                 select: function(event, ui) {
-                    agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio);
+                    agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio, ui.item.preciodistribuidor);
                     this.value = '';
                     return false;
                 }

@@ -16,6 +16,7 @@
         $costoReal = $_POST["costoReal"];
         $costoDistribuidor = $_POST["costoDistribuidor"];
         $estado = $_POST["estado"];
+        $precioDistribuidor = $_POST["precioDistribuidor"];
         $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
 
         $prefijo = $_COOKIE["prefijo"];
@@ -49,10 +50,10 @@
 
             $sql = "INSERT INTO " . $prefijo . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado')";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
             
             $con->query($sql);
 
@@ -62,10 +63,10 @@
                 $item = $data[$i];
                 $sql = "INSERT INTO " . $item["prefijo"] . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
                     VALUES
                     ($idCategoria, $idArticulo, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado')";
+                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
 
                 $con->query($sql);
             }
@@ -82,10 +83,10 @@
         } else {
             $sql = "INSERT INTO " . $prefijo . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado')";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
             
             $con->query($sql);
         }        

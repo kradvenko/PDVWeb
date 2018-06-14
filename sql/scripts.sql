@@ -114,3 +114,14 @@ CREATE TABLE `ventas` (
   `iva` float DEFAULT NULL,
   PRIMARY KEY (`idventa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--13/06/2018
+ALTER TABLE `pdvweb`.`mat_articulos` 
+ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
+
+ALTER TABLE `pdvweb`.`drc_articulos` 
+ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
+
+ALTER TABLE `pdvweb`.`sin_articulos` 
+ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
+

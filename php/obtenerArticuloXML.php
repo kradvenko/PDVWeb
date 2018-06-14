@@ -45,6 +45,7 @@
             echo "<costoreal>" . $row['costoreal'] . "</costoreal>\n";
             echo "<costodistribuidor>" . $row['costodistribuidor'] . "</costodistribuidor>\n";
             echo "<estado>" . $row['estado'] . "</estado>\n";
+            echo "<preciodistribuidor>" . $row['preciodistribuidor'] . "</preciodistribuidor>\n";
             echo "</cat>";
         }
 

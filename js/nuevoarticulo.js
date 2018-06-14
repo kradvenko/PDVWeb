@@ -16,6 +16,8 @@ function limpiarCamposNuevoArticulo() {
     $("#tbColor").val("");
     $("#tbCantidad").val("0");
     $("#tbCantidadMinima").val("0");
+    $("#tbPrecioDistribuidor").val("0");
+    $("#tbPrecioPublicoMenudeo").val("0");
     $("#tbCostoReal").val("0");
     $("#tbCostoDistribuidor").val("0");
     $("#tbCostoPublicoMenudeo").val("0");
@@ -40,6 +42,7 @@ function elegirMarca(id) {
 }
 
 function verificarCamposMatriz() {
+    /*
     if (getCookie("tipotienda") == "MATRIZ") {
         
     } else 
@@ -47,6 +50,7 @@ function verificarCamposMatriz() {
         $("#divCostosMayoreo").css("visibility", "hidden");
         $("#divPreciosMayoreo").css("visibility", "hidden");
     }
+    */
 }
 
 function agregarPrecioMayoreo() {
@@ -115,6 +119,7 @@ function agregarArticulo() {
     var costoReal = $("#tbCostoReal").val();
     var costoDistribuidor = $("#tbCostoDistribuidor").val();
     var costoPublico = $("#tbCostoPublicoMenudeo").val();
+    var precioDistribuidor = $("#tbPrecioDistribuidor").val();
     var estado = "ACTIVO";
     var preciosMayoreo = na_PreciosMayoreo;
 
@@ -133,7 +138,7 @@ function agregarArticulo() {
     }
 
     if (na_IdArticuloElegido == 0) {
-        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
+        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha agregado el artículo.");
                 limpiarCamposNuevoArticulo();
@@ -143,7 +148,7 @@ function agregarArticulo() {
             }
         }});
     } else {
-        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo }, success: function(res) {
+        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha actualizado el artículo.");
                 limpiarCamposNuevoArticulo();
@@ -210,6 +215,7 @@ function elegirArticulo(id, idmatriz) {
             $("#tbCostoReal").val($(this).find("costoreal").text());
             $("#tbCostoDistribuidor").val($(this).find("costodistribuidor").text());
             $("#tbCostoPublicoMenudeo").val($(this).find("costopublico").text());
+            $("#tbPrecioDistribuidor").val($(this).find("preciodistribuidor").text());
         });
     }});
 

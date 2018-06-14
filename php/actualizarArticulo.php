@@ -17,6 +17,7 @@
         $costoReal = $_POST["costoReal"];
         $costoDistribuidor = $_POST["costoDistribuidor"];
         $estado = $_POST["estado"];
+        $precioDistribuidor = $_POST["precioDistribuidor"];
         $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
 
         $prefijo = $_COOKIE["prefijo"];
@@ -50,7 +51,7 @@
 
             $sql = "UPDATE " . $prefijo . "articulos
                     Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado'
+                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
                     Where idarticulo = $idArticulo";
             
             $con->query($sql);
@@ -59,7 +60,7 @@
                 $item = $data[$i];
                 $sql = "UPDATE " . $item["prefijo"] . "articulos
                 Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado'
+                idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
                 Where idmatriz = $idArticulo";
 
                 $con->query($sql);
@@ -80,7 +81,7 @@
         } else {
             $sql = "UPDATE " . $prefijo . "articulos
                     Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado'
+                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
                     Where idarticulo = $idArticulo";
             
             $con->query($sql);

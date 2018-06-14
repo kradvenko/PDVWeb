@@ -9,8 +9,8 @@ var nv_PrecioMayoreo;
 
 
 //Articulos
-function agregarArticuloVenta(id, nombre, precio) {
-    nv_articulo = { id : id, nombre : nombre, precio : precio, preciomayoreo: 0, usarMayoreo: false, cantidad : '1',  descuentoporcentaje : '0', descuentocantidad : '0', subtotal: precio, total : precio };
+function agregarArticuloVenta(id, nombre, precio, preciodistribuidor) {
+    nv_articulo = { id : id, nombre : nombre, precio : precio, preciomayoreo: 0, usarMayoreo: false, cantidad : '1',  descuentoporcentaje : '0', descuentocantidad : '0', subtotal: precio, total : precio, preciodistribuidor: preciodistribuidor };
     nv_articulos[nv_articulos.length] = nv_articulo;
     mostrarVenta();
     calcularTotal();
@@ -184,10 +184,12 @@ function checarMayoreo(index) {
 
         cantidad = $("#tbCantidad_" + index).val();
         idArticulo = nv_articulos[index].id;
-
+        /*
         $.ajax({url: "php/obtenerPrecioMayoreo.php", async: false, type: "POST", data: { idArticulo : idArticulo, cantidad: cantidad }, success: function(res) {
             precioMayoreo = res;
         }});
+        */
+       precioMayoreo = nv_articulos[index].preciodistribuidor;
 
         if (isNaN(precioMayoreo)) {
             alert(precioMayoreo);

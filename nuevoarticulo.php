@@ -161,16 +161,29 @@
         -->
         <div class="row divMargin divBackgroundOrange2">
             <div class="col-12">
-                Costos
+                Precios
             </div>
         </div>
         <div class="row divMargin">
             <div class="col-2">
-                <label class="labelType01">Costo real</label>
+                <label class="labelType01">Precio distribuidor</label>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="5"></input>
+                <input type="text" class="form-control textbox-center" id="tbPrecioDistribuidor" maxlength="5"></input>
             </div>
+            <div class="col-2">
+                <label class="labelType01">Precio público menudeo</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
+            </div> 
+        </div>
+        <div class="row divMargin divBackgroundOrange2">
+            <div class="col-12">
+                Costos
+            </div>
+        </div>
+        <div class="row divMargin">
             <div class="col-2">
                 <label class="labelType01">Costo distribuidor</label>
             </div>
@@ -178,11 +191,19 @@
                 <input type="text" class="form-control textbox-center" id="tbCostoDistribuidor" maxlength="5"></input>
             </div>
             <div class="col-2">
+                <label class="labelType01">Costo real</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="5"></input>
+            </div>
+            <!--            
+            <div class="col-2">
                 <label class="labelType01">Costo público menudeo</label>
             </div>
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
             </div> 
+        -->
         </div>
         <div class="row divMargin" id="divCostosMayoreo">
             <div class="col-2">
