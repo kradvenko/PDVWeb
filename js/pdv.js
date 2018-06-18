@@ -74,6 +74,7 @@ function cerrarSesion() {
 }
 
 function obtenerFechaHoraActual() {
+    var currentdate = new Date();
     return (currentdate.getDate() < 10 ? "0" + currentdate.getDate() : currentdate.getDate()) + "/"
                 + ((currentdate.getMonth() + 1) < 10 ? ("0" + (currentdate.getMonth() + 1)) : (currentdate.getMonth() + 1)) + "/" 
                 + currentdate.getFullYear() + " @ "  

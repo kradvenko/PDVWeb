@@ -124,4 +124,21 @@ ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
 
 ALTER TABLE `pdvweb`.`sin_articulos` 
 ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
+--17/06/2018
+CREATE TABLE `origeneslote` (
+  `idorigenlote` int(11) NOT NULL AUTO_INCREMENT,
+  `origen` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idorigenlote`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `lotes` (
+  `idlote` int(11) NOT NULL AUTO_INCREMENT,
+  `idorigen` int(11) DEFAULT NULL,
+  `fechalote` varchar(45) DEFAULT NULL,
+  `tipocambio` float DEFAULT NULL,
+  `fechaingreso` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `costolote` float DEFAULT NULL,
+  `moneda` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`idlote`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
