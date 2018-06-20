@@ -18,6 +18,9 @@
         $estado = $_POST["estado"];
         $precioDistribuidor = $_POST["precioDistribuidor"];
         $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
+        $diLote = $_POST["idLote"];
+        $aprobado = $_POST["aprobado"];
+        $notas = $_POST["notas"];
 
         $prefijo = $_COOKIE["prefijo"];
         $tipoTienda = $_COOKIE["tipotienda"];
@@ -50,10 +53,10 @@
 
             $sql = "INSERT INTO " . $prefijo . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
             
             $con->query($sql);
 
@@ -63,10 +66,10 @@
                 $item = $data[$i];
                 $sql = "INSERT INTO " . $item["prefijo"] . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, $idArticulo, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
+                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
 
                 $con->query($sql);
             }
@@ -83,10 +86,10 @@
         } else {
             $sql = "INSERT INTO " . $prefijo . "articulos
                     (idcategoria, idmatriz, codigo, nombre, descripcion, modelo, idmarca,
-                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor)
+                    color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor)";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
             
             $con->query($sql);
         }        

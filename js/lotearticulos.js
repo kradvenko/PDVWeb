@@ -4,9 +4,8 @@ var na_PreciosMayoreo = [];
 var na_PrecioMayoreo;
 var na_IdArticuloElegido = 0;
 var na_IdMatrizArticulo = 0;
-var na_IdLote = 0;
-var na_aprobado;
-var na_notas;
+var la_ArticuloLote;
+var la_ArticulosLote = [];
 
 
 function limpiarCamposNuevoArticulo() {
@@ -104,7 +103,7 @@ function mostrarPreciosMayoreo() {
     });
 }
 
-function agregarArticulo() {
+function agregarNuevoArticuloLote() {
     if (na_IdMatrizArticulo > 0) {
         alert("No es posible modificar un artículo que ha sido dado de alta en la tienda matriz.");
         return;
@@ -141,21 +140,23 @@ function agregarArticulo() {
     }
 
     if (na_IdArticuloElegido == 0) {
-        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor }, success: function(res) {
+        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor, idLote: l_IdLoteElegido, aprobado: "NO", notas: "" }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha agregado el artículo.");
                 limpiarCamposNuevoArticulo();
-                obtenerUltimosArticulos();
+                obtenerArticulosLote();
+                mostrarArticulosLote();
             } else {
                 
             }
         }});
     } else {
-        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor, idLote: na_IdLote, aprobado: na_aprobado, notas: na_notas }, success: function(res) {
+        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha actualizado el artículo.");
                 limpiarCamposNuevoArticulo();
-                obtenerUltimosArticulos();
+                obtenerArticulosLote();
+                mostrarArticulosLote();
             } else {
                 
             }
@@ -219,9 +220,6 @@ function elegirArticulo(id, idmatriz) {
             $("#tbCostoDistribuidor").val($(this).find("costodistribuidor").text());
             $("#tbCostoPublicoMenudeo").val($(this).find("costopublico").text());
             $("#tbPrecioDistribuidor").val($(this).find("preciodistribuidor").text());
-            na_IdLote = $(this).find("idlote").text();
-            na_aprobado= $(this).find("aprobado").text();
-            na_notas = $(this).find("notas").text();
         });
     }});
 
@@ -260,4 +258,121 @@ function obtenerUltimosArticulos() {
     $.ajax({url: "php/obtenerUltimosArticulos.php", async: false, type: "POST", success: function(res) {
         $("#divUltimosArticulos").html(res);
     }});
+}
+
+var l_IdLoteElegido = 0;
+
+function obtenerOrigenesSelect() {
+    $.ajax({url: "php/obtenerOrigenesSelect.php", async: false, type: "POST", data: { idSelect: "selOrigenLote" }, success: function(res) {
+        $("#divOrigenLote").html(res);
+    }});
+}
+
+function agregarNuevoOrigenLote() {
+    var origen = $("#tbNuevoOrigenLote").val();
+    if (origen.length == 0) {
+        alert("No ha escrito un origen de lote.");
+        return;
+    }
+    $.ajax({url: "php/agregarOrigenLote.php", async: false, type: "POST", data: { origen: origen }, success: function(res) {
+        if (res == "OK") {
+            $("#tbNuevoOrigenLote").val("");
+            $('#modalAgregarOrigenLote').modal('hide');
+            obtenerOrigenesSelect();
+        } else {
+            alert(res);
+        }
+    }});
+}
+
+function agregarLote() {
+    var idOrigen = $("#selOrigenLote").val();
+    var fechaLote = $("#tbFechaLote").val();
+    var tipoCambio = $("#tbTipoCambio").val();
+    var moneda = $("#selMoneda").val();
+    var costoLote = $("#tbCostoLote").val();
+    var fechaIngreso = obtenerFechaHoraActual();
+    var estado = "ACTIVO";
+
+    if (l_IdLoteElegido == 0) {
+        $.ajax({url: "php/agregarLote.php", async: false, type: "POST", data: { idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha ingresado el lote.");
+                limpiarCamposNuevoLote();
+                obtenerUltimosLotes();
+            } else {
+                alert(res);
+            }
+        }});
+    } else {
+        $.ajax({url: "php/actualizarLote.php", async: false, type: "POST", data: { idLote: l_IdLoteElegido, idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha actualizado el lote.");
+                limpiarCamposNuevoLote();
+                obtenerUltimosLotes();
+            } else {
+                alert(res);
+            }
+        }});
+    }
+}
+
+function limpiarCamposNuevoLote() {
+    l_IdLoteElegido = 0;
+    $("#tbFechaLote").val("");
+    $("#tbTipoCambio").val("");
+    $("#tbCostoLote").val("");
+    $("#divAgregarArticuloLote").hide();
+    $("#divArticulosLote").html("");
+    la_ArticulosLote = [];
+}
+
+function obtenerUltimosLotes() {
+    $.ajax({url: "php/obtenerUltimosLotes.php", async: false, type: "POST", success: function(res) {
+        $("#divUltimosLotes").html(res);
+    }});
+}
+
+function elegirLote(idlote, idOrigen, fechalote, tipocambio, costolote, moneda, origen) {
+    l_IdLoteElegido = idlote;
+    $("#selOrigenLote").val(idOrigen);
+    $("#tbFechaLote").val(fechalote);
+    $("#tbTipoCambio").val(tipocambio);
+    $("#tbCostoLote").val(costolote);
+    $("#selMoneda").val(moneda);
+    $("#divAgregarArticuloLote").show();
+    obtenerArticulosLote();
+    mostrarArticulosLote();
+}
+
+function obtenerArticulosLote() {
+    $.ajax({url: "php/obtenerArticulosLoteXML.php", async: false, type: "POST", data: { idLote: l_IdLoteElegido }, success: function(res) {
+        la_ArticulosLote = [];
+        $('cat', res).each(function(index, element) {
+            la_ArticuloLote =  { id: $(this).find("idarticulo").text(), Nombre: $(this).find("nombre").text() };
+            la_ArticulosLote[la_ArticulosLote.length] = la_ArticuloLote;
+        });
+    }});
+}
+
+function mostrarArticulosLote() {
+    $("#divArticulosLote").jsGrid({
+        width: "100%",
+        height: "100%",
+ 
+        inserting: false,
+        editing: false,
+        sorting: false,
+        paging: false,
+        deleting: false,
+
+        deleteConfirm: "¿Eliminar el artículo?",
+ 
+        data: la_ArticulosLote,
+ 
+        fields: [
+            { name: "Nombre", type: "text", width: 50, validate: "required" },            
+            { type: "control" }
+        ]
+    });
 }

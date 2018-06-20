@@ -3,10 +3,10 @@
     {
         require_once('connection.php');
 
-        $idArticulo = $_POST["idArticulo"];
         $prefijo = $_COOKIE["prefijo"];
+        $idLote = $_POST["idLote"];
 
-        if (!$idArticulo) {
+        if (!$idLote) {
             echo "Error. Faltan variables.";
             exit(1);
         }
@@ -19,7 +19,7 @@
                 "On categorias.idcategoria = " . $prefijo . "articulos.idcategoria " .
                 "Inner Join marcas " .
                 "On marcas.idmarca = " . $prefijo . "articulos.idmarca " .
-                "Where " . $prefijo ."articulos.idarticulo = $idArticulo";
+                "Where " . $prefijo ."articulos.idlote = $idLote";
 
         $result = $con->query($sql);
 

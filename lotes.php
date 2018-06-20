@@ -67,7 +67,7 @@
         </div>
         <div class="row divMargin divBackgroundOrange2">
             <div class="col-12">
-                Datos del artículo
+                Datos del lote
             </div>
         </div>
         <div class="row divMargin">

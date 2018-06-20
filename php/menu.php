@@ -34,7 +34,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
-                        <a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a> 
+                        <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
+                        <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a> 
                         </div>
                     </li>
                     </ul>

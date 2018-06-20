@@ -142,3 +142,24 @@ CREATE TABLE `lotes` (
   `moneda` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idlote`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--20/06/2018
+ALTER TABLE `mat_articulos` 
+ADD COLUMN `idlote` INT NULL AFTER `preciodistribuidor`,
+ADD COLUMN `aprobado` VARCHAR(5) NULL AFTER `idlote`,
+ADD COLUMN `notas` VARCHAR(200) NULL AFTER `aprobado`;
+
+ALTER TABLE `sin_articulos` 
+ADD COLUMN `idlote` INT NULL AFTER `preciodistribuidor`,
+ADD COLUMN `aprobado` VARCHAR(5) NULL AFTER `idlote`,
+ADD COLUMN `notas` VARCHAR(200) NULL AFTER `aprobado`;
+
+ALTER TABLE `drc_articulos` 
+ADD COLUMN `idlote` INT NULL AFTER `preciodistribuidor`,
+ADD COLUMN `aprobado` VARCHAR(5) NULL AFTER `idlote`,
+ADD COLUMN `notas` VARCHAR(200) NULL AFTER `aprobado`;
+
+
+
+
+
+
