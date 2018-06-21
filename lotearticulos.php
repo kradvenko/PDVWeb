@@ -339,7 +339,7 @@
                     </div>
                     <div class="row divMargin">
                         <div class="col-2">
-                            <label class="labelType01">Entregado</label>
+                            <label class="labelType01">Recibido</label>
                         </div>
                         <div class="col-1">
                             <label class="switch"><input id="cbAprobado" type="checkbox" onclick=""><span class="slider round"></span></label></input>

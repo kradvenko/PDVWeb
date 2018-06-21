@@ -18,7 +18,7 @@
         $estado = $_POST["estado"];
         $precioDistribuidor = $_POST["precioDistribuidor"];
         $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
-        $diLote = $_POST["idLote"];
+        $idLote = $_POST["idLote"];
         $aprobado = $_POST["aprobado"];
         $notas = $_POST["notas"];
 
@@ -56,7 +56,7 @@
                     color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$idLote', '$aprobado', '$notas')";
             
             $con->query($sql);
 
@@ -69,7 +69,7 @@
                     color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, $idArticulo, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
+                    0, 0, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$idLote', '$aprobado', '$notas')";
 
                 $con->query($sql);
             }
@@ -89,7 +89,7 @@
                     color, cantidad, minimo, costopublico, costoreal, costodistribuidor, estado, preciodistribuidor, idlote, aprobado, notas)
                     VALUES
                     ($idCategoria, 0, '$codigo', '$nombre', '$descripcion', '$modelo', $idMarca, '$color',
-                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$diLote', '$aprobado', '$notas')";
+                    $cantidad, $minimo, $costoPublico, $costoReal, $costoDistribuidor, '$estado', $precioDistribuidor, '$idLote', '$aprobado', '$notas')";
             
             $con->query($sql);
         }        
