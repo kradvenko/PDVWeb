@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/jsgrid.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jsgrid-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
+    <link rel="stylesheet" type="text/css" href="css/slider.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
     <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
@@ -67,7 +68,7 @@
         </div>
         <div class="row divMargin divBackgroundOrange2">
             <div class="col-12">
-                Datos del artículo
+                Datos del lote
             </div>
         </div>
         <div class="row divMargin">
@@ -110,6 +111,31 @@
                     <option value="Peso">Peso</option>
                     <option value="Dolar">Dolar</option>
                 </select>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                <label class="labelType01">Fecha pago</label>
+            </div>
+            <div class="col-3">
+                <input type="text" class="form-control textbox-center" id="tbFechaPago" maxlength="10"></input>
+            </div>
+            <div class="col-1">
+                <label class="switch"><input id="cbPagado" type="checkbox" onclick="ponerFechaPagado()"><span class="slider round"></span></label></input>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Fecha recibido</label>
+            </div>
+            <div class="col-3">
+                <input type="text" class="form-control textbox-center" id="tbFechaRecibido" maxlength="10"></input>
+            </div>
+            <div class="col-1">
+                <label class="switch"><input id="cbRecibido" type="checkbox" onclick="ponerFechaRecibido()"><span class="slider round"></span></label></input>
+            </div>
+        </div>
+        <div class="row divMargin divBackgroundOrange2">
+            <div class="col-12">
+                Artículos del lote
             </div>
         </div>
         <div class="row divMargin">
@@ -305,6 +331,25 @@
                             <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
                         </div> 
                     -->
+                    </div>
+                    <div class="row divMargin divBackgroundOrange2">
+                        <div class="col-12">
+                            Costos
+                        </div>
+                    </div>
+                    <div class="row divMargin">
+                        <div class="col-2">
+                            <label class="labelType01">Entregado</label>
+                        </div>
+                        <div class="col-1">
+                            <label class="switch"><input id="cbAprobado" type="checkbox" onclick=""><span class="slider round"></span></label></input>
+                        </div>
+                        <div class="col-2">
+                            <label class="labelType01">Notas</label>
+                        </div>
+                        <div>
+                            <textarea class="form-control" id="taArticuloNotas"></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

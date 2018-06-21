@@ -158,6 +158,12 @@ ADD COLUMN `idlote` INT NULL AFTER `preciodistribuidor`,
 ADD COLUMN `aprobado` VARCHAR(5) NULL AFTER `idlote`,
 ADD COLUMN `notas` VARCHAR(200) NULL AFTER `aprobado`;
 
+ALTER TABLE `lotes` 
+ADD COLUMN `fechapago` VARCHAR(45) NULL AFTER `moneda`,
+ADD COLUMN `fecharecibido` VARCHAR(45) NULL AFTER `fechapago`,
+ADD COLUMN `pagado` VARCHAR(5) NULL AFTER `fecharecibido`,
+ADD COLUMN `recibido` VARCHAR(5) NULL AFTER `pagado`;
+
 
 
 
