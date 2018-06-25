@@ -245,3 +245,6 @@ CREATE TABLE `sin_ventas` (
   `iva` float DEFAULT NULL,
   PRIMARY KEY (`idventa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--25/06/2018
+ALTER TABLE `pdvweb`.`lotes` 
+ADD COLUMN `costoenvio` FLOAT NULL AFTER `recibido`;

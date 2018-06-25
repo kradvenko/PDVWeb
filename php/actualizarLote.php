@@ -15,6 +15,7 @@
         $fechaRecibido = $_POST["fechaRecibido"];
         $pagado = $_POST["pagado"];
         $recibido = $_POST["recibido"];
+        $costoEnvio = $_POST["costoEnvio"];
 
         if (!$idOrigen) {
             echo "Error. Faltan variables.";
@@ -26,7 +27,7 @@
         $sql = "Update lotes 
                 Set idorigen = $idOrigen, fechalote = '$fechaLote', tipocambio = '$tipoCambio',
                 estado = '$estado', costolote = '$costoLote', moneda = '$moneda', fechapago = '$fechaPago',
-                fecharecibido = '$fechaRecibido', pagado = '$pagado', recibido = '$recibido'
+                fecharecibido = '$fechaRecibido', pagado = '$pagado', recibido = '$recibido', costoenvio = '$costoEnvio'
                 Where idlote = $idLote";
 
         $con->query($sql);

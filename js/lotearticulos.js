@@ -304,9 +304,10 @@ function agregarLote() {
     var fechaRecibido = $("#tbFechaRecibido").val();
     var pagado = $("#cbPagado").prop("checked") == true ? "SI" : "NO";
     var recibido = $("#cbRecibido").prop("checked") == true ? "SI" : "NO";
+    var costoEnvio = $("#tbCostoEnvio").val();
 
     if (l_IdLoteElegido == 0) {
-        $.ajax({url: "php/agregarLote.php", async: false, type: "POST", data: { idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado, fechaPago: fechaPago, fechaRecibido: fechaRecibido, pagado: pagado, recibido: recibido }, success: function(res) {
+        $.ajax({url: "php/agregarLote.php", async: false, type: "POST", data: { idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado, fechaPago: fechaPago, fechaRecibido: fechaRecibido, pagado: pagado, recibido: recibido, costoEnvio: costoEnvio }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha ingresado el lote.");
                 limpiarCamposNuevoLote();
@@ -316,7 +317,7 @@ function agregarLote() {
             }
         }});
     } else {
-        $.ajax({url: "php/actualizarLote.php", async: false, type: "POST", data: { idLote: l_IdLoteElegido, idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado, fechaPago: fechaPago, fechaRecibido: fechaRecibido, pagado: pagado, recibido: recibido }, success: function(res) {
+        $.ajax({url: "php/actualizarLote.php", async: false, type: "POST", data: { idLote: l_IdLoteElegido, idOrigen: idOrigen, fechaLote: fechaLote, tipoCambio: tipoCambio, moneda: moneda, costoLote: costoLote, fechaIngreso: fechaIngreso, estado: estado, fechaPago: fechaPago, fechaRecibido: fechaRecibido, pagado: pagado, recibido: recibido, costoEnvio: costoEnvio }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha actualizado el lote.");
                 limpiarCamposNuevoLote();
@@ -339,6 +340,7 @@ function limpiarCamposNuevoLote() {
     $("#tbRecibido").val("");
     $("#cbPagado").prop("checked", false);
     $("#cbRecibido").prop("checked", false);
+    $("#tbCostoEnvio").val("");
     la_ArticulosLote = [];
 }
 
@@ -348,7 +350,7 @@ function obtenerUltimosLotes() {
     }});
 }
 
-function elegirLote(idlote, idOrigen, fechalote, tipocambio, costolote, moneda, fechapago, fecharecibido, pagado, recibido) {
+function elegirLote(idlote, idOrigen, fechalote, tipocambio, costolote, costoenvio, moneda, fechapago, fecharecibido, pagado, recibido) {
     l_IdLoteElegido = idlote;
     $("#selOrigenLote").val(idOrigen);
     $("#tbFechaLote").val(fechalote);
@@ -360,6 +362,7 @@ function elegirLote(idlote, idOrigen, fechalote, tipocambio, costolote, moneda, 
     pagado == "SI" ? $("#cbPagado").prop("checked", true) : $("#cbPagado").prop("checked", false);
     recibido == "SI" ? $("#cbRecibido").prop("checked", true) : $("#cbRecibido").prop("checked", false);
     $("#divAgregarArticuloLote").show();
+    $("#tbCostoEnvio").val(costoenvio);
     obtenerArticulosLote();
     mostrarArticulosLote();
 }

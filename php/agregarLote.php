@@ -14,6 +14,7 @@
         $fechaRecibido = $_POST["fechaRecibido"];
         $pagado = $_POST["pagado"];
         $recibido = $_POST["recibido"];
+        $costoEnvio = $_POST["costoEnvio"];
 
         if (!$idOrigen) {
             echo "Error. Faltan variables.";
@@ -22,7 +23,7 @@
 
         $con = new mysqli($hn, $un, $pw, $db);
 
-        $sql = "Insert Into lotes (idorigen, fechalote, tipocambio, fechaingreso, estado, costolote, moneda, fechapago, fecharecibido, pagado, recibido) Values ($idOrigen, '$fechaLote', $tipoCambio, '$fechaIngreso', '$estado', $costoLote, '$moneda', '$fechaPago', '$fechaRecibido', '$pagado', '$recibido')";
+        $sql = "Insert Into lotes (idorigen, fechalote, tipocambio, fechaingreso, estado, costolote, moneda, fechapago, fecharecibido, pagado, recibido, costoenvio) Values ($idOrigen, '$fechaLote', $tipoCambio, '$fechaIngreso', '$estado', $costoLote, '$moneda', '$fechaPago', '$fechaRecibido', '$pagado', '$recibido', '$costoEnvio')";
 
         $con->query($sql);
 

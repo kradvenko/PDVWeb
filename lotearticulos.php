@@ -94,19 +94,25 @@
             <div class="col-2">
                 <label class="labelType01">Tipo cambio</label>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 <input type="text" class="form-control textbox-center" id="tbTipoCambio" maxlength="10"></input>
             </div>            
-            <div class="col-2">
+            <div class="col-1">
                 <label class="labelType01">Costo de lote</label>
             </div>
             <div class="col-2">
                 <input type="text" class="form-control textbox-center" id="tbCostoLote" maxlength="10"></input>
             </div>
             <div class="col-1">
+                <label class="labelType01">Costo de envío</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoEnvio" maxlength="10"></input>
+            </div>
+            <div class="col-1">
                 <label class="labelType01">Moneda</label>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <select id="selMoneda" class="form-control">
                     <option value="Peso">Peso</option>
                     <option value="Dolar">Dolar</option>

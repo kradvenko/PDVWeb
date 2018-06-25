@@ -16,7 +16,7 @@
 
         
         while ($row = $result->fetch_array()) {
-            echo "<span class='ultimoArticulo' onclick='elegirLote(\"" . $row["idlote"] . "\", \"" . $row["idorigen"] . "\", \"" . $row["fechalote"] . "\", \"" . $row["tipocambio"] . "\", \"" . $row["costolote"] . "\", \"" . $row["moneda"] . "\", \"" . $row["fechapago"] . "\", \"" . $row["fecharecibido"] . "\", \"" . $row["pagado"] . "\", \"" . $row["recibido"] . "\")'>" . $row["origen"] . " - " . $row["fechalote"] . "</span>";
+            echo "<span class='ultimoArticulo' onclick='elegirLote(\"" . $row["idlote"] . "\", \"" . $row["idorigen"] . "\", \"" . $row["fechalote"] . "\", \"" . $row["tipocambio"] . "\", \"" . $row["costolote"] . "\", \"" . $row["costoenvio"] . "\", \"" . $row["moneda"] . "\", \"" . $row["fechapago"] . "\", \"" . $row["fecharecibido"] . "\", \"" . $row["pagado"] . "\", \"" . $row["recibido"] . "\")'>" . $row["origen"] . " - " . $row["fechalote"] . "</span>";
         }        
 
         mysqli_close($con);
