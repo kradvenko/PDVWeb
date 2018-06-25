@@ -93,7 +93,7 @@
             
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-primary btn-success">Realizar venta</button>
+                <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Realizar venta</button>
             </div>
         </div>
         <div class="row divMargin" id="divVenta">
@@ -127,6 +127,7 @@
 <script>
     $( document ).ready(function() {
         checkSession();
+        limpiarCamposNuevaVenta();
         $(function() {     
             $("#tbArticulo").autocomplete({
                 source: "php/obtenerArticulosJSON.php",

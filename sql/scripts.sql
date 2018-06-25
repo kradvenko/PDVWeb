@@ -164,8 +164,84 @@ ADD COLUMN `fecharecibido` VARCHAR(45) NULL AFTER `fechapago`,
 ADD COLUMN `pagado` VARCHAR(5) NULL AFTER `fecharecibido`,
 ADD COLUMN `recibido` VARCHAR(5) NULL AFTER `pagado`;
 
+--24/06/2018
+CREATE TABLE `drc_detalleventa` (
+  `iddetalleventa` int(11) NOT NULL AUTO_INCREMENT,
+  `idventa` int(11) DEFAULT NULL,
+  `idarticulo` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `preciomenudeo` float DEFAULT NULL,
+  `preciomayoreo` float DEFAULT NULL,
+  `tipoprecio` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  PRIMARY KEY (`iddetalleventa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `drc_ventas` (
+  `idventa` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `iva` float DEFAULT NULL,
+  PRIMARY KEY (`idventa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `mat_detalleventa` (
+  `iddetalleventa` int(11) NOT NULL AUTO_INCREMENT,
+  `idventa` int(11) DEFAULT NULL,
+  `idarticulo` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `preciomenudeo` float DEFAULT NULL,
+  `preciomayoreo` float DEFAULT NULL,
+  `tipoprecio` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  PRIMARY KEY (`iddetalleventa`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `mat_ventas` (
+  `idventa` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `iva` float DEFAULT NULL,
+  PRIMARY KEY (`idventa`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `sin_detalleventa` (
+  `iddetalleventa` int(11) NOT NULL AUTO_INCREMENT,
+  `idventa` int(11) DEFAULT NULL,
+  `idarticulo` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `preciomenudeo` float DEFAULT NULL,
+  `preciomayoreo` float DEFAULT NULL,
+  `tipoprecio` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  PRIMARY KEY (`iddetalleventa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `sin_ventas` (
+  `idventa` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` varchar(45) DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `descuentoporcentaje` float DEFAULT NULL,
+  `descuentocantidad` float DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `iva` float DEFAULT NULL,
+  PRIMARY KEY (`idventa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

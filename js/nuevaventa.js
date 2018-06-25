@@ -6,10 +6,14 @@ var nv_subTotal = 0;
 var nv_total = 0;
 var nv_PreciosMayoreo = [];
 var nv_PrecioMayoreo;
+var nv_iva = 0;
 
 
 //Articulos
 function agregarArticuloVenta(id, nombre, precio, preciodistribuidor) {
+    if (preciodistribuidor == null) {
+        preciodistribuidor = 0;
+    }
     nv_articulo = { id : id, nombre : nombre, precio : precio, preciomayoreo: 0, usarMayoreo: false, cantidad : '1',  descuentoporcentaje : '0', descuentocantidad : '0', subtotal: precio, total : precio, preciodistribuidor: preciodistribuidor };
     nv_articulos[nv_articulos.length] = nv_articulo;
     mostrarVenta();
@@ -144,7 +148,12 @@ function calcularTotal() {
     total = total - (total * (descuentoPorcentaje/100));
     total = total - descuentoCantidad;
     if ($("#cbIva").is(":checked")) {
+        nv_iva = (total * 1.16) - total;
         total = total * 1.16;
+        nv_iva = parseFloat(nv_iva).toFixed(2);         
+        total = parseFloat(total).toFixed(2);        
+    } else {
+        nv_iva = 0;
     }
     nv_total = total;
     $("#lblTotal").text("$ " + total);
@@ -157,19 +166,18 @@ function realizarVenta() {
     var descuentoCantidad = nv_descuentoCantidad;
     var total = nv_total;
     var estado = 'ACTIVO';
-    var tipo = 'EFECTIVO';
-    var cambio = 0;
     var articulos = nv_articulos;
+    var iva = nv_iva;
 
     if (nv_articulos.length == 0) {
         alert("No existen artículos en la venta.");
         return;
     }
 
-    $.ajax({url: "php/.php", async: false, type: "POST", data: { estudio : estudio }, success: function(res) {
+    $.ajax({url: "php/agregarVenta.php", async: false, type: "POST", data: { fecha : fecha, subtotal: subTotal, descuentoPorcentaje: descuentoPorcentaje, descuentoCantidad: descuentoCantidad, total: total, estado: estado, articulos: articulos, iva: iva }, success: function(res) {
         if (res == 'OK') {
-            $("#tbNuevoEstudio").val('');
-            $('#modalAgregarEstudio').modal('hide');
+            alert("Se ha realizado la venta.");
+            limpiarCamposNuevaVenta();
         } else {
             alert(res);
         }
@@ -192,12 +200,15 @@ function checarMayoreo(index) {
        precioMayoreo = nv_articulos[index].preciodistribuidor;
 
         if (isNaN(precioMayoreo)) {
-            alert(precioMayoreo);
             nv_articulos[index].preciomayoreo = 0;
             nv_articulos[index].usarMayoreo = false;
         } else {
-            nv_articulos[index].preciomayoreo = precioMayoreo;
-            nv_articulos[index].usarMayoreo = true;
+            if (precioMayoreo > 0) {
+                nv_articulos[index].preciomayoreo = precioMayoreo;
+                nv_articulos[index].usarMayoreo = true;
+            } else {
+                nv_articulos[index].usarMayoreo = false;
+            }
         }
     } else {
         nv_articulos[index].preciomayoreo = 0;
@@ -235,4 +246,13 @@ function mostrarPreciosMayoreo() {
             { name: "Costo", type: "text", width: 200, validate: "required" },
         ]
     });
+}
+
+function limpiarCamposNuevaVenta() {
+    $("#cbIva").prop("checked", false);
+    $("#divVenta").html("");
+    $("#tbDescuentoPorcentajeVenta").val("0");
+    $("#tbDescuentoCantidadVenta").val("0");
+    $("#lblSubTotal").text("-");
+    $("#lblTotal").text("-");
 }
