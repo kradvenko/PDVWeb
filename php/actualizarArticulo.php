@@ -19,6 +19,9 @@
         $estado = $_POST["estado"];
         $precioDistribuidor = $_POST["precioDistribuidor"];
         $preciosMayoreo = (isset($_POST["preciosMayoreo"]) ? $_POST["preciosMayoreo"] : []);
+        $idLote = $_POST["idLote"];
+        $aprobado = $_POST["aprobado"];
+        $notas = $_POST["notas"];
 
         $prefijo = $_COOKIE["prefijo"];
         $tipoTienda = $_COOKIE["tipotienda"];
@@ -51,7 +54,8 @@
 
             $sql = "UPDATE " . $prefijo . "articulos
                     Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
+                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor,
+                    idlote = $idLote, aprobado = '$aprobado', notas = '$notas'
                     Where idarticulo = $idArticulo";
             
             $con->query($sql);
@@ -60,7 +64,8 @@
                 $item = $data[$i];
                 $sql = "UPDATE " . $item["prefijo"] . "articulos
                 Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
+                idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor,
+                idlote = $idLote, aprobado = '$aprobado', notas = '$notas'
                 Where idmatriz = $idArticulo";
 
                 $con->query($sql);
@@ -81,7 +86,8 @@
         } else {
             $sql = "UPDATE " . $prefijo . "articulos
                     Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor
+                    idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor,
+                    idlote = $idLote, aprobado = '$aprobado', notas = '$notas'
                     Where idarticulo = $idArticulo";
             
             $con->query($sql);

@@ -126,7 +126,7 @@ function agregarNuevoArticuloLote() {
     var precioDistribuidor = $("#tbPrecioDistribuidor").val();
     var estado = "ACTIVO";
     var preciosMayoreo = na_PreciosMayoreo;
-    var aprobado = $("#tbPrecioDistribuidor").prop("checked", true) ? "SI" : "NO";
+    var aprobado = $("#cbAprobado").prop("checked") == true ? "SI" : "NO";
     var notas = $("#taArticuloNotas").val();
 
     if (idCategoria == 0) {
@@ -155,7 +155,7 @@ function agregarNuevoArticuloLote() {
             }
         }});
     } else {
-        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor, aprobado: aprobado, notas: notas }, success: function(res) {
+        $.ajax({url: "php/actualizarArticulo.php", async: false, type: "POST", data: { idArticulo: na_IdArticuloElegido, idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor, idLote: l_IdLoteElegido, aprobado: aprobado, notas: notas }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha actualizado el artículo.");
                 limpiarCamposNuevoArticulo();
