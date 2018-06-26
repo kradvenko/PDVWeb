@@ -90,7 +90,7 @@
             
             </div>
             <div class="col-3">
-            
+                <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalAgregarCliente'>Dar de alta cliente</button>
             </div>
             <div class="col-3">
                 <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Realizar venta</button>
@@ -102,27 +102,98 @@
     </div>
     <!--Ventana modal para ver los precios de mayoreo-->
     <div class="modal fade" id="modalVerPreciosMayoreo" tabindex="-1" role="dialog" aria-labelledby="modalVerPreciosMayoreo" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Ver precios mayoreo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">                        
-                            <div class="col-12" id="divPreciosMayoreo">
-                                
-                            </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ver precios mayoreo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">                        
+                        <div class="col-12" id="divPreciosMayoreo">
+                            
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
                 </div>
             </div>
         </div>
+    </div>
+    <!--Ventana modal para agregar cliente-->
+    <div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCliente" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            Nombre del cliente
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevoClienteNombre" class="form-control"></input>
+                        </div>
+                        <div class="col-12">
+                            Dirección
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevoClienteDireccion" class="form-control"></input>
+                        </div>
+                        <div class="col-12">
+                            Colonia
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevoClienteColonia" class="form-control"></input>
+                        </div>
+                        <div class="col-6">
+                            Teléfono 1
+                        </div>
+                        <div class="col-6">
+                            Whatsapp
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="tbNuevoClienteTelefono1" class="form-control"></input>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="tbNuevoClienteTelefono2" class="form-control"></input>
+                        </div>
+                        <div class="col-12">
+                            Correo electrónico
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevoClienteCorreo" class="form-control"></input>
+                        </div>
+                        <div class="col-12">
+                            Tienda
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevoClienteTienda" class="form-control"></input>
+                        </div>
+                        <div class="col-12">
+                            Tipo
+                        </div>
+                        <div class="col-12">
+                            <select id="selNuevoClienteTipo" class="form-control">
+                                <option value="NORMAL">Normal</option>
+                                <option value="DISTRIBUIDOR">Distribuidor</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     $( document ).ready(function() {
@@ -139,6 +210,9 @@
                 }
             });
         });
-    });    
+    });
+    $('#modalAgregarCliente').on('shown.bs.modal', function() {
+        $('#tbNuevoClienteNombre').focus();
+    });
 </script>
 </html>
