@@ -86,11 +86,28 @@
             <div class="col-1">
                 <label class="switch"><input id="cbIva" type="checkbox" onclick="calcularTotal()"><span class="slider round"></span></label></input>
             </div>
+            <div class="col-1">
+                <label class="labelType01">Cliente</label>
+            </div>
+            <div class="col-5">
+                <input type="text" id="tbVentaCliente" class="form-control" ></input>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalAgregarCliente'>Dar de alta cliente</button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                
+            </div>
+            <div class="col-1">
+                
+            </div>
             <div class="col-3">
             
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalAgregarCliente'>Dar de alta cliente</button>
+
             </div>
             <div class="col-3">
                 <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Realizar venta</button>
@@ -182,13 +199,20 @@
                         </div>
                         <div class="col-12">
                             <select id="selNuevoClienteTipo" class="form-control">
-                                <option value="NORMAL">Normal</option>
-                                <option value="DISTRIBUIDOR">Distribuidor</option>
+                                <option value="NORMAL">NORMAL</option>
+                                <option value="DISTRIBUIDOR">DISTRIBUIDOR</option>
                             </select>
+                        </div>
+                        <div class="col-12">
+                            Notas
+                        </div>
+                        <div class="col-12">
+                            <textarea id="taNuevoClienteNotas" rows="3" maxlength="200" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>                        
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
                 </div>
             </div>
@@ -207,6 +231,15 @@
                     agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio, ui.item.preciodistribuidor);
                     this.value = '';
                     return false;
+                }
+            });
+        });
+        $(function() {     
+            $("#tbVentaCliente").autocomplete({
+                source: "php/obtenerClientesJSON.php",
+                minLength: 2,
+                select: function(event, ui) {
+                    elegirCliente(ui.item.id);
                 }
             });
         });

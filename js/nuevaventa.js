@@ -7,6 +7,7 @@ var nv_total = 0;
 var nv_PreciosMayoreo = [];
 var nv_PrecioMayoreo;
 var nv_iva = 0;
+var nv_IdCliente = 0;
 
 
 //Articulos
@@ -168,6 +169,7 @@ function realizarVenta() {
     var estado = 'ACTIVO';
     var articulos = nv_articulos;
     var iva = nv_iva;
+    var idCliente = nv_IdCliente;
 
     if (nv_articulos.length == 0) {
         alert("No existen artículos en la venta.");
@@ -255,4 +257,36 @@ function limpiarCamposNuevaVenta() {
     $("#tbDescuentoCantidadVenta").val("0");
     $("#lblSubTotal").text("-");
     $("#lblTotal").text("-");
+}
+
+function guardarCliente() {
+    var nombre = $("#tbNuevoClienteNombre").val();
+    var direccion = $("#tbNuevoClienteDireccion").val();
+    var colonia = $("#tbNuevoClienteColonia").val();
+    var telefono1 = $("#tbNuevoClienteTelefono1").val();
+    var telefono2 = $("#tbNuevoClienteTelefono2").val();
+    var correo = $("#tbNuevoClienteCorreo").val();
+    var tienda = $("#tbNuevoClienteTienda").val();
+    var tipo = $("#selNuevoClienteTipo").val();
+    var fechaCaptura = obtenerFechaHoraActual();
+    var estado = 'ACTIVO';
+    var notas = $("#taNuevoClienteNotas").val();
+
+    if (nombre.length == 0) {
+        alert("No ha escrito el nombre del cliente.")
+        return;
+    }
+
+    $.ajax({url: "php/agregarCliente.php", async: false, type: "POST", data: { nombre: nombre, direccion: direccion, colonia: colonia, telefono1: telefono1, telefono2: telefono2, correo: correo, tienda: tienda, tipo: tipo, fechaCaptura: fechaCaptura, estado: estado, notas: notas }, success: function(res) {
+        if (res == "OK") {
+            alert("Se ha ingresado el cliente.");
+            $('#modalAgregarCliente').modal('hide');
+        } else {
+            alert(res);
+        }
+    }});
+}
+
+function elegirCliente(id) {
+    nv_IdCliente = id;
 }

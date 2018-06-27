@@ -205,7 +205,7 @@ CREATE TABLE `mat_detalleventa` (
   `subtotal` float DEFAULT NULL,
   `total` float DEFAULT NULL,
   PRIMARY KEY (`iddetalleventa`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `mat_ventas` (
   `idventa` int(11) NOT NULL AUTO_INCREMENT,
@@ -217,7 +217,7 @@ CREATE TABLE `mat_ventas` (
   `estado` varchar(45) DEFAULT NULL,
   `iva` float DEFAULT NULL,
   PRIMARY KEY (`idventa`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `sin_detalleventa` (
   `iddetalleventa` int(11) NOT NULL AUTO_INCREMENT,
@@ -248,3 +248,20 @@ CREATE TABLE `sin_ventas` (
 --25/06/2018
 ALTER TABLE `pdvweb`.`lotes` 
 ADD COLUMN `costoenvio` FLOAT NULL AFTER `recibido`;
+--26/06/2018
+CREATE TABLE `clientes` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `idtienda` int(11) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `colonia` varchar(100) DEFAULT NULL,
+  `telefono1` varchar(45) DEFAULT NULL,
+  `telefono2` varchar(45) DEFAULT NULL,
+  `correo` varchar(45) DEFAULT NULL,
+  `tienda` varchar(100) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
+  `fechacaptura` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
