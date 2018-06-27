@@ -205,7 +205,7 @@ CREATE TABLE `mat_detalleventa` (
   `subtotal` float DEFAULT NULL,
   `total` float DEFAULT NULL,
   PRIMARY KEY (`iddetalleventa`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `mat_ventas` (
   `idventa` int(11) NOT NULL AUTO_INCREMENT,
@@ -217,7 +217,7 @@ CREATE TABLE `mat_ventas` (
   `estado` varchar(45) DEFAULT NULL,
   `iva` float DEFAULT NULL,
   PRIMARY KEY (`idventa`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `sin_detalleventa` (
   `iddetalleventa` int(11) NOT NULL AUTO_INCREMENT,
@@ -265,6 +265,7 @@ CREATE TABLE `clientes` (
   `notas` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+<<<<<<< HEAD
 --27/06/2018
 ALTER TABLE `drc_ventas` 
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
@@ -272,3 +273,5 @@ ALTER TABLE `mat_ventas`
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
 ALTER TABLE `sin_ventas` 
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
+=======
+>>>>>>> 2524e744bd4feb06bbb5222eedcc5129209fe5ef

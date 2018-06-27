@@ -24,9 +24,9 @@
         $con = new mysqli($hn, $un, $pw, $db);
 
         $sql = "INSERT INTO " . $prefijo . "ventas
-                (fecha, subtotal, descuentoporcentaje, descuentocantidad, total, estado, iva)
+                (fecha, subtotal, descuentoporcentaje, descuentocantidad, total, estado, iva, idcliente)
                 VALUES
-                ('$fecha', $subtotal, $descuentoPorcentaje, $descuentoCantidad, $total, '$estado', $iva)";
+                ('$fecha', $subtotal, $descuentoPorcentaje, $descuentoCantidad, $total, '$estado', $iva, $idCliente)";
         
         $con->query($sql);
 
