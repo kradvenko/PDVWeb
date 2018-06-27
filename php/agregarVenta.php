@@ -10,7 +10,8 @@
         $total = $_POST["total"];
         $estado = "ACTIVO";
         $iva = $_POST["iva"];
-        $articulos = (isset($_POST["articulos"]) ? $_POST["articulos"] : []);        
+        $articulos = (isset($_POST["articulos"]) ? $_POST["articulos"] : []);
+        $idCliente = $_POST["idCliente"];
 
         $prefijo = $_COOKIE["prefijo"];
         $tipoTienda = $_COOKIE["tipotienda"];

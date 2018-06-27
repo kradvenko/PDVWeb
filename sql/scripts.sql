@@ -116,13 +116,13 @@ CREATE TABLE `ventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --13/06/2018
-ALTER TABLE `pdvweb`.`mat_articulos` 
+ALTER TABLE `mat_articulos` 
 ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
 
-ALTER TABLE `pdvweb`.`drc_articulos` 
+ALTER TABLE `drc_articulos` 
 ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
 
-ALTER TABLE `pdvweb`.`sin_articulos` 
+ALTER TABLE `sin_articulos` 
 ADD COLUMN `preciodistribuidor` FLOAT NULL AFTER `estado`;
 --17/06/2018
 CREATE TABLE `origeneslote` (
@@ -246,5 +246,29 @@ CREATE TABLE `sin_ventas` (
   PRIMARY KEY (`idventa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --25/06/2018
-ALTER TABLE `pdvweb`.`lotes` 
+ALTER TABLE `lotes` 
 ADD COLUMN `costoenvio` FLOAT NULL AFTER `recibido`;
+--26/06/2018
+CREATE TABLE `clientes` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `idtienda` int(11) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `colonia` varchar(100) DEFAULT NULL,
+  `telefono1` varchar(45) DEFAULT NULL,
+  `telefono2` varchar(45) DEFAULT NULL,
+  `correo` varchar(45) DEFAULT NULL,
+  `tienda` varchar(100) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
+  `fechacaptura` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--27/06/2018
+ALTER TABLE `drc_ventas` 
+ADD COLUMN `idcliente` INT NULL AFTER `iva`;
+ALTER TABLE `mat_ventas` 
+ADD COLUMN `idcliente` INT NULL AFTER `iva`;
+ALTER TABLE `sin_ventas` 
+ADD COLUMN `idcliente` INT NULL AFTER `iva`;
