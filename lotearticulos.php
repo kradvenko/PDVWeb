@@ -92,35 +92,6 @@
         </div>
         <div class="row divMargin">
             <div class="col-2">
-                <label class="labelType01">Tipo cambio</label>
-            </div>
-            <div class="col-1">
-                <input type="text" class="form-control textbox-center" id="tbTipoCambio" maxlength="10"></input>
-            </div>            
-            <div class="col-1">
-                <label class="labelType01">Costo de lote</label>
-            </div>
-            <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoLote" maxlength="10"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Costo de envío</label>
-            </div>
-            <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoEnvio" maxlength="10"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Moneda</label>
-            </div>
-            <div class="col-2">
-                <select id="selMoneda" class="form-control">
-                    <option value="Peso">Peso</option>
-                    <option value="Dolar">Dolar</option>
-                </select>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-2">
                 <label class="labelType01">Fecha pago</label>
             </div>
             <div class="col-3">
@@ -137,6 +108,42 @@
             </div>
             <div class="col-1">
                 <label class="switch"><input id="cbRecibido" type="checkbox" onclick="ponerFechaRecibido()"><span class="slider round"></span></label></input>
+            </div>
+        </div>
+        <div class="row divMargin divBackgroundOrange2">
+            <div class="col-12">
+                Costos del lote
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Costo de lote</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoLote" maxlength="10"></input>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Tipo cambio</label>
+            </div>
+            <div class="col-1">
+                <input type="text" class="form-control textbox-center" id="tbTipoCambio" maxlength="10"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Moneda</label>
+            </div>
+            <div class="col-2">
+                <select id="selMoneda" class="form-control">
+                    <option value="Peso">Peso</option>
+                    <option value="Dolar">Dolar</option>
+                </select>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Costo de envío</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoEnvio" maxlength="10"></input>
             </div>
         </div>
         <div class="row divMargin divBackgroundOrange2">
