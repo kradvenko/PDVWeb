@@ -286,3 +286,17 @@ CREATE TABLE `costosextra` (
   `moneda` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idcostoextra`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--02/07/2018
+CREATE TABLE `envios` (
+  `idenvio` int(11) NOT NULL AUTO_INCREMENT,
+  `idtiendade` int(11) DEFAULT NULL,
+  `idtiendaa` int(11) DEFAULT NULL,
+  `idarticulode` int(11) DEFAULT NULL,
+  `idarticuloa` int(11) DEFAULT NULL,
+  `cantidadenviada` int(11) DEFAULT NULL,
+  `cantidadrecibida` int(11) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(200) DEFAULT NULL,
+  `envioscol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idenvio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

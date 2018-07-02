@@ -19,12 +19,12 @@
 
         $sql = "Select * 
                 From " . $prefijo . "articulos 
-                Where " . $prefijo . "articulos.nombre Like '%$term%' And estado = 'ACTIVO'";
+                Where " . $prefijo . "articulos.nombre Like '%$term%' And estado = 'ACTIVO' And aprobado = 'SI'";
 
         $result = $con->query($sql);
 
         while ($row = $result->fetch_array()) {
-            $ciudad = array("id" => $row["idarticulo"] , "value" => $row["nombre"], "precio" => $row["costopublico"], "preciodistribuidor" => $row["preciodistribuidor"]);
+            $ciudad = array("id" => $row["idarticulo"] , "value" => ($row["nombre"] . " - " . $row["notas"]), "precio" => $row["costopublico"], "preciodistribuidor" => $row["preciodistribuidor"]);
             array_push($data, $ciudad);
         }
         

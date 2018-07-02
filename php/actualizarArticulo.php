@@ -64,7 +64,7 @@
                 $item = $data[$i];
                 $sql = "UPDATE " . $item["prefijo"] . "articulos
                 Set idcategoria = $idCategoria, codigo = '$codigo', nombre = '$nombre', descripcion = '$descripcion', modelo = '$modelo',
-                idmarca = $idMarca, color = '$color', cantidad = $cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor,
+                idmarca = $idMarca, color = '$color', cantidad = cantidad, minimo = $minimo, costopublico = $costoPublico, costoreal = $costoReal, costodistribuidor = $costoDistribuidor, estado = '$estado', preciodistribuidor = $precioDistribuidor,
                 idlote = $idLote, aprobado = '$aprobado', notas = '$notas'
                 Where idmatriz = $idArticulo";
 

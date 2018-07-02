@@ -36,9 +36,16 @@
                         <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
                         <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
                         <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a>
-                        <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Envios</a>
-                        </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Crear envío</a>
+                            <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Recibir envío</a>
+                        </div>
+                    </li>                    
                     </ul>
                 </div>
             </nav>';
