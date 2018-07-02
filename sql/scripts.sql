@@ -265,7 +265,6 @@ CREATE TABLE `clientes` (
   `notas` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-<<<<<<< HEAD
 --27/06/2018
 ALTER TABLE `drc_ventas` 
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
@@ -273,5 +272,17 @@ ALTER TABLE `mat_ventas`
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
 ALTER TABLE `sin_ventas` 
 ADD COLUMN `idcliente` INT NULL AFTER `iva`;
-=======
->>>>>>> 2524e744bd4feb06bbb5222eedcc5129209fe5ef
+--30/06/2018
+ALTER TABLE `lotes` 
+ADD COLUMN `tipocambioenvio` FLOAT NULL AFTER `costoenvio`,
+ADD COLUMN `monedaenvio` VARCHAR(10) NULL AFTER `tipocambioenvio`;
+
+CREATE TABLE `costosextra` (
+  `idcostoextra` int(11) NOT NULL AUTO_INCREMENT,
+  `idlote` int(11) DEFAULT NULL,
+  `motivo` varchar(100) DEFAULT NULL,
+  `monto` float DEFAULT NULL,
+  `tipocambio` float DEFAULT NULL,
+  `moneda` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`idcostoextra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

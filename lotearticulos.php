@@ -120,13 +120,13 @@
                 <label class="labelType01">Costo de lote</label>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoLote" maxlength="10"></input>
+                <input type="text" class="form-control textbox-center" id="tbCostoLote" maxlength="10" value="0"></input>
             </div>
             <div class="col-2">
                 <label class="labelType01">Tipo cambio</label>
             </div>
             <div class="col-1">
-                <input type="text" class="form-control textbox-center" id="tbTipoCambio" maxlength="10"></input>
+                <input type="text" class="form-control textbox-center" id="tbTipoCambioLote" maxlength="10" value="0"></input>
             </div>
             <div class="col-1">
                 <label class="labelType01">Moneda</label>
@@ -143,7 +143,66 @@
                 <label class="labelType01">Costo de envío</label>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control textbox-center" id="tbCostoEnvio" maxlength="10"></input>
+                <input type="text" class="form-control textbox-center" id="tbCostoEnvio" maxlength="10" value="0"></input>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Tipo cambio</label>
+            </div>
+            <div class="col-1">
+                <input type="text" class="form-control textbox-center" id="tbTipoCambioEnvio" maxlength="10" value="0"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Moneda</label>
+            </div>
+            <div class="col-2">
+                <select id="selMonedaEnvio" class="form-control">
+                    <option value="Peso">Peso</option>
+                    <option value="Dolar">Dolar</option>
+                </select>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-12">
+                <label class="labelType01">Costos Extras</label>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Motivo del costo</label>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control textbox-center" id="tbCostoExtraMotivo" maxlength="100" value=""></input>
+            </div>            
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                <label class="labelType01">Monto</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control textbox-center" id="tbCostoExtra" maxlength="10" value="0"></input>
+            </div>
+            <div class="col-2">
+                <label class="labelType01">Tipo cambio</label>
+            </div>
+            <div class="col-1">
+                <input type="text" class="form-control textbox-center" id="tbCostoExtraTipoCambio" maxlength="10" value="0"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Moneda</label>
+            </div>
+            <div class="col-2">
+                <select id="selCostoExtraMoneda" class="form-control">
+                    <option value="Peso">Peso</option>
+                    <option value="Dolar">Dolar</option>
+                </select>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-success" onclick="agregarCostoExtra()">
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-12" id="divCostosExtra">
+
             </div>
         </div>
         <div class="row divMargin divBackgroundOrange2">
@@ -405,6 +464,7 @@
         });
         obtenerOrigenesSelect();
         obtenerUltimosLotes();
+        mostrarCostosExtraLote();
     });
     $('#modalAgregarOrigenLote').on('shown.bs.modal', function() {
         $('#tbNuevoOrigenLote').focus();
