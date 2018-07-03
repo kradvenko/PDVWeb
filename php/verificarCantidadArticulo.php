@@ -40,13 +40,32 @@
                 From envios
                 Where idarticulode = $idArticulo";
         $con->query($sql);
+        $result = $con->query($sql);
         $row = $result->fetch_array();
         $cantidadEnviada = $row["Suma"];
 
         if ($cantidadEnviada <= $cantidad && $cantidadEnviada != null) {
-            echo "OK";
+            echo "OK 1";
         } else {
-            echo "No existe cantidad suficiente para enviar. Existen envíos que contienen este artículo.";
+            if ($cantidadEnviada == null) {
+                echo "OK 2";
+            } else {
+                echo "No existe cantidad suficiente para enviar. Existen envíos que contienen este artículo.";
+            }            
+        }
+
+        $sql = "SELECT cantidad
+                From mat_articulos
+                Where idarticulo = $idArticulo";
+        $con->query($sql);
+        $result = $con->query($sql);
+        $row = $result->fetch_array();
+        $cantidadActual = $row["cantidad"];
+
+        if ($cantidad <= $cantidadActual) {
+            echo "OK 3 ";
+        } else {
+            echo "No existe cantidad suficiente para enviar.";
         }
 
         mysqli_close($con);
