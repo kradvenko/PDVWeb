@@ -7,6 +7,7 @@
         $estado = $_POST["estado"];
         $notas = $_POST["notas"];
         $articulos = (isset($_POST["articulos"]) ? $_POST["articulos"] : []);
+        $fechaEnvio = $_POST["fechaEnvio"];
 
         $idTiendaDe = $_COOKIE["idtienda"];
 
@@ -18,9 +19,9 @@
         $con = new mysqli($hn, $un, $pw, $db);
 
         $sql = "INSERT Into envios
-                (idtiendade, idtiendaa, estado, notas)
+                (idtiendade, idtiendaa, estado, notas, fechaenvio)
                 Values
-                ($idTiendaDe, $idTiendaA, '$estado', '$notas')";
+                ($idTiendaDe, $idTiendaA, '$estado', '$notas', '$fechaEnvio')";
 
         $con->query($sql);
         $idEnvio = $con->insert_id;

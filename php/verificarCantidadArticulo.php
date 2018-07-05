@@ -54,7 +54,7 @@
                 Where idarticulode = $idArticulo And estado = 'ACTIVO'";
         $con->query($sql);
         $result = $con->query($sql);
-        $row = $result->fetch_array();+
+        $row = $result->fetch_array();
         $cantidadEnEnvios = $row["Suma"];
         $mensajeEnEnvios = "";
 

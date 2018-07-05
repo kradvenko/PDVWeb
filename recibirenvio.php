@@ -40,11 +40,6 @@
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-12" id="divListaEnvios">
-
-            </div>
-        </div>
-        <div class="row divMargin">
             <div class="col-4">
                 Elije una tienda a la que se enviará la mercancía
             </div>
@@ -168,7 +163,6 @@
             });
         });
         limpiarCamposEnvio();
-        obtenerUltimosEnvios();
     });
     $('#modalCantidadArticulo').on('shown.bs.modal', function() {
         $('#tbCantidad').focus();

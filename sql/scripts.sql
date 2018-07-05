@@ -307,4 +307,10 @@ CREATE TABLE `detalleenvio` (
   `estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`iddetalleenvio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--05/07/2018
+ALTER TABLE `envios` 
+DROP COLUMN `envioscol`,
+ADD COLUMN `fechaenvio` VARCHAR(45) NULL AFTER `notas`,
+ADD COLUMN `fecharecepcion` VARCHAR(45) NULL AFTER `fechaenvio`;
+
 

@@ -111,15 +111,23 @@ function agregarEnvio() {
     } else {
         var idTiendaA = $("#selListaTiendas").val();
         var notas = $("#taNotas").val();
-        $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio }, type: "POST", success: function(res) {
+        var fechaEnvio = obtenerFechaHoraActual();
+        $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio, fechaEnvio: fechaEnvio }, type: "POST", success: function(res) {
             mensaje = res;
         }});
     }
 }
 
+function obtenerUltimosEnvios() {
+    $.ajax({url: "php/obtenerUltimosEnvios.php", async: false, type: "POST", success: function(res) {
+        $("#divListaEnvios").html(res);
+    }});
+}
+
 function limpiarCamposEnvio() {
     $("#tbBuscarArticulo").val("");
     $("#tbCantidad").val("");
+    $("#taNotas").val("");
     $("#divArticulos").html("");
     e_ArticulosEnvio = [];
     e_IdArticuloelegido = 0;
