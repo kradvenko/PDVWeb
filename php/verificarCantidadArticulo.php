@@ -24,7 +24,7 @@
 
         $sql = "Select *
                 From tiendas
-                Where tipo = 'SUCURSAL' And idmatriz = $idTienda";
+                Where tipo = 'SUCURSAL' And idmatriz = $idTienda And idtienda = $idTiendaA";
         
         $result = $con->query($sql);
 
@@ -34,25 +34,36 @@
         }
 
         for ($i = 0; $i < sizeof($tiendas); $i++) {
-            $item = $tiendas[$i];                       
+            $item = $tiendas[$i];
+            $prefijoSucursal = $item["prefijo"];
+            $sql = "SELECT *
+                    From " . $prefijoSucursal . "articulos
+                    Where idmatriz = $idArticulo";
+                    
+            $result = $con->query($sql);
+
+            if ($result->num_rows == 0) {
+                $mensaje = "El artículo no existe en la sucursal.";
+                echo $mensaje;
+                return;
+            }
         }
 
         $sql = "SELECT SUM(cantidadenviada) As Suma
-                From envios
-                Where idarticulode = $idArticulo";
+                From detalleenvio
+                Where idarticulode = $idArticulo And estado = 'ACTIVO'";
         $con->query($sql);
         $result = $con->query($sql);
-        $row = $result->fetch_array();
-        $cantidadEnviada = $row["Suma"];
+        $row = $result->fetch_array();+
+        $cantidadEnEnvios = $row["Suma"];
+        $mensajeEnEnvios = "";
 
-        if ($cantidadEnviada <= $cantidad && $cantidadEnviada != null) {
-            $mensaje = "OK";
+        if ($cantidadEnEnvios != null) {
+            if ($cantidadEnEnvios > 0) {
+                $mensajeEnEnvios = " Existen artículos en envíos.";
+            }
         } else {
-            if ($cantidadEnviada == null) {
-                $mensaje = "OK";
-            } else {
-                $mensaje = "No existe cantidad suficiente para enviar. Existen envíos que contienen este artículo.";
-            }            
+            $cantidadEnEnvios = 0;
         }
 
         $sql = "SELECT cantidad
@@ -63,10 +74,10 @@
         $row = $result->fetch_array();
         $cantidadActual = $row["cantidad"];
 
-        if ($cantidad <= $cantidadActual) {
+        if ($cantidad <= ($cantidadActual - $cantidadEnEnvios)) {
             $mensaje = "OK";
         } else {
-            $mensaje = "No existe cantidad suficiente para enviar.";
+            $mensaje = "No existe cantidad suficiente para enviar." . $mensajeEnEnvios . " La cantidad máxima es " . ($cantidadActual - $cantidadEnEnvios);
         }
         echo $mensaje;
         mysqli_close($con);

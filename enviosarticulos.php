@@ -57,11 +57,39 @@
                <input type="text" class="form-control" id="tbBuscarArticulo" />
             </div>
         </div>
+        <div class="row divMargin">
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="agregarEnvio()">Guardar</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="limpiarCamposEnvio()">Limpiar campos</button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                Notas
+            </div>
+            <div class="col-10">
+                <textarea id="taNotas" class="form-control"></textarea>
+            </div>
+        </div>
         <div class="row divMargin" id="divArticulos">
 
         </div>
     </div>
-    <!--Ventana modal para la cantidad de artículos-->
+    <!--Ventana modal para ingresar la cantidad de artículos-->
     <div class="modal fade" id="modalCantidadArticulo" tabindex="-1" role="dialog" aria-labelledby="modalCantidadArticulo" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -83,6 +111,33 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" onclick="elegirArticulo()">Guardar</button>                        
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Ventana modal para cambiar la cantidad de artículos-->
+    <div class="modal fade" id="modalCambiarCantidadArticulo" tabindex="-1" role="dialog" aria-labelledby="modalCambiarCantidadArticulo" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cambiar cantidad de artículos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            Cantidad de artículos a enviar
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbCantidadCambiar" class="form-control"></input>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="cambiarCantidadArticulo()">Guardar</button>                        
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>                        
                 </div>
             </div>
@@ -111,6 +166,9 @@
     });
     $('#modalCantidadArticulo').on('shown.bs.modal', function() {
         $('#tbCantidad').focus();
+    });
+    $('#modalCambiarCantidadArticulo').on('shown.bs.modal', function() {
+        $('#tbCantidadCambiar').focus();
     });
 </script>
 </html>

@@ -23,7 +23,7 @@ function existeEnLista(id) {
 
 function elegirArticulo() {
     var cantidad = $("#tbCantidad").val();
-    var verificacion = verificarCantidadArticulo();
+    var verificacion = verificarCantidadArticulo(cantidad);
     if (verificacion == "OK") {
         $("#tbBuscarArticulo").val("");
         $("#tbCantidad").val("");
@@ -41,8 +41,7 @@ function elegirArticulo() {
     }
 }
 
-function verificarCantidadArticulo() {
-    var cantidad = $("#tbCantidad").val();
+function verificarCantidadArticulo(cantidad) {
     var idTiendaA = $("#selListaTiendas").val();
     var mensaje;
     if (isNaN(cantidad)) {
@@ -71,7 +70,7 @@ function mostrarListaArticulos() {
         data: e_ArticulosEnvio,
 
         rowClick: function(args) {
-            //elegirArticulo(args.item.id, args.item.idMatriz);
+            cambiarCantidad(args.item.id, args.item.cantidad);
         },
  
         fields: [
@@ -82,7 +81,46 @@ function mostrarListaArticulos() {
     });
 }
 
+function cambiarCantidad(id, cantidad) {
+    e_IdArticuloelegido = id;
+    $('#modalCambiarCantidadArticulo').modal('show');
+}
+
+function cambiarCantidadArticulo() {
+    var cantidad = $("#tbCantidadCambiar").val();
+    var verificacion = verificarCantidadArticulo(cantidad);
+    if (verificacion == "OK") {
+        $("#tbBuscarArticulo").val("");
+        $("#tbCantidadCambiar").val("");
+        $('#modalCambiarCantidadArticulo').modal('hide');
+        for (i = 0; i < e_ArticulosEnvio.length; i++) {
+            if (e_ArticulosEnvio[i].id == e_IdArticuloelegido) {
+                e_ArticulosEnvio[i].cantidad = cantidad;
+                mostrarListaArticulos();
+                return;
+            }
+        }
+    } else {
+        alert(verificacion);
+    }
+}
+
+function agregarEnvio() {
+    if (e_ArticulosEnvio.length == 0) {
+        alert("No ha agregado ningún artículo al envío.");
+    } else {
+        var idTiendaA = $("#selListaTiendas").val();
+        var notas = $("#taNotas").val();
+        $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio }, type: "POST", success: function(res) {
+            mensaje = res;
+        }});
+    }
+}
+
 function limpiarCamposEnvio() {
     $("#tbBuscarArticulo").val("");
     $("#tbCantidad").val("");
+    $("#divArticulos").html("");
+    e_ArticulosEnvio = [];
+    e_IdArticuloelegido = 0;
 }

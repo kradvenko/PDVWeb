@@ -291,12 +291,20 @@ CREATE TABLE `envios` (
   `idenvio` int(11) NOT NULL AUTO_INCREMENT,
   `idtiendade` int(11) DEFAULT NULL,
   `idtiendaa` int(11) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`idenvio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--04/07/2018
+CREATE TABLE `detalleenvio` (
+  `iddetalleenvio` int(11) NOT NULL AUTO_INCREMENT,
+  `idenvio` int(11) DEFAULT NULL,
   `idarticulode` int(11) DEFAULT NULL,
   `idarticuloa` int(11) DEFAULT NULL,
   `cantidadenviada` int(11) DEFAULT NULL,
   `cantidadrecibida` int(11) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
-  `notas` varchar(200) DEFAULT NULL,
-  `envioscol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idenvio`)
+  PRIMARY KEY (`iddetalleenvio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
