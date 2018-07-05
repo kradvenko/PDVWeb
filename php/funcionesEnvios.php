@@ -13,7 +13,7 @@
 
             $result = $con->query($sql);
 
-            echo "<select class='form-control' id='selListaTiendas'>";
+            echo "<select class='form-control' id='selListaTiendas' onchange='limpiarCamposEnvio()'>";
     
             while ($row = $result->fetch_array()) {
                 echo "<option value='" . $row["idtienda"] . "'>" . $row["nombre"] . "</option>";            
