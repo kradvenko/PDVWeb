@@ -57,7 +57,7 @@
                <input type="text" class="form-control" id="tbBuscarArticulo" />
             </div>
         </div>
-        <div class="row divMargin" id="divArticulosLote">
+        <div class="row divMargin" id="divArticulos">
 
         </div>
     </div>
@@ -104,7 +104,6 @@
                 minLength: 2,
                 select: function(event, ui) {
                     mostrarCantidadArticulo(ui.item.id);
-                    $("#tbBuscarArticulo").val("");
                 }
             });
         });

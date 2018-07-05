@@ -20,6 +20,7 @@
 
         $con = new mysqli($hn, $un, $pw, $db);
         $cantidadEnviada = 0;
+        $mensaje;
 
         $sql = "Select *
                 From tiendas
@@ -45,12 +46,12 @@
         $cantidadEnviada = $row["Suma"];
 
         if ($cantidadEnviada <= $cantidad && $cantidadEnviada != null) {
-            echo "OK 1";
+            $mensaje = "OK";
         } else {
             if ($cantidadEnviada == null) {
-                echo "OK 2";
+                $mensaje = "OK";
             } else {
-                echo "No existe cantidad suficiente para enviar. Existen envíos que contienen este artículo.";
+                $mensaje = "No existe cantidad suficiente para enviar. Existen envíos que contienen este artículo.";
             }            
         }
 
@@ -63,11 +64,11 @@
         $cantidadActual = $row["cantidad"];
 
         if ($cantidad <= $cantidadActual) {
-            echo "OK 3 ";
+            $mensaje = "OK";
         } else {
-            echo "No existe cantidad suficiente para enviar.";
+            $mensaje = "No existe cantidad suficiente para enviar.";
         }
-
+        echo $mensaje;
         mysqli_close($con);
     }
     catch (Throwable $t)
