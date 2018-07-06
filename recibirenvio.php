@@ -36,53 +36,12 @@
         ?>
         <div class="row divMargin divBackgroundOrange">
             <div class="col-12">
-                Envíos matriz-tiendas
+                Recepción de envíos
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-4">
-                Elije una tienda a la que se enviará la mercancía
-            </div>
-            <div class="col-8" id="divListaTiendas">
-                <?php 
-                    listaTiendas();
-                ?>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-4">
-                Buscar artículo
-            </div>
-            <div class="col-8">
-               <input type="text" class="form-control" id="tbBuscarArticulo" />
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-2">
+            <div class="col-12" id="divListaEnvios">
 
-            </div>
-            <div class="col-2">
-
-            </div>
-            <div class="col-2">
-
-            </div>
-            <div class="col-2">
-
-            </div>
-            <div class="col-2">
-                <button class="btn btn-success" onclick="agregarEnvio()">Guardar</button>
-            </div>
-            <div class="col-2">
-                <button class="btn btn-success" onclick="limpiarCamposEnvio()">Limpiar campos</button>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-2">
-                Notas
-            </div>
-            <div class="col-10">
-                <textarea id="taNotas" class="form-control"></textarea>
             </div>
         </div>
         <div class="row divMargin" id="divArticulos">

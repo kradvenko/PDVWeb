@@ -43,7 +43,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Crear envío</a>
-                            <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Recibir envío</a>
+                            <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
                         </div>
                     </li>                    
                     </ul>
