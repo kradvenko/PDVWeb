@@ -1,5 +1,6 @@
 e_ArticulosEnvio = [];
-e_IdArticuloelegido = 0;
+e_IdArticuloElegido = 0;
+e_IdEnvioElegido = 0;
 
 function mostrarCantidadArticulo(id) {
     if (existeEnLista(id)) {
@@ -8,7 +9,7 @@ function mostrarCantidadArticulo(id) {
         return;
     }
     $('#modalCantidadArticulo').modal('show');
-    e_IdArticuloelegido = id;
+    e_IdArticuloElegido = id;
 }
 
 function existeEnLista(id) {
@@ -28,7 +29,7 @@ function elegirArticulo() {
         $("#tbBuscarArticulo").val("");
         $("#tbCantidad").val("");
         $('#modalCantidadArticulo').modal('hide');
-        $.ajax({url: "php/obtenerArticuloXML.php", async: false, type: "POST", data: { idArticulo : e_IdArticuloelegido }, success: function(res) {
+        $.ajax({url: "php/obtenerArticuloXML.php", async: false, type: "POST", data: { idArticulo : e_IdArticuloElegido }, success: function(res) {
             $('resultado', res).each(function(index, element) {
                 var articulo;
                 articulo = { id: $(this).find("idarticulo").text(), nombre: $(this).find("nombre").text(), cantidad: cantidad };
@@ -47,7 +48,7 @@ function verificarCantidadArticulo(cantidad) {
     if (isNaN(cantidad)) {
         return "No ha escrito un número válido.";
     } else {
-        $.ajax({url: "php/verificarCantidadArticulo.php", async: false, data: {idArticulo: e_IdArticuloelegido, idTiendaA: idTiendaA, cantidad: cantidad }, type: "POST", success: function(res) {
+        $.ajax({url: "php/verificarCantidadArticulo.php", async: false, data: {idArticulo: e_IdArticuloElegido, idTiendaA: idTiendaA, cantidad: cantidad }, type: "POST", success: function(res) {
             mensaje = res;
         }});
     }
@@ -82,7 +83,7 @@ function mostrarListaArticulos() {
 }
 
 function cambiarCantidad(id, cantidad) {
-    e_IdArticuloelegido = id;
+    e_IdArticuloElegido = id;
     $('#modalCambiarCantidadArticulo').modal('show');
 }
 
@@ -94,7 +95,7 @@ function cambiarCantidadArticulo() {
         $("#tbCantidadCambiar").val("");
         $('#modalCambiarCantidadArticulo').modal('hide');
         for (i = 0; i < e_ArticulosEnvio.length; i++) {
-            if (e_ArticulosEnvio[i].id == e_IdArticuloelegido) {
+            if (e_ArticulosEnvio[i].id == e_IdArticuloElegido) {
                 e_ArticulosEnvio[i].cantidad = cantidad;
                 mostrarListaArticulos();
                 return;
@@ -130,5 +131,28 @@ function limpiarCamposEnvio() {
     $("#taNotas").val("");
     $("#divArticulos").html("");
     e_ArticulosEnvio = [];
-    e_IdArticuloelegido = 0;
+    e_IdArticuloElegido = 0;
+}
+//Recepción de envios
+function elegirEnvio(id) {
+    e_IdEnvioElegido = id;
+    $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            $("#selListaTiendas").val($(this).find("idtiendaa").text());
+            $("#taNotas").val($(this).find("notas").text());
+        });
+    }});
+    obtenerDetalleEnvio();
+}
+
+function obtenerDetalleEnvio() {
+    $.ajax({url: "php/obtenerDetalleEnvioXML.php", async: false, data: {idEnvio: e_IdEnvioElegido }, type: "POST", success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            var articulo;
+            e_ArticulosEnvio = [];
+            articulo = { id: $(this).find("idarticulode").text(), nombre: $(this).find("nombre").text(), cantidad: $(this).find("cantidadenviada").text() };
+            e_ArticulosEnvio[e_ArticulosEnvio.length] = articulo;
+        });
+    }});
+    mostrarListaArticulos();
 }
