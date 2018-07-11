@@ -40,13 +40,13 @@
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-12" id="divDatosEnvio">
-                
+            <div class="col-12" id="divListaEnvios">
+
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-12" id="divListaEnvios">
-
+            <div class="col-12" id="divDatosEnvio">
+                
             </div>
         </div>
         <div class="row divMargin" id="divArticulos">

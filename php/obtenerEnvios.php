@@ -9,7 +9,7 @@
                 From envios
                 Inner Join tiendas
                 On tiendas.idtienda = envios.idtiendade
-                Where estado = 'ACTIVO'";
+                Where envios.estado = 'ACTIVO'";
 
         $result = $con->query($sql);           
 

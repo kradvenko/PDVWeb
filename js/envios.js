@@ -165,7 +165,6 @@ function obtenerEnvios() {
 
 function elegirEnvioRecepcion(id, nombre, fechaenvio) {
     e_IdEnvioElegido = id;
-    alert(nombre);
     $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
         $('resultado', res).each(function(index, element) {
             $("#divDatosEnvio").html(nombre);
