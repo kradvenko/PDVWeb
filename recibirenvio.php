@@ -40,6 +40,11 @@
             </div>
         </div>
         <div class="row divMargin">
+            <div class="col-12" id="divDatosEnvio">
+                
+            </div>
+        </div>
+        <div class="row divMargin">
             <div class="col-12" id="divListaEnvios">
 
             </div>
@@ -122,6 +127,7 @@
             });
         });
         limpiarCamposEnvio();
+        obtenerEnvios();
     });
     $('#modalCantidadArticulo').on('shown.bs.modal', function() {
         $('#tbCantidad').focus();

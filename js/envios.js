@@ -156,3 +156,21 @@ function obtenerDetalleEnvio() {
     }});
     mostrarListaArticulos();
 }
+
+function obtenerEnvios() {
+    $.ajax({url: "php/obtenerEnvios.php", async: false, type: "POST", success: function(res) {
+        $("#divListaEnvios").html(res);
+    }});
+}
+
+function elegirEnvioRecepcion(id, nombre, fechaenvio) {
+    e_IdEnvioElegido = id;
+    alert(nombre);
+    $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            $("#divDatosEnvio").html(nombre);
+            $("#taNotas").val($(this).find("notas").text());
+        });
+    }});
+    obtenerDetalleEnvio();
+}
