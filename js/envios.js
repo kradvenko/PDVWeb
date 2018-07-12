@@ -1,6 +1,7 @@
 e_ArticulosEnvio = [];
 e_IdArticuloElegido = 0;
 e_IdEnvioElegido = 0;
+e_ArticulosRecepcion = [];
 
 function mostrarCantidadArticulo(id) {
     if (existeEnLista(id)) {
@@ -163,6 +164,17 @@ function obtenerEnvios() {
     }});
 }
 
+function elegirEnvio(id) {
+    e_IdEnvioElegido = id;
+    $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            $("#selListaTiendas").val($(this).find("idtiendaa").text());
+            $("#taNotas").val($(this).find("notas").text());
+        });
+    }});
+    obtenerDetalleEnvio();
+}
+
 function elegirEnvioRecepcion(id, nombre, fechaenvio) {
     e_IdEnvioElegido = id;
     $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
@@ -171,5 +183,92 @@ function elegirEnvioRecepcion(id, nombre, fechaenvio) {
             $("#taNotas").val($(this).find("notas").text());
         });
     }});
-    obtenerDetalleEnvio();
+    $('#divRecibirEnvioControl').show();
+    obtenerDetalleEnvioRecepcion();
+}
+
+function obtenerDetalleEnvioRecepcion() {
+    $.ajax({url: "php/obtenerDetalleEnvioXML.php", async: false, data: {idEnvio: e_IdEnvioElegido }, type: "POST", success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            var articulo;
+            e_ArticulosRecepcion = [];
+            articulo = { id: $(this).find("idarticulode").text(), nombre: $(this).find("nombre").text(), cantidad: $(this).find("cantidadenviada").text(), cantidadrecibida: 0, estado: "ACTIVO" };
+            e_ArticulosRecepcion[e_ArticulosRecepcion.length] = articulo;
+        });
+    }});
+    mostrarListaArticulosRecepcion();
+}
+
+function mostrarListaArticulosRecepcion() {
+    $("#divArticulos").jsGrid({
+        width: "100%",
+        height: "100%",
+ 
+        inserting: false,
+        editing: false,
+        sorting: false,
+        paging: false,
+        deleting: false,       
+ 
+        data: e_ArticulosRecepcion,
+
+        rowClick: function(args) {
+            verDetalleArticulo(args.item.id, args.item.cantidad);
+        },
+ 
+        fields: [
+            { name: "nombre", title: "Nombre", type: "text", width: 50 },
+            { name: "cantidad", title: "Cantidad", type: "number", width: 50 },
+            { name: "cantidadrecibida", title: "Cantidad recibida", type: "number", width: 50},
+            { name: "estado", title: "Estado", type: "text", width: 50 }
+        ]
+    });
+}
+
+function verDetalleArticulo(id, cantidad) {
+    e_IdArticuloElegido = id;
+    $('#divCantidadArticulosEnviados').html(cantidad);
+    $('#modalVerDetalleArticulo').modal('show');
+}
+
+function recibirArticulo() {
+    var cantidadRecibida = $("#tbCantidadRecibido").val();
+    var estado;
+    var cantidad = $('#divCantidadArticulosEnviados').html();
+    if (cantidadRecibida.length == 0) {
+        alert("No ha escrito la cantidad recibida.");
+        return;
+    }
+    if (isNaN(cantidadRecibida)) {
+        alert("No ha escrito una cantidad válida");
+        return;
+    }
+    if (parseInt(cantidadRecibida) > parseInt(cantidad)) {
+        alert("Ha escrito una cantidad recibida superior a la cantidad enviada.");
+        return;
+    }
+    if (cantidadRecibida == cantidad) {
+        estado = "RECIBIDO";
+    } else {
+        estado = "RECIBIDO INCOMPLETO";
+    }
+    for (i = 0; i < e_ArticulosRecepcion.length; i++) {
+        if (e_ArticulosRecepcion[i].id == e_IdArticuloElegido) {
+            e_ArticulosRecepcion[i].cantidadrecibida = cantidadRecibida;
+            e_ArticulosRecepcion[i].estado = estado;
+            mostrarListaArticulosRecepcion();
+            return;
+        }
+    }
+}
+
+function limpiarCamposEnvioRecepcion() {
+    $("#tbBuscarArticulo").val("");
+    $("#tbCantidad").val("");
+    $("#taNotas").val("");
+    $("#divArticulos").html("");
+    $('#divRecibirEnvioControl').hide();
+    $("#divDatosEnvio").html("");    
+    e_ArticulosRecepcion = [];
+    e_IdArticuloElegido = 0;
 }

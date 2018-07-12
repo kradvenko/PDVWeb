@@ -14,7 +14,7 @@
         $result = $con->query($sql);           
 
         while ($row = $result->fetch_array()) {
-            echo "<span class='ultimoArticulo' onclick='elegirEnvio(\"" . $row["idenvio"] . "\")'>" . $row["nombre"] . " - " . $row["fechaenvio"] . "</span>";
+            echo "<span class='ultimoArticulo' onclick='elegirEnvioRecepcion(\"" . $row["idenvio"] . "\")'>" . $row["nombre"] . " - " . $row["fechaenvio"] . "</span>";
         }
         
         mysqli_close($con);
