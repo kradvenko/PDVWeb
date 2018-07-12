@@ -22,15 +22,15 @@
 	    echo "<resultado>\n";
 
         while ($row = $result->fetch_array()) {
-            echo "<cat>";
-            echo "<idenvio>". $row["idenvio"] . "</idenvio>";
-            echo "<idtiendade>". $row["idtiendade"] . "</idtiendade>";
-            echo "<idtiendaa>". $row["idtiendaa"] . "</idtiendaa>";
-            echo "<estado>". $row["estado"] . "</estado>";
-            echo "<notas>". $row["notas"] . "</notas>";
-            echo "<fechaenvio>". $row["fechaenvio"] . "</fechaenvio>";
-            echo "<fecharecepcion>". $row["fecharecepcion"] . "</fecharecepcion>";
-            echo "</cat>";
+            echo "<cat>\n";
+            echo "<idenvio>". $row["idenvio"] . "</idenvio>\n";
+            echo "<idtiendade>". $row["idtiendade"] . "</idtiendade>\n";
+            echo "<idtiendaa>". $row["idtiendaa"] . "</idtiendaa>\n";
+            echo "<estado>". $row["estado"] . "</estado>\n";
+            echo "<notas>". $row["notas"] . "</notas>\n";
+            echo "<fechaenvio>". $row["fechaenvio"] . "</fechaenvio>\n";
+            echo "<fecharecepcion>". $row["fecharecepcion"] . "</fecharecepcion>\n";
+            echo "</cat>\n";
         }
 
         echo "</resultado>\n";

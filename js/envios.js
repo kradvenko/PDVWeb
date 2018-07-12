@@ -2,6 +2,7 @@ e_ArticulosEnvio = [];
 e_IdArticuloElegido = 0;
 e_IdEnvioElegido = 0;
 e_ArticulosRecepcion = [];
+e_IdTiendaA = 0;
 
 function mostrarCantidadArticulo(id) {
     if (existeEnLista(id)) {
@@ -148,9 +149,9 @@ function elegirEnvio(id) {
 
 function obtenerDetalleEnvio() {
     $.ajax({url: "php/obtenerDetalleEnvioXML.php", async: false, data: {idEnvio: e_IdEnvioElegido }, type: "POST", success: function(res) {
-        $('resultado', res).each(function(index, element) {
+        e_ArticulosEnvio = [];
+        $('cat', res).each(function(index, element) {
             var articulo;
-            e_ArticulosEnvio = [];
             articulo = { id: $(this).find("idarticulode").text(), nombre: $(this).find("nombre").text(), cantidad: $(this).find("cantidadenviada").text() };
             e_ArticulosEnvio[e_ArticulosEnvio.length] = articulo;
         });
@@ -180,7 +181,8 @@ function elegirEnvioRecepcion(id, nombre, fechaenvio) {
     $.ajax({url: "php/obtenerEnvioXML.php", async: false, data: {idEnvio: id }, type: "POST", success: function(res) {
         $('resultado', res).each(function(index, element) {
             $("#divDatosEnvio").html(nombre);
-            $("#taNotas").val($(this).find("notas").text());
+            $("#divNotas").html($(this).find("notas").text());
+            e_IdTiendaA = $(this).find("idtiendaa").text();
         });
     }});
     $('#divRecibirEnvioControl').show();
@@ -189,10 +191,10 @@ function elegirEnvioRecepcion(id, nombre, fechaenvio) {
 
 function obtenerDetalleEnvioRecepcion() {
     $.ajax({url: "php/obtenerDetalleEnvioXML.php", async: false, data: {idEnvio: e_IdEnvioElegido }, type: "POST", success: function(res) {
-        $('resultado', res).each(function(index, element) {
-            var articulo;
-            e_ArticulosRecepcion = [];
-            articulo = { id: $(this).find("idarticulode").text(), nombre: $(this).find("nombre").text(), cantidad: $(this).find("cantidadenviada").text(), cantidadrecibida: 0, estado: "ACTIVO" };
+        e_ArticulosRecepcion = [];
+        $('cat', res).each(function(index, element) {
+            var articulo;            
+            articulo = { iddetalleenvio: $(this).find("iddetalleenvio").text(), id: $(this).find("idarticulode").text(), ida: $(this).find("idarticuloa").text(), nombre: $(this).find("nombre").text(), cantidad: $(this).find("cantidadenviada").text(), cantidadrecibida: 0, estado: "ACTIVO" };
             e_ArticulosRecepcion[e_ArticulosRecepcion.length] = articulo;
         });
     }});
@@ -257,6 +259,8 @@ function recibirArticulo() {
             e_ArticulosRecepcion[i].cantidadrecibida = cantidadRecibida;
             e_ArticulosRecepcion[i].estado = estado;
             mostrarListaArticulosRecepcion();
+            $("#tbCantidadRecibido").val('');
+            $('#modalVerDetalleArticulo').modal('hide');
             return;
         }
     }
@@ -268,7 +272,22 @@ function limpiarCamposEnvioRecepcion() {
     $("#taNotas").val("");
     $("#divArticulos").html("");
     $('#divRecibirEnvioControl').hide();
-    $("#divDatosEnvio").html("");    
+    $("#divDatosEnvio").html("");
     e_ArticulosRecepcion = [];
     e_IdArticuloElegido = 0;
+}
+
+function recibirEnvio() {
+    if (e_IdEnvioElegido > 0) {
+        var fechaRecibido = obtenerFechaHoraActual();
+        $.ajax({url: "php/recibirEnvio.php", async: false, data: {idEnvio: e_IdEnvioElegido, articulos: e_ArticulosRecepcion, idTiendaA: e_IdTiendaA, fechaRecibido: fechaRecibido }, type: "POST", success: function(res) {
+            if (res == "") {
+                alert("Se ha recibido el envío.");
+                limpiarCamposEnvioRecepcion();
+            } else {
+                alert(res);
+            }
+        }});
+        obtenerEnvios();
+    }
 }

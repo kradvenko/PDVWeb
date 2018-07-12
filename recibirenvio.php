@@ -63,7 +63,7 @@
 
             </div>
             <div class="col-2">
-                <button class="btn btn-success" onclick="agregarEnvio()">Guardar</button>
+                <button class="btn btn-success" onclick="recibirEnvio()">Guardar</button>
             </div>
             <div class="col-2">
                 <button class="btn btn-success" onclick="limpiarCamposEnvioRecepcion()">Limpiar campos</button>
