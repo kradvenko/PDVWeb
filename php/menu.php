@@ -26,6 +26,9 @@
                         <a class="nav-link mainMenuElement" href="nuevaventa.php">Nueva venta</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link mainMenuElement" href="instituciones.php"></a>
                     </li>
                     <li class="nav-item dropdown">
