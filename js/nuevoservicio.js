@@ -32,3 +32,32 @@ function guardarCliente() {
 function elegirCliente(id) {
     ns_IdCliente = id;
 }
+
+function limpiarCamposNuevoServicio() {
+    $("#tbServicioCliente").val("");
+    ns_IdCliente = 0;
+    $("#tbESN").val("");
+    $("#tbFolio").val("");
+    $("#tbMarca").val("");
+    $("#tbModelo").val("");
+    $("#cbBateria").prop("checked", "false");
+    $("#cbTapa").prop("checked", "false");
+    $("#tbOtro").val("");
+    $("#taFalla").val("");
+    $("#tbFechaEntrega").val("");
+    $("#tbContraseña").val("");
+    $("#tbCosto").val("0");
+    $("#tbAnticipo").val("0");
+}
+
+function limpiarCamposCliente() {
+    $("#tbNuevoClienteNombre").val("");
+    $("#tbNuevoClienteDireccion").val("");
+    $("#tbNuevoClienteColonia").val("");
+    $("#tbNuevoClienteTelefono1").val("");
+    $("#tbNuevoClienteTelefono2").val("");
+    $("#tbNuevoClienteCorreo").val("");
+    $("#tbNuevoClienteTienda").val("");
+    $("#selNuevoClienteTipo").val("");
+    $("#taNuevoClienteNotas").val("");
+}

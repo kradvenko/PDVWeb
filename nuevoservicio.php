@@ -43,7 +43,7 @@
                 <label class="labelType01">Cliente</label>
             </div>
             <div class="col-5">
-                <input type="text" id="tbVentaCliente" class="form-control" ></input>
+                <input type="text" id="tbServicioCliente" class="form-control" ></input>
             </div>
             <div class="col-3">
                 <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalAgregarCliente'>Dar de alta cliente</button>
@@ -56,14 +56,101 @@
             <div class="col-1">
                 
             </div>
-            <div class="col-3">
+            <div class="col-5">
             
             </div>
-            <div class="col-3">
-
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Guardar servicio</button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposNuevoServicio()">Limpiar campos</button>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">ESN-Imei</label>                
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Realizar venta</button>
+                <input type="text" id="tbESN" class="form-control"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Folio</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbFolio" class="form-control"></input>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Marca</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbMarca" class="form-control"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Modelo</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbModelo" class="form-control"></input>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Accesorios</label>                
+            </div>
+            <div class="col-2">
+                <input type="checkbox" id="cbBateria"> Batería
+            </div>
+            <div class="col-1">
+                <input type="checkbox" id="cbTapa"> Tapa
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Otro</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbOtro" class="form-control"></input>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Falla</label>                
+            </div>
+            <div class="col-3">
+                <textarea id="taFalla" class="form-control"></textarea>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Observaciones</label>                
+            </div>
+            <div class="col-3">
+                <textarea id="taObservaciones" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Fecha entrega</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbFechaEntrega" class="form-control"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Contraseña</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbContraseña" class="form-control"></input>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-1">
+                <label class="labelType01">Costo</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbCosto" class="form-control"></input>
+            </div>
+            <div class="col-1">
+                <label class="labelType01">Anticipo</label>                
+            </div>
+            <div class="col-3">
+                <input type="text" id="tbAnticipo" class="form-control"></input>
             </div>
         </div>
         <div class="row divMargin" id="divVenta">
@@ -152,20 +239,9 @@
 <script>
     $( document ).ready(function() {
         checkSession();
-        limpiarCamposNuevaVenta();
+        limpiarCamposNuevoServicio();
         $(function() {     
-            $("#tbArticulo").autocomplete({
-                source: "php/obtenerArticulosJSON.php",
-                minLength: 2,
-                select: function(event, ui) {
-                    agregarArticuloVenta(ui.item.id, ui.item.value, ui.item.precio, ui.item.preciodistribuidor);
-                    this.value = '';
-                    return false;
-                }
-            });
-        });
-        $(function() {     
-            $("#tbVentaCliente").autocomplete({
+            $("#tbServicioCliente").autocomplete({
                 source: "php/obtenerClientesJSON.php",
                 minLength: 2,
                 select: function(event, ui) {

@@ -290,3 +290,15 @@ function guardarCliente() {
 function elegirCliente(id) {
     nv_IdCliente = id;
 }
+
+function limpiarCamposCliente() {
+    $("#tbNuevoClienteNombre").val("");
+    $("#tbNuevoClienteDireccion").val("");
+    $("#tbNuevoClienteColonia").val("");
+    $("#tbNuevoClienteTelefono1").val("");
+    $("#tbNuevoClienteTelefono2").val("");
+    $("#tbNuevoClienteCorreo").val("");
+    $("#tbNuevoClienteTienda").val("");
+    $("#selNuevoClienteTipo").val("");
+    $("#taNuevoClienteNotas").val("");
+}
