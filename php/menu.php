@@ -25,20 +25,23 @@
                     <li class="nav-item">
                         <a class="nav-link mainMenuElement" href="nuevaventa.php">Nueva venta</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mainMenuElement" href="instituciones.php"></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                            <a class="dropdown-item mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Inventarios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
-                        <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
-                        <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a>
+                            <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
+                            <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
+                            <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
