@@ -293,3 +293,19 @@
     font-size: 14px;
     background-color: rgb(219, 219, 219);
 }
+
+.divPatron {
+    background-color: #5891a0;
+}
+
+.divPatronHeader {
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.divPatronButton {
+    height: 50px;
+    padding-top: 5px;
+    border: solid 1px #000000;
+}

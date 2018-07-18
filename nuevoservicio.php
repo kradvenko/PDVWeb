@@ -67,90 +67,121 @@
             </div>
         </div>
         <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">ESN-Imei</label>                
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-2">
+                        <label class="labelType01">ESN-Imei</label>                
+                    </div>
+                    <div class="col-4 divMargin">
+                        <input type="text" id="tbESN" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Folio</label>                
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="tbFolio" class="form-control"></input>
+                    </div>                
+                    <div class="col-2">
+                        <label class="labelType01">Marca</label>                
+                    </div>
+                    <div class="col-4 divMargin">
+                        <input type="text" id="tbMarca" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Modelo</label>                
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="tbModelo" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Accesorios</label>                
+                    </div>
+                    <div class="col-2">
+                        <input type="checkbox" id="cbBateria"> Batería
+                    </div>
+                    <div class="col-2">
+                        <input type="checkbox" id="cbTapa"> Tapa
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Otro</label>                
+                    </div>
+                    <div class="col-4 divMargin">
+                        <input type="text" id="tbOtro" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Falla</label>                
+                    </div>
+                    <div class="col-4 divMargin">
+                        <textarea id="taFalla" class="form-control"></textarea>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Observaciones</label>                
+                    </div>
+                    <div class="col-4">
+                        <textarea id="taObservaciones" class="form-control"></textarea>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">F. Entrega</label>                
+                    </div>
+                    <div class="col-4 divMargin">
+                        <input type="text" id="tbFechaEntrega" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Contraseña</label>                
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="tbContraseña" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Costo</label>                
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="tbCosto" class="form-control"></input>
+                    </div>
+                    <div class="col-2">
+                        <label class="labelType01">Anticipo</label>                
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="tbAnticipo" class="form-control"></input>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-                <input type="text" id="tbESN" class="form-control"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Folio</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbFolio" class="form-control"></input>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">Marca</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbMarca" class="form-control"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Modelo</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbModelo" class="form-control"></input>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">Accesorios</label>                
-            </div>
-            <div class="col-2">
-                <input type="checkbox" id="cbBateria"> Batería
-            </div>
-            <div class="col-1">
-                <input type="checkbox" id="cbTapa"> Tapa
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Otro</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbOtro" class="form-control"></input>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">Falla</label>                
-            </div>
-            <div class="col-3">
-                <textarea id="taFalla" class="form-control"></textarea>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Observaciones</label>                
-            </div>
-            <div class="col-3">
-                <textarea id="taObservaciones" class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">Fecha entrega</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbFechaEntrega" class="form-control"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Contraseña</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbContraseña" class="form-control"></input>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-1">
-                <label class="labelType01">Costo</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbCosto" class="form-control"></input>
-            </div>
-            <div class="col-1">
-                <label class="labelType01">Anticipo</label>                
-            </div>
-            <div class="col-3">
-                <input type="text" id="tbAnticipo" class="form-control"></input>
+            <div class="col-4 divPatron">
+                <div class="row">
+                    <div class="col-12 divPatronHeader">
+                        <label class="labelType01">Patrón</label>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron1" onclick="marcar(1)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron2" onclick="marcar(2)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron3" onclick="marcar(3)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron4" onclick="marcar(4)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron5" onclick="marcar(5)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron6" onclick="marcar(6)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron7" onclick="marcar(7)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron8" onclick="marcar(8)"></input>
+                    </div>
+                    <div class="col-4 divPatronButton">
+                        <input type="button" class="form-control" id="btnPatron9" onclick="marcar(9)"></input>
+                    </div>
+                    <div class="col-12 divPatronButton">
+                        <input type="button" class="form-control" value="Limpiar" onclick="limpiarPatron()"></input>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row divMargin" id="divVenta">
