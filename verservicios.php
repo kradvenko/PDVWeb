@@ -16,7 +16,7 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/pdv.js"></script>
-    <script src="js/nuevoservicio.js"></script>
+    <script src="js/verservicios.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jsgrid.min.js"></script>
 
@@ -73,10 +73,10 @@
             
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Guardar servicio</button>
+                <button type="button" class="btn btn-primary btn-success" onclick="servicioListo()">Servicio listo</button>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposNuevoServicio()">Limpiar campos</button>
+                <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposServicio()">Limpiar campos</button>
             </div>
         </div>
         <div class="row divMargin">
@@ -165,34 +165,31 @@
                         <label class="labelType01">Patrón</label>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron1" onclick="marcar(1)"></input>
+                        <input type="button" class="form-control" id="btnPatron1"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron2" onclick="marcar(2)"></input>
+                        <input type="button" class="form-control" id="btnPatron2"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron3" onclick="marcar(3)"></input>
+                        <input type="button" class="form-control" id="btnPatron3"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron4" onclick="marcar(4)"></input>
+                        <input type="button" class="form-control" id="btnPatron4"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron5" onclick="marcar(5)"></input>
+                        <input type="button" class="form-control" id="btnPatron5"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron6" onclick="marcar(6)"></input>
+                        <input type="button" class="form-control" id="btnPatron6"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron7" onclick="marcar(7)"></input>
+                        <input type="button" class="form-control" id="btnPatron7"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron8" onclick="marcar(8)"></input>
+                        <input type="button" class="form-control" id="btnPatron8"></input>
                     </div>
                     <div class="col-4 divPatronButton">
-                        <input type="button" class="form-control" id="btnPatron9" onclick="marcar(9)"></input>
-                    </div>
-                    <div class="col-12 divPatronButton">
-                        <input type="button" class="form-control" value="Limpiar" onclick="limpiarPatron()"></input>
+                        <input type="button" class="form-control" id="btnPatron9"></input>
                     </div>
                 </div>
             </div>
@@ -283,13 +280,13 @@
 <script>
     $( document ).ready(function() {
         checkSession();
-        limpiarCamposNuevoServicio();
+        limpiarCamposServicio();
         $(function() {     
-            $("#tbServicioCliente").autocomplete({
-                source: "php/obtenerClientesJSON.php",
+            $("#tbBuscarServicio").autocomplete({
+                source: "php/obtenerServiciosJSON.php",
                 minLength: 2,
                 select: function(event, ui) {
-                    elegirCliente(ui.item.id);
+                    elegirServicio(ui.item.id);
                 }
             });
         });

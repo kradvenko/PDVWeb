@@ -2,6 +2,8 @@
 var ns_IdCliente = 0;
 var ns_Botones = [];
 var ns_Pos = 1;
+var ns_IdMarcaElegida = 0;
+var ns_IdServicioElegido = 0;
 //Funciones para el nuevo servicio
 function guardarCliente() {
     var nombre = $("#tbNuevoClienteNombre").val();
@@ -35,6 +37,10 @@ function elegirCliente(id) {
     ns_IdCliente = id;
 }
 
+function elegirMarca(id) {
+    ns_IdMarcaElegida = id;
+}
+
 function limpiarCamposNuevoServicio() {
     $("#tbServicioCliente").val("");
     ns_IdCliente = 0;
@@ -46,10 +52,12 @@ function limpiarCamposNuevoServicio() {
     $("#cbTapa").prop("checked", false);
     $("#tbOtro").val("");
     $("#taFalla").val("");
-    $("#tbFechaEntrega").val("");
+    $("#tbFechaEntregaEstimada").val("");
     $("#tbContraseña").val("");
     $("#tbCosto").val("0");
     $("#tbAnticipo").val("0");
+    $("#taObservaciones").val("");
+
     for (i = 1; i <= 9; i++) {
         var boton = { num: i, pos: 0, val: false}
         ns_Botones[i] = boton;
@@ -98,4 +106,44 @@ function limpiarPatron() {
     }
     ns_Pos = 1;
     mostrarBotones();
+}
+
+function agregarServicio() {
+    if (ns_IdCliente == 0) {
+        alert("No ha elegido un cliente para el servicio.");
+        return;
+    }
+    var idCliente = ns_IdCliente;
+    var esn = $("#tbESN").val();
+    var folio = $("#tbFolio").val();
+    var idMarca = ns_IdMarcaElegida;
+    var modelo = $("#tbModelo").val();
+    var bateria = $("#cbBateria").prop("checked", true) ? "SI" : "NO";
+    var tapa = $("#cbTapa").prop("checked", true) ? "SI" : "NO";
+    var otro = $("#tbOtro").val();
+    var falla = $("#taFalla").val();
+    var observaciones = $("#taObservaciones").val();
+    var fechaEntregaEstimada = $("#tbFechaEntregaEstimada").val();
+    var contraseña = $("#tbContraseña").val();
+    var costo = $("#tbCosto").val();
+    var anticipo = $("#tbAnticipo").val();
+    var fechaIngresado = obtenerFechaHoraActual();
+    var patron = ns_Botones;
+    var notas = "";
+    var estado = "ACTIVO";
+
+    if (ns_IdServicioElegido == 0) {
+        $.ajax({url: "php/agregarServicio.php", async: false, type: "POST", data: { idCliente : idCliente, esn: esn, folio: folio,
+        idMarca: idMarca, modelo: modelo, bateria: bateria, tapa: tapa, otro: otro, falla: falla, observaciones: observaciones, fechaEntregaEstimada: fechaEntregaEstimada,
+        contraseña: contraseña, costo: costo, anticipo: anticipo, fechaIngresado: fechaIngresado, estado: estado, notas: notas, patron: patron }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha ingresado el servicio.");
+                limpiarCamposNuevoServicio();
+            } else {
+                alert(res);
+            }
+        }});
+    } else {
+
+    }
 }

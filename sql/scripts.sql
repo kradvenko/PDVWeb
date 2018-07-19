@@ -312,5 +312,76 @@ ALTER TABLE `envios`
 DROP COLUMN `envioscol`,
 ADD COLUMN `fechaenvio` VARCHAR(45) NULL AFTER `notas`,
 ADD COLUMN `fecharecepcion` VARCHAR(45) NULL AFTER `fechaenvio`;
+--18/07/2018
+CREATE TABLE `mat_servicios` (
+  `idservicio` int(11) NOT NULL AUTO_INCREMENT,
+  `idcliente` int(11) DEFAULT NULL,
+  `esn` varchar(45) DEFAULT NULL,
+  `folio` varchar(45) DEFAULT NULL,
+  `idmarca` int(11) DEFAULT NULL,
+  `modelo` varchar(45) DEFAULT NULL,
+  `bateria` varchar(5) DEFAULT NULL,
+  `tapa` varchar(5) DEFAULT NULL,
+  `otro` varchar(100) DEFAULT NULL,
+  `falla` varchar(300) DEFAULT NULL,
+  `observaciones` varchar(300) DEFAULT NULL,
+  `fechaentregaestimada` varchar(45) DEFAULT NULL,
+  `contraseña` varchar(45) DEFAULT NULL,
+  `costo` float DEFAULT NULL,
+  `anticipo` float DEFAULT NULL,
+  `fechaingresado` varchar(45) DEFAULT NULL,
+  `fechaentregado` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(250) DEFAULT NULL,
+  `patron` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`idservicio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `sin_servicios` (
+  `idservicio` int(11) NOT NULL AUTO_INCREMENT,
+  `idcliente` int(11) DEFAULT NULL,
+  `esn` varchar(45) DEFAULT NULL,
+  `folio` varchar(45) DEFAULT NULL,
+  `idmarca` int(11) DEFAULT NULL,
+  `modelo` varchar(45) DEFAULT NULL,
+  `bateria` varchar(5) DEFAULT NULL,
+  `tapa` varchar(5) DEFAULT NULL,
+  `otro` varchar(100) DEFAULT NULL,
+  `falla` varchar(300) DEFAULT NULL,
+  `observaciones` varchar(300) DEFAULT NULL,
+  `fechaentregaestimada` varchar(45) DEFAULT NULL,
+  `contraseña` varchar(45) DEFAULT NULL,
+  `costo` float DEFAULT NULL,
+  `anticipo` float DEFAULT NULL,
+  `fechaingresado` varchar(45) DEFAULT NULL,
+  `fechaentregado` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(250) DEFAULT NULL,
+  `patron` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`idservicio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `drc_servicios` (
+  `idservicio` int(11) NOT NULL AUTO_INCREMENT,
+  `idcliente` int(11) DEFAULT NULL,
+  `esn` varchar(45) DEFAULT NULL,
+  `folio` varchar(45) DEFAULT NULL,
+  `idmarca` int(11) DEFAULT NULL,
+  `modelo` varchar(45) DEFAULT NULL,
+  `bateria` varchar(5) DEFAULT NULL,
+  `tapa` varchar(5) DEFAULT NULL,
+  `otro` varchar(100) DEFAULT NULL,
+  `falla` varchar(300) DEFAULT NULL,
+  `observaciones` varchar(300) DEFAULT NULL,
+  `fechaentregaestimada` varchar(45) DEFAULT NULL,
+  `contraseña` varchar(45) DEFAULT NULL,
+  `costo` float DEFAULT NULL,
+  `anticipo` float DEFAULT NULL,
+  `fechaingresado` varchar(45) DEFAULT NULL,
+  `fechaentregado` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(250) DEFAULT NULL,
+  `patron` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`idservicio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

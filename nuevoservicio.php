@@ -60,7 +60,7 @@
             
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary btn-success" onclick="realizarVenta()">Guardar servicio</button>
+                <button type="button" class="btn btn-primary btn-success" onclick="agregarServicio()">Guardar servicio</button>
             </div>
             <div class="col-2">
                 <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposNuevoServicio()">Limpiar campos</button>
@@ -124,7 +124,7 @@
                         <label class="labelType01">F. Entrega</label>                
                     </div>
                     <div class="col-4 divMargin">
-                        <input type="text" id="tbFechaEntrega" class="form-control"></input>
+                        <input type="text" id="tbFechaEntregaEstimada" class="form-control"></input>
                     </div>
                     <div class="col-2">
                         <label class="labelType01">Contraseña</label>                
@@ -277,6 +277,15 @@
                 minLength: 2,
                 select: function(event, ui) {
                     elegirCliente(ui.item.id);
+                }
+            });
+        });
+        $(function() {     
+            $("#tbMarca").autocomplete({
+                source: "php/obtenerMarcasJSON.php",
+                minLength: 2,
+                select: function(event, ui) {
+                    elegirMarca(ui.item.id);
                 }
             });
         });
