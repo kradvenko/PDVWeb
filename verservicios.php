@@ -59,7 +59,7 @@
                 <input type="text" id="tbServicioCliente" class="form-control" ></input>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalVerCliente'>Ver datos del cliente</button>
+                <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalVerCliente' onclick="cargarDatosCliente()">Ver datos del cliente</button>
             </div>
         </div>
         <div class="row divMargin">
@@ -214,19 +214,19 @@
                             Nombre del cliente
                         </div>
                         <div class="col-12">
-                            <input type="text" id="tbNuevoClienteNombre" class="form-control"></input>
+                            <input type="text" id="tbClienteNombre" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             Dirección
                         </div>
                         <div class="col-12">
-                            <input type="text" id="tbNuevoClienteDireccion" class="form-control"></input>
+                            <input type="text" id="tbClienteDireccion" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             Colonia
                         </div>
                         <div class="col-12">
-                            <input type="text" id="tbNuevoClienteColonia" class="form-control"></input>
+                            <input type="text" id="tbClienteColonia" class="form-control"></input>
                         </div>
                         <div class="col-6">
                             Teléfono 1
@@ -235,28 +235,28 @@
                             Whatsapp
                         </div>
                         <div class="col-6">
-                            <input type="text" id="tbNuevoClienteTelefono1" class="form-control"></input>
+                            <input type="text" id="tbClienteTelefono1" class="form-control"></input>
                         </div>
                         <div class="col-6">
-                            <input type="text" id="tbNuevoClienteTelefono2" class="form-control"></input>
+                            <input type="text" id="tbClienteTelefono2" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             Correo electrónico
                         </div>
                         <div class="col-12">
-                            <input type="text" id="tbNuevoClienteCorreo" class="form-control"></input>
+                            <input type="text" id="tbClienteCorreo" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             Tienda
                         </div>
                         <div class="col-12">
-                            <input type="text" id="tbNuevoClienteTienda" class="form-control"></input>
+                            <input type="text" id="tbClienteTienda" class="form-control"></input>
                         </div>
                         <div class="col-12">
                             Tipo
                         </div>
                         <div class="col-12">
-                            <select id="selNuevoClienteTipo" class="form-control">
+                            <select id="selClienteTipo" class="form-control">
                                 <option value="NORMAL">NORMAL</option>
                                 <option value="DISTRIBUIDOR">DISTRIBUIDOR</option>
                             </select>
@@ -265,13 +265,13 @@
                             Notas
                         </div>
                         <div class="col-12">
-                            <textarea id="taNuevoClienteNotas" rows="3" maxlength="200" class="form-control"></textarea>
+                            <textarea id="taClienteNotas" rows="3" maxlength="200" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>                        
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                        
+                    <!--<button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -292,7 +292,7 @@
         });
     });
     $('#modalAgregarCliente').on('shown.bs.modal', function() {
-        $('#tbNuevoClienteNombre').focus();
+        $('#tbClienteNombre').focus();
     });
 </script>
 </html>
