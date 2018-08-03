@@ -84,7 +84,7 @@
                 <label class="labelType01">Incluir I.V.A.</label>
             </div>
             <div class="col-1">
-                <label class="switch"><input id="cbIva" type="checkbox" onclick="calcularTotal()"><span class="slider round"></span></label></input>
+                <label class="switch"><input id="cbIva" type="checkbox" onclick="calcularTotal()"><span class="slider round"></span></label>
             </div>
             <div class="col-1">
                 <label class="labelType01">Cliente</label>
