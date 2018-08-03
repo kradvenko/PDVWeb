@@ -81,9 +81,9 @@ function limpiarCamposCliente() {
 function marcar(numero) {
     var boton = { num: numero, pos: ns_Pos, val: !ns_Botones[numero].val };
     ns_Botones[numero] = boton;
-    if (boton.val) {
+    if (boton.val) {        
         ns_Pos++;
-    } else {
+    } else {        
         ns_Pos--;
     }
     mostrarBotones();
@@ -93,8 +93,10 @@ function mostrarBotones() {
     for (i = 1; i <= 9; i++) {
         if (ns_Botones[i].val) {
             $("#btnPatron" + i).val(ns_Botones[i].pos);
+            $("#btnPatron" + i).addClass("buttonChecked");
         } else {
             $("#btnPatron" + i).val("");
+            $("#btnPatron" + i).removeClass("buttonChecked");
         }
     }
 }

@@ -295,7 +295,7 @@
 }
 
 .divPatron {
-    background-color: #5891a0;
+    
 }
 
 .divPatronHeader {
@@ -306,6 +306,14 @@
 
 .divPatronButton {
     height: 50px;
-    padding-top: 5px;
-    border: solid 1px #000000;
+    padding-top: 5px;    
+}
+
+.divPatronButton:hover input{
+    background-color: #a5d24a;
+}
+
+.buttonChecked {
+    background-color: #821936;
+    color: #ffffff;
 }
