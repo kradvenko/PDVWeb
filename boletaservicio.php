@@ -10,7 +10,7 @@
     
     $pdf->AddPage();
 
-    $pdf->Image('imgs/Sinergia.jpg',0,0,40);
+    $pdf->Image('imgs/sin-logo.png',0,0,40);
 
     $pdf->Cell(40);
     $pdf->SetFillColor(100,170,250);
