@@ -1,7 +1,42 @@
 <?php
     require('php/fpdf.php');
 
-    
+
+    try
+    {
+        require_once('php/connection.php');
+
+        $idServicio = $_GET["idServicio"];
+
+        if (!$idServicio) {
+            echo "Error. Faltan variables.";
+            exit(1);
+        }
+
+        $prefijo = $_COOKIE["prefijo"];
+
+        $tienda = $prefijo . "servicios";
+
+        $con = new mysqli($hn, $un, $pw, $db);
+
+        $sql = "Select *, marcas.marca, clientes.nombre As cliente, clientes.telefono1
+                From $tienda
+                Left Join marcas
+                On marcas.idmarca = $tienda.idmarca
+                Inner Join clientes
+                On clientes.idcliente = $tienda.idcliente
+                Where idservicio = $idServicio";
+
+        $result = $con->query($sql);  
+        $row = $result->fetch_array();      
+
+        mysqli_close($con);
+    }
+    catch (Throwable $t)
+    {
+        echo $t;
+        return;
+    }
 
     $pdf = new FPDF('P', 'mm', 'Letter');
     $pdf->SetMargins(0,0);
@@ -43,14 +78,14 @@
     $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);    
 
     $pdf->SetFillColor(200,200,230);
-    $pdf->Cell(15,10,'Folio',0,0,'L',true);
+    $pdf->Cell(10,10,'Folio',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(20,10,'123456','0',0,'C',true);
+    $pdf->Cell(12,10,$row["folio"],'0',0,'C',true);
 
     $pdf->SetFillColor(200,200,230);
-    $pdf->Cell(15,10,'Fecha',0,0,'L',true);
+    $pdf->Cell(12,10,'Fecha',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'06/09/2018','0',0,'C',true);
+    $pdf->Cell(0,10,$row["fechaingresado"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
@@ -59,73 +94,73 @@
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(40,10,'Nombre',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'CARLOS CUITLAHUAC CONTRERAS CAMACHO','0',0,'C',true);
+    $pdf->Cell(0,10,$row["cliente"],'0',0,'C',true);
 
     $pdf->Ln(10);    
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,iconv('UTF-8', 'windows-1252', 'Teléfono'),0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(80,10,'333444568','0',0,'C',true);
+    $pdf->Cell(80,10,$row["telefono1"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'ESN',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'','0',0,'C',true);
+    $pdf->Cell(0,10,$row["esn"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Marca',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(80,10,'SAMSUNG','0',0,'C',true);
+    $pdf->Cell(80,10,$row["marca"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Modelo',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'NOTE 7','0',0,'C',true);
+    $pdf->Cell(0,10,$row["modelo"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Bateria',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(20,10,'SI','0',0,'C',true);
+    $pdf->Cell(20,10,$row["bateria"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Tapa',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(20,10,'SI','0',0,'C',true);
+    $pdf->Cell(20,10,$row["tapa"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Otro','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'OTRAS COSAS','0',0,'C',true);
+    $pdf->Cell(0,10,$row["otro"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Falla','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'LE FALLA LA BATERIA Y EL CENTRO DE CARGA','0',0,'C',true);
+    $pdf->Cell(0,10,$row["falla"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Observaciones','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'TIENE UN GOLPE EN LA PANTALLA','0',0,'C',true);
+    $pdf->Cell(0,10,$row["observaciones"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(50,10,'Fecha entrega estimada','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(59,10,'06/09/2018','0',0,'C',true);
+    $pdf->Cell(59,10,$row["fechaentregaestimada"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Costo','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(30,10,'900','0',0,'C',true);
+    $pdf->Cell(30,10,$row["costo"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Anticipo','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
-    $pdf->Cell(0,10,'300','0',0,'C',true);
+    $pdf->Cell(0,10,$row["anticipo"],'0',0,'C',true);
 
     $pdf->Ln(12);
 

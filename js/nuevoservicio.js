@@ -138,9 +138,10 @@ function agregarServicio() {
         $.ajax({url: "php/agregarServicio.php", async: false, type: "POST", data: { idCliente : idCliente, esn: esn, folio: folio,
         idMarca: idMarca, modelo: modelo, bateria: bateria, tapa: tapa, otro: otro, falla: falla, observaciones: observaciones, fechaEntregaEstimada: fechaEntregaEstimada,
         contraseña: contraseña, costo: costo, anticipo: anticipo, fechaIngresado: fechaIngresado, estado: estado, notas: notas, patron: patron }, success: function(res) {
-            if (res == "OK") {
+            if (!isNaN(res)) {
                 alert("Se ha ingresado el servicio.");
                 limpiarCamposNuevoServicio();
+                window.open("boletaservicio.php?idServicio=" + res,'_blank');
             } else {
                 alert(res);
             }

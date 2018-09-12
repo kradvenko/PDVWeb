@@ -40,7 +40,7 @@
                 ";
         $con->query($sql);
 
-        echo "OK";
+        echo $con->insert_id;
 
         mysqli_close($con);
     }
