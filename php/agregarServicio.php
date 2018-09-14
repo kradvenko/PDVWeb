@@ -40,7 +40,8 @@
                 ";
         $con->query($sql);
 
-        echo $con->insert_id;
+        //echo $con->insert_id;
+        echo $sql;
 
         mysqli_close($con);
     }
