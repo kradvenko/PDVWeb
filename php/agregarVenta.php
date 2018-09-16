@@ -44,6 +44,15 @@
             $con->query($sql);
         }
 
+        for ($i = 0; $i < sizeof($articulos); $i++) {
+            $item = $articulos[$i];
+            $sql = "UPDATE " . $prefijo . "articulos
+                    SET cantidad = cantidad - " . $item["cantidad"] . "
+                    WHERE idarticulo = " . $item["id"];
+
+            $con->query($sql);
+        }
+
         echo "OK";
 
         mysqli_close($con);

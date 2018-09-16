@@ -3,6 +3,7 @@ var vs_IdServicioElegido = 0;
 var vs_IdMarcaElegida = 0;
 var vs_IdClienteElegido = 0;
 var vs_Botones = [];
+var vs_EstadoServicio = '';
 
 //Funciones para el módulo de ver servicio
 function limpiarCamposServicio() {
@@ -39,6 +40,7 @@ function cargarDatosServicio() {
                 $("#tbCosto").val($(this).find("costo").text());
                 $("#tbAnticipo").val($(this).find("anticipo").text());
                 vs_Botones = JSON.parse($(this).find("patron").text());
+                vs_EstadoServicio = $(this).find("estado").text();
             });
         }});
         mostrarBotones();
@@ -105,5 +107,11 @@ function cargarDatosCliente() {
                 $("#taClienteNotas").val($(this).find("notas").text());
             });
         }});
+    }
+}
+
+function servicioListo() {
+    if (vs_EstadoServicio != 'ACTIVO') {
+        alert("El servicio ya ha sido finalizado.");
     }
 }

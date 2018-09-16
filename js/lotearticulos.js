@@ -399,7 +399,8 @@ function obtenerArticulosLote() {
     $.ajax({url: "php/obtenerArticulosLoteXML.php", async: false, type: "POST", data: { idLote: l_IdLoteElegido }, success: function(res) {
         la_ArticulosLote = [];
         $('cat', res).each(function(index, element) {
-            la_ArticuloLote =  { id: $(this).find("idarticulo").text(), idMatriz: $(this).find("idmatriz").text(), Nombre: $(this).find("nombre").text() };
+            la_ArticuloLote =  { id: $(this).find("idarticulo").text(), idMatriz: $(this).find("idmatriz").text(), Nombre: $(this).find("nombre").text(),
+            Marca: $(this).find("marca").text(), Color: $(this).find("color").text() };
             la_ArticulosLote[la_ArticulosLote.length] = la_ArticuloLote;
         });
     }});
@@ -425,7 +426,9 @@ function mostrarArticulosLote() {
         },
  
         fields: [
-            { name: "Nombre", type: "text", width: 50, validate: "required" }
+            { name: "Nombre", type: "text", width: 50, validate: "required" },
+            { name: "Marca", type: "text", width: 20, validate: "required" },
+            { name: "Color", type: "text", width: 20, validate: "required" }
         ]
     });
 }

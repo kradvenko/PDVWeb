@@ -31,33 +31,34 @@ function mostrarVenta() {
         //Cantidad Precio Descuento P Descuento C
         div = div + '<div class="col-3"><label class="labelType01">Cantidad</label></div>';
         div = div + '<div class="col-1"><label class="labelType01">Precio</label></div>';
-        div = div + '<div class="col-1"><label class="labelType01">Mayoreo</label></div>';
-        div = div + '<div class="col-3"><label class="labelType01">Rango de precios</label></div>';
+        div = div + '<div class="col-2"><label class="labelType01">Usar precio mayoreo</label></div>';
+        div = div + '<div class="col-2"><label class="labelType01">Precio mayoreo</label></div>';
         div = div + '<div class="col-2"><label class="labelType01">Descuento Porcentaje</label></div>';
         div = div + '<div class="col-2"><label class="labelType01">Descuento Cantidad</label></div>';
 
-        div = div + '<div class="col-3"><label class="labelType01"></label></div>';
-        div = div + '<div class="col-1"><label class="labelType01"></label></div>';
-        if (nv_articulo.usarMayoreo) {
-            div = div + '<div class="col-1"><label class="switch"><input checked type="checkbox" id="cbMayoreo_' + i + '" onchange="checarMayoreo(' + i + '); calcularCostoArticulo(' + i + '); mostrarVenta();"><span class="slider round"></span></label></input></div>';
-        } else {
-            div = div + '<div class="col-1"><label class="switch"><input type="checkbox" id="cbMayoreo_' + i + '" onchange="checarMayoreo(' + i + '); calcularCostoArticulo(' + i + '); mostrarVenta();"><span class="slider round"></span></label></input></div>';
-        }
-        div = div + '<div class="col-3"><button class="btn btn-success" data-toggle="modal" data-target="#modalVerPreciosMayoreo" onclick="verPreciosMayoreo(' + nv_articulo.id + ')"><i class="fas fa-search"></i></button></div>';
-        div = div + '<div class="col-2"></div>';
-        div = div + '<div class="col-2"></div>';
+        //div = div + '<div class="col-3"><label class="labelType01"></label></div>';
+        //div = div + '<div class="col-1"><label class="labelType01"></label></div>';
+        
+        //div = div + '<div class="col-3"><button class="btn btn-success" data-toggle="modal" data-target="#modalVerPreciosMayoreo" onclick="verPreciosMayoreo(' + nv_articulo.id + ')"><i class="fas fa-search"></i></button></div>';
+        //div = div + '<div class="col-3"></div>';
+        //div = div + '<div class="col-2"></div>';
+        //div = div + '<div class="col-2"></div>';
 
         div = div + '<div class="col-3">' + '<input id="tbCantidad_' + i + '" type="text" class="form-control textbox-center" onchange="cambiarCantidad(' + i + ')" value="' + nv_articulo.cantidad + '"</input></div>';
         div = div + '<div class="col-1">$ ' + nv_articulo.precio + '</div>';
-        div = div + '<div class="col-1">$ ' + nv_articulo.preciomayoreo + '</div>';
-        div = div + '<div class="col-3"></div>';
+        if (nv_articulo.usarMayoreo) {
+            div = div + '<div class="col-2"><label class="switch"><input checked type="checkbox" id="cbMayoreo_' + i + '" onchange="checarMayoreo(' + i + '); calcularCostoArticulo(' + i + '); mostrarVenta();"><span class="slider round"></span></label></input></div>';
+        } else {
+            div = div + '<div class="col-2"><label class="switch"><input type="checkbox" id="cbMayoreo_' + i + '" onchange="checarMayoreo(' + i + '); calcularCostoArticulo(' + i + '); mostrarVenta();"><span class="slider round"></span></label></input></div>';
+        }
+        div = div + '<div class="col-2">$ ' + nv_articulo.preciomayoreo + '</div>';        
         div = div + '<div class="col-2">' + '<input id="tbDescuentoPorcentaje_' + i + '" type="text" class="form-control textbox-center" onchange="cambiarDescuentoPorcentaje(' + i + ')" value="' + nv_articulo.descuentoporcentaje + '"</input></div>';
         div = div + '<div class="col-2">' + '<input id="tbDescuentoCantidad_' + i + '" type="text" class="form-control textbox-center" onchange="cambiarDescuentoCantidad(' + i + ')" value="' + nv_articulo.descuentocantidad + '"</input></div>';
 
-        div = div + '<div class="col-3">' + '<button type="button" class="btn btn-primary btn-danger" onclick="borrarArticulo(' + i + ')">Borrar</button></div>';
+        div = div + '<div class="col-8">' + '<button type="button" class="btn btn-primary btn-danger" onclick="borrarArticulo(' + i + ')">Borrar</button></div>';
 
-        div = div + '<div class="col-12 divBackgroundBlue3 divMargin">SubTotal: $ ' + nv_articulo.subtotal + '</div>';
-        div = div + '<div class="col-12 divBackgroundBlue3 divMargin">Total: $ ' + nv_articulo.total + '</div>';
+        div = div + '<div class="col-2 divBackgroundBlue3 divMargin">SubTotal: $ ' + nv_articulo.subtotal + '</div>';
+        div = div + '<div class="col-2 divBackgroundBlue3 divMargin">Total: $ ' + nv_articulo.total + '</div>';
         //Total
         $("#divVenta").html($("#divVenta").html() + div);
     }
@@ -176,7 +177,7 @@ function realizarVenta() {
         return;
     }
 
-    $.ajax({url: "php/agregarVenta.php", async: false, type: "POST", data: { fecha : fecha, subtotal: subTotal, descuentoPorcentaje: descuentoPorcentaje, descuentoCantidad: descuentoCantidad, total: total, estado: estado, articulos: articulos, iva: iva }, success: function(res) {
+    $.ajax({url: "php/agregarVenta.php", async: false, type: "POST", data: { fecha : fecha, subtotal: subTotal, descuentoPorcentaje: descuentoPorcentaje, descuentoCantidad: descuentoCantidad, total: total, estado: estado, articulos: articulos, iva: iva, idCliente: idCliente }, success: function(res) {
         if (res == 'OK') {
             alert("Se ha realizado la venta.");
             limpiarCamposNuevaVenta();
@@ -257,6 +258,8 @@ function limpiarCamposNuevaVenta() {
     $("#tbDescuentoCantidadVenta").val("0");
     $("#lblSubTotal").text("-");
     $("#lblTotal").text("-");
+    $("#tbVentaCliente").val("");
+    nv_IdCliente = 0;
 }
 
 function guardarCliente() {
