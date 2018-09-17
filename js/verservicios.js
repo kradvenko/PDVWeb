@@ -6,10 +6,6 @@ var vs_Botones = [];
 var vs_EstadoServicio = '';
 
 //Funciones para el módulo de ver servicio
-function limpiarCamposServicio() {
-
-}
-
 function elegirServicio(id) {
     vs_IdServicioElegido = id;
     cargarDatosServicio();

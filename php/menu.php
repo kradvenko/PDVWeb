@@ -1,12 +1,37 @@
 <?php
     
     function menu() {
+        $inventarios = "";
+        if ($_COOKIE["tipo"] == 'ADMINISTRADOR') {
+            $inventarios = '<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Inventarios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
+                            <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
+                            <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Crear envío</a>
+                            <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
+                        </div>
+                    </li>';
+        }
         $menu = '<div class="row divMargin">
-                    <div class="col-6">
+                    <div class="col-4">
                         
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Usuario actual :  ' . $_COOKIE["nombre"] . ' 
+                    </div>
+                    <div class="col-3">
+                        Tienda :  ' . $_COOKIE["tienda"] . ' 
                     </div>
                     <div class="col-2">
                         <button type="button" class="btn btn-primary btn-danger" onclick="cerrarSesion()">Cerrar sesión</button> 
@@ -34,25 +59,7 @@
                             <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Inventarios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item mainMenuElement" href="nuevoarticulo.php">Agregar artículo</a>
-                            <!--<a class="dropdown-item mainMenuElement" href="lotes.php">Control lotes</a>-->
-                            <a class="dropdown-item mainMenuElement" href="lotearticulos.php">Lotes y artículos</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Envios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Crear envío</a>
-                            <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
-                        </div>
-                    </li>                    
+                    ' . $inventarios . '
                     </ul>
                 </div>
             </nav>';
