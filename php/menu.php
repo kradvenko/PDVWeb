@@ -47,8 +47,14 @@
                     <li class="nav-item">
                         <a class="nav-link mainMenuElement" href="menu.php">Menú principal</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mainMenuElement" href="nuevaventa.php">Nueva venta</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ventas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                            <a class="dropdown-item mainMenuElement" href="nuevaventa.php">Nueva venta</a>
+                            <a class="dropdown-item mainMenuElement" href="corte.php">Corte</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
