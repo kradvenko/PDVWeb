@@ -14,7 +14,7 @@ function guardarCliente() {
     var correo = $("#tbNuevoClienteCorreo").val();
     var tienda = $("#tbNuevoClienteTienda").val();
     var tipo = $("#selNuevoClienteTipo").val();
-    var fechaCaptura = obtenerFechaHoraActual();
+    var fechaCaptura = obtenerFechaHoraActual("FULL");
     var estado = 'ACTIVO';
     var notas = $("#taNuevoClienteNotas").val();
 
@@ -129,7 +129,7 @@ function agregarServicio() {
     var contraseña = $("#tbContraseña").val();
     var costo = $("#tbCosto").val();
     var anticipo = $("#tbAnticipo").val();
-    var fechaIngresado = obtenerFechaHoraActual();
+    var fechaIngresado = obtenerFechaHoraActual("FULL");
     var patron = ns_Botones;
     var notas = "";
     var estado = "ACTIVO";

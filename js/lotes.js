@@ -29,7 +29,7 @@ function agregarLote() {
     var tipoCambio = $("#tbTipoCambio").val();
     var moneda = $("#selMoneda").val();
     var costoLote = $("#tbCostoLote").val();
-    var fechaIngreso = obtenerFechaHoraActual();
+    var fechaIngreso = obtenerFechaHoraActual("FULL");
     var estado = "ACTIVO";
 
     if (l_IdLoteElegido == 0) {

@@ -317,3 +317,35 @@
     background-color: #821936;
     color: #ffffff;
 }
+
+.divBackgroundVentas {
+    color: #000000;    
+    font-size: 20px;
+    border-bottom: 3px solid #8b1313;
+    margin-bottom: 20px;
+    background-color: #faaeb8;
+}
+
+.divBackgroundServicios {
+    color: #000000;    
+    font-size: 20px;
+    border-bottom: 3px solid #41138b;
+    margin-bottom: 20px;
+    background-color: #c2aefa;
+}
+
+.divHeaderListaVentas {
+    color: #000000;
+    font-size: 18px;
+    border-bottom: 3px solid #8b1313;
+    margin-bottom: 20px;
+    background-color: #faaeb8;
+}
+
+.divHeaderListaServicios {
+    color: #000000;
+    font-size: 18px;
+    border-bottom: 3px solid #8b1371;
+    margin-bottom: 20px;
+    background-color: #c2aefa;
+}

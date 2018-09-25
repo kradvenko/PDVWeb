@@ -114,7 +114,7 @@ function agregarEnvio() {
     } else {
         var idTiendaA = $("#selListaTiendas").val();
         var notas = $("#taNotas").val();
-        var fechaEnvio = obtenerFechaHoraActual();
+        var fechaEnvio = obtenerFechaHoraActual("FULL");
         $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio, fechaEnvio: fechaEnvio }, type: "POST", success: function(res) {
             mensaje = res;
         }});
@@ -279,7 +279,7 @@ function limpiarCamposEnvioRecepcion() {
 
 function recibirEnvio() {
     if (e_IdEnvioElegido > 0) {
-        var fechaRecibido = obtenerFechaHoraActual();
+        var fechaRecibido = obtenerFechaHoraActual("FULL");
         $.ajax({url: "php/recibirEnvio.php", async: false, data: {idEnvio: e_IdEnvioElegido, articulos: e_ArticulosRecepcion, idTiendaA: e_IdTiendaA, fechaRecibido: fechaRecibido }, type: "POST", success: function(res) {
             if (res == "") {
                 alert("Se ha recibido el envío.");

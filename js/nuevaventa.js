@@ -162,7 +162,7 @@ function calcularTotal() {
 }
 
 function realizarVenta() {
-    var fecha = obtenerFechaHoraActual();
+    var fecha = obtenerFechaHoraActual("FULL");
     var subTotal = nv_subTotal;
     var descuentoPorcentaje = nv_descuentoPorcentaje;
     var descuentoCantidad = nv_descuentoCantidad;
@@ -271,7 +271,7 @@ function guardarCliente() {
     var correo = $("#tbNuevoClienteCorreo").val();
     var tienda = $("#tbNuevoClienteTienda").val();
     var tipo = $("#selNuevoClienteTipo").val();
-    var fechaCaptura = obtenerFechaHoraActual();
+    var fechaCaptura = obtenerFechaHoraActual("FULL");
     var estado = 'ACTIVO';
     var notas = $("#taNuevoClienteNotas").val();
 

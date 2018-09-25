@@ -141,7 +141,7 @@ function agregarArticulo() {
     }
 
     if (na_IdArticuloElegido == 0) {
-        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor }, success: function(res) {
+        $.ajax({url: "php/agregarArticulo.php", async: false, type: "POST", data: { idCategoria: idCategoria, codigo: codigo, nombre: nombre, descripcion: descripcion, modelo: modelo, idMarca: idMarca, color: color, cantidad: cantidad, minimo: minimo, costoReal: costoReal, costoDistribuidor: costoDistribuidor, costoPublico: costoPublico, estado: estado, preciosMayoreo: preciosMayoreo, precioDistribuidor: precioDistribuidor, idLote: "0", aprobado: "SI", notas: "TIENDA" }, success: function(res) {
             if (res == "OK") {
                 alert("Se ha agregado el artículo.");
                 limpiarCamposNuevoArticulo();

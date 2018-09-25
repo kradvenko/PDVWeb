@@ -302,7 +302,7 @@ function agregarLote() {
     var tipoCambio = $("#tbTipoCambioLote").val();
     var moneda = $("#selMoneda").val();
     var costoLote = $("#tbCostoLote").val();
-    var fechaIngreso = obtenerFechaHoraActual();
+    var fechaIngreso = obtenerFechaHoraActual("FULL");
     var estado = "ACTIVO";
     var fechaPago = $("#tbFechaPago").val();
     var fechaRecibido = $("#tbFechaRecibido").val();
@@ -436,7 +436,7 @@ function mostrarArticulosLote() {
 
 function ponerFechaPagado() {
     if ($("#cbPagado").prop("checked") == true) {
-        $("#tbFechaPago").val(obtenerFechaHoraActual().substring(0, 10));
+        $("#tbFechaPago").val(obtenerFechaHoraActual("FULL").substring(0, 10));
     } else {
         $("#tbFechaPago").val("");
     }
@@ -444,7 +444,7 @@ function ponerFechaPagado() {
 
 function ponerFechaRecibido() {
     if ($("#cbRecibido").prop("checked") == true) {
-        $("#tbFechaRecibido").val(obtenerFechaHoraActual().substring(0, 10));
+        $("#tbFechaRecibido").val(obtenerFechaHoraActual("FULL").substring(0, 10));
     } else {
         $("#tbFechaRecibido").val("");
     }
