@@ -368,13 +368,13 @@
                             <label class="labelType01">Precio distribuidor</label>
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control textbox-center" id="tbPrecioDistribuidor" maxlength="5"></input>
+                            <input type="text" class="form-control textbox-center" id="tbPrecioDistribuidor" maxlength="10"></input>
                         </div>
                         <div class="col-2">
                             <label class="labelType01">Precio público menudeo</label>
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="5"></input>
+                            <input type="text" class="form-control textbox-center" id="tbCostoPublicoMenudeo" maxlength="10"></input>
                         </div> 
                     </div>
                     <div class="row divMargin divBackgroundOrange2">
@@ -387,13 +387,13 @@
                             <label class="labelType01">Costo proveedor</label>
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control textbox-center" id="tbCostoDistribuidor" maxlength="5"></input>
+                            <input type="text" class="form-control textbox-center" id="tbCostoDistribuidor" maxlength="10"></input>
                         </div>
                         <div class="col-2">
                             <label class="labelType01">Costo real</label>
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="5"></input>
+                            <input type="text" class="form-control textbox-center" id="tbCostoReal" maxlength="10"></input>
                         </div>
                         <!--            
                         <div class="col-2">

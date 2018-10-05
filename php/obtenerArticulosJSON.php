@@ -17,9 +17,15 @@
             return;
         }
 
+        $tabla = $prefijo . "articulos";
+
         $sql = "Select * 
-                From " . $prefijo . "articulos 
-                Where " . $prefijo . "articulos.nombre Like '%$term%' And estado = 'ACTIVO' And aprobado = 'SI'";
+                From $tabla
+                Where $tabla.nombre Like '%$term%'
+                Or $tabla.codigo Like '%$term%'
+                Or $tabla.modelo Like '%$term%'
+                And estado = 'ACTIVO'
+                And aprobado = 'SI'";
 
         $result = $con->query($sql);
 
