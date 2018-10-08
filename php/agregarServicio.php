@@ -32,7 +32,7 @@
         $con = new mysqli($hn, $un, $pw, $db);
 
         $sql = "INSERT INTO $prefijo" . "servicios
-                (idcliente, esn, folio, idmarca, modelo, bateria, tapa, otro, falla, observaciones, fechaentregaestimada, contraseña, costo,
+                (idcliente, esn, folio, idmarca, modelo, bateria, tapa, otro, falla, observaciones, fechaentregaestimada, contrasena, costo,
                 anticipo, fechaingresado, fechaentregado, estado, notas, patron)
                 VALUES
                 ($idCliente, '$esn', '$folio', $idMarca, '$modelo', '$bateria', '$tapa', '$otro', '$falla', '$observaciones', '$fechaEntregaEstimada',

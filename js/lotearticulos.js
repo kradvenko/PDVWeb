@@ -400,7 +400,8 @@ function obtenerArticulosLote() {
         la_ArticulosLote = [];
         $('cat', res).each(function(index, element) {
             la_ArticuloLote =  { id: $(this).find("idarticulo").text(), idMatriz: $(this).find("idmatriz").text(), Nombre: $(this).find("nombre").text(),
-            Marca: $(this).find("marca").text(), Color: $(this).find("color").text(), Cantidad: $(this).find("cantidad").text() };
+            Marca: $(this).find("marca").text(), Color: $(this).find("color").text(), Cantidad: $(this).find("cantidad").text(), Modelo: $(this).find("modelo").text(),
+            Codigo: $(this).find("codigo").text() };
             la_ArticulosLote[la_ArticulosLote.length] = la_ArticuloLote;
         });
     }});
@@ -426,8 +427,10 @@ function mostrarArticulosLote() {
         },
  
         fields: [
+            { name: "Codigo", type: "text", width: 50, validate: "required" },
             { name: "Nombre", type: "text", width: 50, validate: "required" },
             { name: "Marca", type: "text", width: 20, validate: "required" },
+            { name: "Modelo", type: "text", width: 20, validate: "required" },
             { name: "Color", type: "text", width: 20, validate: "required" },
             { name: "Cantidad", type: "text", width: 20, validate: "required" }
         ]
