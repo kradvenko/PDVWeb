@@ -1,7 +1,6 @@
 <?php
     require('php/fpdf.php');
 
-
     try
     {
         require_once('php/connection.php');
@@ -21,7 +20,8 @@
 
         $con = new mysqli($hn, $un, $pw, $db);
 
-        $sql = "Select $tablaArticulos.nombre As Articulo
+        $sql = "Select $tablaArticulos.nombre As Articulo, $tablaDetalleVentas.cantidad As Cantidad, $tablaDetalleVentas.subtotal As Subtotal, $tablaDetalleVentas.total AS Total,
+                $tablaVentas.total As TotalVenta, clientes.nombre As Cliente
                 From $tablaVentas
                 Inner Join $tablaDetalleVentas
                 On $tablaVentas.idventa = $tablaDetalleVentas.idventa
@@ -37,6 +37,8 @@
 
         $rows = $result->num_rows;
 
+        $Cliente = $row["Cliente"];
+
         //echo "Total " . $result->num_rows;
 
         mysqli_close($con);
@@ -48,70 +50,75 @@
         return;
     }
     
+    $TotalVenta = 0;
     
     //$pdf = new FPDF('P', 'mm', 'Letter');
     
 
-    $pdf = new FPDF('P', 'cm', array(7.5, $rows + 10));
+    $pdf = new FPDF('P', 'cm', array(7.5, $rows + 8));
 
-    $pdf->SetMargins(0, 0);
+    $pdf->SetMargins(0.1, 0.0, 0.1, 10);
 
     $pdf->SetFont('Arial','B',12);
     
     $pdf->AddPage();
 
-    $pdf->Ln(0.5);    
-
+    $pdf->Ln(0.5);
     $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', 'Ticket de compra'), '0', 0, 'C', false);
 
     $pdf->SetFont('Arial', 'B', 7);
 
     $pdf->Ln(0.5);
-
     $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'), '0', 0, 'C', false);
 
     $pdf->Ln(0.5);
-
     $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', 'Cel 311 111 5145 y Local (311) 133 0773'), '0', 0, 'C', false);
 
     $pdf->Ln(0.5);
-
     $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'), '0', 0, 'C', false);
+
+    $pdf->Ln(0.5);
+    $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', 'Cliente: ' . $Cliente), '0', 0, 'C', false);
+
+    $pdf->Ln(0.5);
+    $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', ""), 'B', 0, 'C', false);
+
+    $pdf->Ln(0.5);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "Cantidad"), '0', 0, 'C', false);
+    $pdf->Cell(3, 0, iconv('UTF-8', 'windows-1252', "Artículo"), '0', 0, 'L', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "Subtotal"), '0', 0, 'C', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "Total"), '0', 0, 'C', false);
+
+    $pdf->Ln(0.5);
+    $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', ""), 'B', 0, 'C', false);    
+
+    $pdf->Ln(0.5);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', $row["Cantidad"]), '0', 0, 'C', false);
+    $pdf->Cell(3, 0, iconv('UTF-8', 'windows-1252', $row["Articulo"]), '0', 0, 'L', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "$ " . $row["Subtotal"]), '0', 0, 'C', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "$ " . $row["Total"]), '0', 0, 'C', false);
+    $TotalVenta = $row["TotalVenta"];
 
     while ($row = $result->fetch_array()) {
         $pdf->Ln(0.5);
-        $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', '$row["Articulo"]'), '0', 0, 'C', false);
+        $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', $row["Cantidad"]), '0', 0, 'C', false);
+        $pdf->Cell(3, 0, iconv('UTF-8', 'windows-1252', $row["Articulo"]), '0', 0, 'L', false);
+        $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "$ " . $row["Subtotal"]), '0', 0, 'C', false);
+        $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "$ " . $row["Total"]), '0', 0, 'C', false);        
     }
 
-    //$pdf->Image('imgs/sin-logo.png',0,0,40);
-    /*
-    $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Orden de servicio técnico'),'B',0,'C',true);
+    $pdf->Ln(0.5);
 
-    $pdf->Ln(10);
-    $pdf->Cell(40);
+    $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', ""), 'B', 0, 'C', false);
 
-    $pdf->SetFont('Arial','B',9);    
+    $pdf->Ln(0.5);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', ""), '0', 0, 'C', false);
+    $pdf->Cell(3, 0, iconv('UTF-8', 'windows-1252', ""), '0', 0, 'L', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', "Total venta: "), '0', 0, 'C', false);
+    $pdf->Cell(1, 0, iconv('UTF-8', 'windows-1252', " $ " . $TotalVenta), '0', 0, 'C', false);
 
-    $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
-
-    $pdf->Image('imgs/tel.png',50,20,5);
-
-    $pdf->Ln(10);
-
-    $pdf->Cell(10);
-    
-
-    $pdf->Image('imgs/loc.png',140,20,5);
-    
-    $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
-    
-    $pdf->Ln(10);
-
-    $pdf->Image('imgs/fb-b.jpg',50,30,5);
-
-    $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);    
-    */
-    
+    $pdf->Ln(0.5);
+    $pdf->Cell(0, 0, iconv('UTF-8', 'windows-1252', "Sinergia movil"), '0', 0, 'C', false);    
 
     $pdf->Output();
 ?>

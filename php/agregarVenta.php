@@ -53,7 +53,8 @@
             $con->query($sql);
         }
 
-        echo "OK";
+        //echo "OK";
+        echo $idVenta;
 
         mysqli_close($con);
     }

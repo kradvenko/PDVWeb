@@ -178,9 +178,10 @@ function realizarVenta() {
     }
 
     $.ajax({url: "php/agregarVenta.php", async: false, type: "POST", data: { fecha : fecha, subtotal: subTotal, descuentoPorcentaje: descuentoPorcentaje, descuentoCantidad: descuentoCantidad, total: total, estado: estado, articulos: articulos, iva: iva, idCliente: idCliente }, success: function(res) {
-        if (res == 'OK') {
+        if (!isNaN(res)) {
             alert("Se ha realizado la venta.");
             limpiarCamposNuevaVenta();
+            window.open("ticketventa.php?idVenta=" + res,'_blank');
         } else {
             alert(res);
         }
