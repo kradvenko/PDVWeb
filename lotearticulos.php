@@ -431,6 +431,54 @@
             </div>
         </div>
     </div>
+    <!--Ventana modal para agregar un nueva categoría-->
+    <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCategoria" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar nueva categoría</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">                        
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="tbNuevaCategoria"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="agregarNuevaCategoria()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Ventana modal para agregar un nueva marca-->
+    <div class="modal fade" id="modalAgregarMarca" tabindex="-1" role="dialog" aria-labelledby="modalAgregarMarca" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar nueva marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">                        
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="tbNuevaMarca"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="agregarNuevaMarca()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     $( document ).ready(function() {
@@ -468,6 +516,12 @@
     });
     $('#modalAgregarOrigenLote').on('shown.bs.modal', function() {
         $('#tbNuevoOrigenLote').focus();
+    });
+    $('#modalAgregarCategoria').on('shown.bs.modal', function() {
+        $('#tbNuevaCategoria').focus();
+    });
+    $('#modalAgregarMarca').on('shown.bs.modal', function() {
+        $('#tbNuevaMarca').focus();
     });
 </script>
 </html>
