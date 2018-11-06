@@ -109,6 +109,11 @@ function cambiarCantidadArticulo() {
 }
 
 function agregarEnvio() {
+    if (e_IdEnvioElegido > 0) {
+        obtenerUltimosEnvios();
+        limpiarCamposEnvio();
+        return;
+    }
     if (e_ArticulosEnvio.length == 0) {
         alert("No ha agregado ningún artículo al envío.");
     } else {
@@ -116,7 +121,14 @@ function agregarEnvio() {
         var notas = $("#taNotas").val();
         var fechaEnvio = obtenerFechaHoraActual("FULL");
         $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio, fechaEnvio: fechaEnvio }, type: "POST", success: function(res) {
-            mensaje = res;
+//            mensaje = res;
+            if (res == "OK") {
+                alert("Se ha guardado el envío.");
+                obtenerUltimosEnvios();
+                limpiarCamposEnvio();
+            } else {
+                alert(res);
+            }
         }});
     }
 }
