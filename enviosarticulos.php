@@ -90,6 +90,14 @@
                 <textarea id="taNotas" class="form-control"></textarea>
             </div>
         </div>
+        <div class="row divMargin">
+            <div class="col-3">
+                Número de artículos en el envío
+            </div>
+            <div class="col-9" id="divTotalArticulos">
+
+            </div>
+        </div>
         <div class="row divMargin" id="divArticulos">
 
         </div>

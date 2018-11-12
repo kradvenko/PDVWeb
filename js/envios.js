@@ -82,6 +82,7 @@ function mostrarListaArticulos() {
             { type: "control" }
         ]
     });
+    $("#divTotalArticulos").html(e_ArticulosEnvio.length);
 }
 
 function cambiarCantidad(id, cantidad) {
@@ -144,6 +145,7 @@ function limpiarCamposEnvio() {
     $("#tbCantidad").val("");
     $("#taNotas").val("");
     $("#divArticulos").html("");
+    $("#divTotalArticulos").html("");
     e_ArticulosEnvio = [];
     e_IdArticuloElegido = 0;
 }
