@@ -185,9 +185,9 @@
     $pdf->Cell(0,5,iconv('UTF-8', 'windows-1252','Firma de autorización'),'T',0,'C',true);
 */
 
-    $pdf->Ln(24);
+    $pdf->Ln(36);
 
-    $pdf->Image('imgs/sin-logo.png',0,130,40);
+    $pdf->Image('imgs/sin-logo.png',0,142,40);
 
     $pdf->Cell(40);
     $pdf->SetFillColor(100,170,250);
@@ -202,20 +202,20 @@
 
     $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
 
-    $pdf->Image('imgs/tel.png',50,150,5);
+    $pdf->Image('imgs/tel.png',50,162,5);
 
     $pdf->Ln(10);
 
     $pdf->Cell(10);
     $pdf->Cell(155,5,iconv('UTF-8', 'windows-1252', 'Cel 311 111 5145 y Local (311) 133 0773'),'0',0,'C',false);
 
-    $pdf->Image('imgs/loc.png',140,150,5);
+    $pdf->Image('imgs/loc.png',140,162,5);
     
     $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
     
     $pdf->Ln(10);
 
-    $pdf->Image('imgs/fb-b.jpg',50,160,5);
+    $pdf->Image('imgs/fb-b.jpg',50,172,5);
 
     $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);    
 
