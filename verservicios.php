@@ -198,7 +198,7 @@
 
         </div>
     </div>
-    <!--Ventana modal para agregar cliente-->
+    <!--Ventana modal para ver datos del cliente-->
     <div class="modal fade" id="modalVerCliente" tabindex="-1" role="dialog" aria-labelledby="modalVerCliente" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

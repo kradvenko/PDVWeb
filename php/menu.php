@@ -65,6 +65,9 @@
                             <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
                         </div>
                     </li>
+                    <li>
+                        <a class="nav-link mainMenuElement" href="clientes.php">Clientes</a>
+                    </li>
                     ' . $inventarios . '
                     </ul>
                 </div>
