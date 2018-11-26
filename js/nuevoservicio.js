@@ -150,3 +150,20 @@ function agregarServicio() {
 
     }
 }
+
+function agregarNuevaMarca() {
+    var marca = $("#tbNuevaMarca").val();
+
+    if (marca.length == 0) {
+        alert("No ha escrito el nombre de la marca.");
+    }
+
+    $.ajax({url: "php/agregarMarca.php", async: false, type: "POST", data: { marca: marca }, success: function(res) {
+        if (res == "OK") {
+            $("#tbNuevaMarca").val("");
+            $('#modalAgregarMarca').modal('hide');
+        } else {
+            alert(res);
+        }
+    }});    
+}

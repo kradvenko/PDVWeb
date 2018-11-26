@@ -64,6 +64,9 @@
             <div class="col-3">
                 <button type="button" class="btn btn-primary btn-success" data-toggle='modal' data-target='#modalVerCliente' onclick="cargarDatosCliente()">Ver datos del cliente</button>
             </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary btn-success" onclick="reimprimir()">Reimprimir</button>
+            </div>
         </div>
         <div class="row divMargin">
             <div class="col-2">

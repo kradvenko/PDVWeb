@@ -137,3 +137,9 @@ function guardarEntrada() {
         $("#divBitacoraEntradas").html(res);
     }});
 }
+
+function reimprimir() {
+    if (vs_IdServicioElegido > 0) {
+        window.open("boletaservicio.php?idServicio=" + vs_IdServicioElegido,'_blank');
+    }
+}
