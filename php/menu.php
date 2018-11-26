@@ -2,6 +2,8 @@
     
     function menu() {
         $inventarios = "";
+        $tecnico = "";
+        $tienda = "";
         if ($_COOKIE["tipo"] == 'ADMINISTRADOR') {
             $inventarios = '<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,13 +24,60 @@
                             <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
                         </div>
                     </li>';
+            $tienda = '<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ventas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                        <a class="dropdown-item mainMenuElement" href="nuevaventa.php">Nueva venta</a>
+                        <a class="dropdown-item mainMenuElement" href="corte.php">Corte</a>
+                    </div>
+                </li>';
+            $tecnico = '<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Servicios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                        <a class="dropdown-item mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
+                        <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
+                    </div>
+                </li>';
+        } else if ($_COOKIE["tipo"] == 'TECNICO') {
+            $tecnico = '<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                                <a class="dropdown-item mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
+                                <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
+                            </div>
+                        </li>';
+        } else if ($_COOKIE["tipo"] == 'TIENDA') {
+            $tienda = '<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ventas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                                <a class="dropdown-item mainMenuElement" href="nuevaventa.php">Nueva venta</a>
+                                <a class="dropdown-item mainMenuElement" href="corte.php">Corte</a>
+                            </div>
+                        </li>';
+            $tecnico = '<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
+                                <a class="dropdown-item mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
+                                <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
+                            </div>
+                        </li>';
         }
         $menu = '<div class="row divMargin">
                     <div class="col-4">
                         
                     </div>
                     <div class="col-3">
-                        Usuario actual :  ' . $_COOKIE["nombre"] . ' 
+                        Usuario actual :  ' . $_COOKIE["nombre"] . ' ' . $_COOKIE["tipo"] . '
                     </div>
                     <div class="col-3">
                         Tienda :  ' . $_COOKIE["tienda"] . ' 
@@ -47,24 +96,8 @@
                     <li class="nav-item">
                         <a class="nav-link mainMenuElement" href="menu.php">Menú principal</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ventas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
-                            <a class="dropdown-item mainMenuElement" href="nuevaventa.php">Nueva venta</a>
-                            <a class="dropdown-item mainMenuElement" href="corte.php">Corte</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Servicios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                        
-                            <a class="dropdown-item mainMenuElement" href="nuevoservicio.php">Nuevo servicio</a>
-                            <a class="dropdown-item mainMenuElement" href="verservicios.php">Ver servicio</a>
-                        </div>
-                    </li>
+                    ' . $tienda . '
+                    ' . $tecnico . '
                     <li>
                         <a class="nav-link mainMenuElement" href="clientes.php">Clientes</a>
                     </li>

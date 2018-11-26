@@ -42,8 +42,11 @@
             <div class="col-4">
                 <label class="labelType01">Buscar servicio (Nombre del cliente o Folio)</label>
             </div>
-            <div class="col-8">
+            <div class="col-6">
                 <input type="text" id="tbBuscarServicio" class="form-control"></input>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposServicio()">Limpiar campos</button>
             </div>
         </div>
         <div class="row divMargin divBackgroundOrange">
@@ -76,7 +79,7 @@
                 <button type="button" class="btn btn-primary btn-success" onclick="servicioListo()">Servicio listo</button>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary btn-success" onclick="limpiarCamposServicio()">Limpiar campos</button>
+                <button type="button" class="btn btn-primary btn-warning" data-toggle='modal' data-target='#modalVerBitacora' onclick="verBitacora()">Bitácora</button>
             </div>
         </div>
         <div class="row divMargin">
@@ -268,6 +271,55 @@
                             <textarea id="taClienteNotas" rows="3" maxlength="200" class="form-control"></textarea>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Ventana modal para ver la bitácora-->
+    <div class="modal fade" id="modalVerBitacora" tabindex="-1" role="dialog" aria-labelledby="modalVerBitacora" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bitácora</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            Nueva entrada
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tbNuevaEntrada" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            Prioridad
+                        </div>
+                        <div class="col-12">
+                            <select id="selPrioridad" class="form-control">
+                                <option value="Normal">Normal</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-success" onclick="guardarEntrada()">Guardar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" style="background-color: #000; color: #FFF;">
+                            Lista de Entradas
+                        </div>
+                    </div>
+                    <div class="row" id="divBitacoraEntradas">
+                        
+                    </div>                    
                 </div>
                 <div class="modal-footer">
                     <!--<button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>-->

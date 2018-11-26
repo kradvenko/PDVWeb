@@ -111,3 +111,29 @@ function servicioListo() {
         alert("El servicio ya ha sido finalizado.");
     }
 }
+
+function verBitacora() {
+    if (vs_IdServicioElegido > 0) {
+        $.ajax({url: "php/obtenerBitacora.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido }, success: function(res) {
+            $("#divBitacoraEntradas").html(res);
+        }});
+    }
+}
+
+function guardarEntrada() {
+    var entrada = $("#tbNuevaEntrada").val();
+    var prioridad = $("#selPrioridad").val();
+    var fecha = obtenerFechaHoraActual("FULL");
+
+    $.ajax({url: "php/guardarBitacora.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido, entrada: entrada, prioridad: prioridad, fecha: fecha }, success: function(res) {
+        if (res == "OK") {
+            $("#tbNuevaEntrada").val('');
+        } else {
+            alert(res);
+        }
+    }});
+
+    $.ajax({url: "php/obtenerBitacora.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido }, success: function(res) {
+        $("#divBitacoraEntradas").html(res);
+    }});
+}

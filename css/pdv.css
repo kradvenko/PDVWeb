@@ -349,3 +349,30 @@
     margin-bottom: 20px;
     background-color: #c2aefa;
 }
+
+.divBitacoraEntradaOdd {
+    background-color: #8c8af8;
+    color: #ffffff;
+}
+
+.divBitacoraEntradaTextOdd {
+    background-color: #ffffff;
+}
+
+.divBitacoraEntradaEven {
+    background-color: #066983;
+    color: #ffffff;
+}
+
+.divBitacoraEntradaTextEven {
+    background-color: #ffffff;
+}
+
+.divBitacoraEntradaAlta {
+    background-color: #ec000c;
+    color: #ffffff;
+}
+
+.divBitacoraEntradaNormal {
+    background-color: #08ec00;
+}

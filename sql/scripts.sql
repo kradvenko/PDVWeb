@@ -384,4 +384,31 @@ CREATE TABLE `drc_servicios` (
   `patron` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`idservicio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--24/11/2018
+CREATE TABLE `pdvweb`.`sin_bitacora` (
+  `idbitacora` INT NOT NULL AUTO_INCREMENT,
+  `idusuario` INT NULL,
+  `idservicio` INT NULL,
+  `entrada` TEXT NULL,
+  `fecha` VARCHAR(45) NULL,
+  `prioridad` VARCHAR(45) NULL,
+  PRIMARY KEY (`idbitacora`));
 
+  CREATE TABLE `pdvweb`.`mat_bitacora` (
+  `idbitacora` INT NOT NULL AUTO_INCREMENT,
+  `idusuario` INT NULL,
+  `idservicio` INT NULL,
+  `entrada` TEXT NULL,
+  `fecha` VARCHAR(45) NULL,
+  `prioridad` VARCHAR(45) NULL,
+  PRIMARY KEY (`idbitacora`));
+
+  CREATE TABLE `pdvweb`.`drc_bitacora` (
+  `idbitacora` INT NOT NULL AUTO_INCREMENT,
+  `idusuario` INT NULL,
+  `idservicio` INT NULL,
+  `entrada` TEXT NULL,
+  `fecha` VARCHAR(45) NULL,
+  `prioridad` VARCHAR(45) NULL,
+  PRIMARY KEY (`idbitacora`));
+  
