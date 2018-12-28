@@ -14,7 +14,7 @@
         $falla = $_POST["falla"];
         $observaciones = $_POST["observaciones"];
         $fechaEntregaEstimada = $_POST["fechaEntregaEstimada"];
-        $contraseña = $_POST["contraseña"];
+        $contrasena = $_POST["contrasena"];
         $costo = $_POST["costo"];
         $anticipo = $_POST["anticipo"];
         $fechaIngresado = $_POST["fechaIngresado"];
@@ -36,7 +36,7 @@
                 anticipo, fechaingresado, fechaentregado, estado, notas, patron)
                 VALUES
                 ($idCliente, '$esn', '$folio', $idMarca, '$modelo', '$bateria', '$tapa', '$otro', '$falla', '$observaciones', '$fechaEntregaEstimada',
-                '$contraseña', $costo, $anticipo, '$fechaIngresado', '', '$estado', '$notas', '" . json_encode($patron) . "')
+                '$contrasena', $costo, $anticipo, '$fechaIngresado', '', '$estado', '$notas', '" . json_encode($patron) . "')
                 ";
         $con->query($sql);
 

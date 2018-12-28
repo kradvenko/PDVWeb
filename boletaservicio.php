@@ -80,75 +80,99 @@
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(10,10,'Folio',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(244,32,32);
     $pdf->Cell(12,10,$row["folio"],'0',0,'C',true);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(12,10,'Fecha',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(244,32,32);
     $pdf->Cell(0,10,$row["fechaingresado"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial','B',11);
     
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(40,10,'Nombre',0,0,'L',true);
+    $pdf->SetTextColor(6,154,0);
     $pdf->SetFillColor(235,235,235);
     $pdf->Cell(0,10,$row["cliente"],'0',0,'C',true);
 
     $pdf->Ln(10);    
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,iconv('UTF-8', 'windows-1252', 'Teléfono'),0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(6,154,0);
     $pdf->Cell(80,10,$row["telefono1"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(30,10,'ESN',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(6,154,0);
     $pdf->Cell(0,10,$row["esn"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Marca',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(80,10,$row["marca"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(30,10,'Modelo',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(0,10,$row["modelo"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Bateria',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(20,10,$row["bateria"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(20,10,'Tapa',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(20,10,$row["tapa"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(20,10,'Otro','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(0,10,$row["otro"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Falla','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
     $pdf->Cell(0,10,$row["falla"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Observaciones','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
     $pdf->Cell(0,10,$row["observaciones"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(50,10,'Fecha entrega estimada','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
@@ -222,75 +246,99 @@
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(10,10,'Folio',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(244,32,32);
     $pdf->Cell(12,10,$row["folio"],'0',0,'C',true);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(12,10,'Fecha',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(244,32,32);
     $pdf->Cell(0,10,$row["fechaingresado"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
     $pdf->SetFont('Arial','B',11);
     
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(40,10,'Nombre',0,0,'L',true);
+    $pdf->SetTextColor(6,154,0);
     $pdf->SetFillColor(235,235,235);
     $pdf->Cell(0,10,$row["cliente"],'0',0,'C',true);
 
     $pdf->Ln(10);    
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,iconv('UTF-8', 'windows-1252', 'Teléfono'),0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(6,154,0);
     $pdf->Cell(80,10,$row["telefono1"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(30,10,'ESN',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(6,154,0);
     $pdf->Cell(0,10,$row["esn"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Marca',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(80,10,$row["marca"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(30,10,'Modelo',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(0,10,$row["modelo"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(20,10,'Bateria',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(20,10,$row["bateria"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(20,10,'Tapa',0,0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(20,10,$row["tapa"],'0',0,'C',true);
     $pdf->SetFillColor(200,200,230);
+    $pdf->SetTextColor(0,0,0);
     $pdf->Cell(20,10,'Otro','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(199,37,0);
     $pdf->Cell(0,10,$row["otro"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Falla','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
     $pdf->Cell(0,10,$row["falla"],'0',0,'C',true);
 
     $pdf->Ln(10);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(30,10,'Observaciones','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
     $pdf->Cell(0,10,$row["observaciones"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
+    $pdf->SetTextColor(0,0,0);
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(50,10,'Fecha entrega estimada','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);

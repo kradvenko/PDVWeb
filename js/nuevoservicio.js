@@ -126,7 +126,7 @@ function agregarServicio() {
     var falla = $("#taFalla").val();
     var observaciones = $("#taObservaciones").val();
     var fechaEntregaEstimada = $("#tbFechaEntregaEstimada").val();
-    var contraseña = $("#tbContraseña").val();
+    var contrasena = $("#tbContraseña").val();
     var costo = $("#tbCosto").val();
     var anticipo = $("#tbAnticipo").val();
     var fechaIngresado = obtenerFechaHoraActual("FULL");
@@ -137,7 +137,7 @@ function agregarServicio() {
     if (ns_IdServicioElegido == 0) {
         $.ajax({url: "php/agregarServicio.php", async: false, type: "POST", data: { idCliente : idCliente, esn: esn, folio: folio,
         idMarca: idMarca, modelo: modelo, bateria: bateria, tapa: tapa, otro: otro, falla: falla, observaciones: observaciones, fechaEntregaEstimada: fechaEntregaEstimada,
-        contraseña: contraseña, costo: costo, anticipo: anticipo, fechaIngresado: fechaIngresado, estado: estado, notas: notas, patron: patron }, success: function(res) {
+        contrasena: contrasena, costo: costo, anticipo: anticipo, fechaIngresado: fechaIngresado, estado: estado, notas: notas, patron: patron }, success: function(res) {
             if (!isNaN(res)) {
                 alert("Se ha ingresado el servicio.");
                 limpiarCamposNuevoServicio();
