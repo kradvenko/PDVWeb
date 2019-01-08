@@ -4,6 +4,7 @@ var ns_Botones = [];
 var ns_Pos = 1;
 var ns_IdMarcaElegida = 0;
 var ns_IdServicioElegido = 0;
+var ns_FolioActual = 0;
 //Funciones para el nuevo servicio
 function guardarCliente() {
     var nombre = $("#tbNuevoClienteNombre").val();
@@ -142,6 +143,7 @@ function agregarServicio() {
                 alert("Se ha ingresado el servicio.");
                 limpiarCamposNuevoServicio();
                 window.open("boletaservicio.php?idServicio=" + res,'_blank');
+                actualizarFolio();
             } else {
                 alert(res);
             }
@@ -165,5 +167,29 @@ function agregarNuevaMarca() {
         } else {
             alert(res);
         }
-    }});    
+    }});
+}
+
+function obtenerFolioActual() {
+    var tipo = "PUBLICO";
+    $.ajax({url: "php/obtenerFolioActualXML.php", async: false, type: "POST", data: { tipo: tipo }, success: function(res) {
+        $('resultado', res).each(function(index, element) {
+            if ($(this).find("respuesta").text() == "OK") {
+                $("#tbFolio").val($(this).find("prefijo").text() + $(this).find("folio").text());
+            } else {
+                alert($(this).find("respuesta").text());
+            }
+        });
+    }});
+}
+
+function actualizarFolio() {
+    var tipo = "PUBLICO";
+    $.ajax({url: "php/actualizarFolio.php", async: false, type: "POST", data: { tipo: tipo }, success: function(res) {
+        if (res == "OK") {
+
+        } else {
+            alert(res);
+        }
+    }});
 }

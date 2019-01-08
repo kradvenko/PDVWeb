@@ -300,6 +300,7 @@
     $( document ).ready(function() {
         checkSession();
         limpiarCamposNuevoServicio();
+        obtenerFolioActual();
         $(function() {     
             $("#tbServicioCliente").autocomplete({
                 source: "php/obtenerClientesJSON.php",
