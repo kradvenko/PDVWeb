@@ -48,11 +48,33 @@
             echo "Estado";
             echo "</div>";
             echo "<div class='col-10'>";
-            echo "<select id='selRefaccionEstado_" . $row["idrefaccion"] . "' class='form-control' value='" . $row["estado"] . "' >";
-            echo "<option value='INGRESADO'>Ingresado</option>";
-            echo "<option value='EN ESPERA AUTORIZACION'>En espera de autorización del cliente</option>";
-            echo "<option value='INSTALADO'>Instalado</option>";
-            echo "<option value='CANCELADO'>Cancelado</option>";
+            echo "<select id='selRefaccionEstado_" . $row["idrefaccion"] . "' class='form-control'>";
+            switch ($row["estado"]){
+                case "INGRESADO":
+                        echo "<option value='INGRESADO' selected='selected'>Ingresado</option>";
+                        echo "<option value='EN ESPERA AUTORIZACION'>En espera de autorización del cliente</option>";
+                        echo "<option value='INSTALADO'>Instalado</option>";
+                        echo "<option value='CANCELADO'>Cancelado</option>";
+                        break;
+                case "EN ESPERA AUTORIZACION":
+                        echo "<option value='INGRESADO'>Ingresado</option>";
+                        echo "<option value='EN ESPERA AUTORIZACION' selected='selected'>En espera de autorización (técnico)</option>";
+                        echo "<option value='INSTALADO'>Instalado</option>";
+                        echo "<option value='CANCELADO'>Cancelado</option>";
+                        break;
+                case "INSTALADO":
+                        echo "<option value='INGRESADO'>Ingresado</option>";
+                        echo "<option value='EN ESPERA AUTORIZACION'>En espera de autorización (técnico)</option>";
+                        echo "<option value='INSTALADO' selected='selected'>Instalado</option>";
+                        echo "<option value='CANCELADO'>Cancelado</option>";
+                        break;
+                case "CANCELADO":
+                        echo "<option value='INGRESADO'>Ingresado</option>";
+                        echo "<option value='EN ESPERA AUTORIZACION'>En espera de autorización (técnico)</option>";
+                        echo "<option value='INSTALADO'>Instalado</option>";
+                        echo "<option value='CANCELADO' selected='selected'>Cancelado</option>";
+                        break;
+            }            
             echo "</select>";
             echo "</div>";
             echo "<div class='col-2'>";
