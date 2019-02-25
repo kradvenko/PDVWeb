@@ -411,4 +411,19 @@ CREATE TABLE `pdvweb`.`sin_bitacora` (
   `fecha` VARCHAR(45) NULL,
   `prioridad` VARCHAR(45) NULL,
   PRIMARY KEY (`idbitacora`));
+
+  --24/02/2019
+CREATE TABLE `sin_servicios_refacciones` (
+  `idserviciorefaccion` int(11) NOT NULL AUTO_INCREMENT,
+  `idservicio` int(11) DEFAULT NULL,
+  `idrefaccion` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `precio` float DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `notas` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idserviciorefaccion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
   

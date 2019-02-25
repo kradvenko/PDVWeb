@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/jsgrid-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/pdv.css" />
     <link rel="stylesheet" type="text/css" href="css/slider.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
     <link rel="icon" href="favicon.ico">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -66,23 +66,6 @@
             </div>
             <div class="col-3">
                 <button type="button" class="btn btn-primary btn-success" onclick="reimprimir()">Reimprimir</button>
-            </div>
-        </div>
-        <div class="row divMargin">
-            <div class="col-2">
-                
-            </div>
-            <div class="col-1">
-                
-            </div>
-            <div class="col-5">
-            
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-primary btn-success" onclick="servicioListo()">Servicio listo</button>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-primary btn-warning" data-toggle='modal' data-target='#modalVerBitacora' onclick="verBitacora()">Bitácora</button>
             </div>
         </div>
         <div class="row divMargin">
@@ -198,6 +181,23 @@
                         <input type="button" class="form-control" id="btnPatron9"></input>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row divMargin">
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-primary" data-toggle='modal' data-target='#modalVerBitacora' onclick="verBitacora()">
+                    <i class="fas fa-book-open"></i> Bitácora
+                </button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-primary" data-toggle='modal' data-target='#modalVerRefacciones' onclick="cargarRefacciones()">
+                    <i class="fas fa-sim-card"></i> Refacciones
+                </button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-primary btn-outline-success" onclick="servicioListo()">
+                    <i class="fas fa-check"></i> Servicio listo
+                </button>
             </div>
         </div>
         <div class="row divMargin" id="divVenta">
@@ -331,6 +331,41 @@
             </div>
         </div>
     </div>
+    <!--Ventana modal para ver las refacciones-->
+    <div class="modal fade" id="modalVerRefacciones" tabindex="-1" role="dialog" aria-labelledby="modalVerRefacciones" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Refacciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 divMargin">
+                            Agregar nueva refacción
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control textbox-center" id="tbArticulo"></input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" style="background-color: #000; color: #FFF;">
+                            Lista de Refacciones utilizadas
+                        </div>
+                    </div>
+                    <div class="row" id="divRefaccionesServicio">
+                        
+                    </div>                    
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-success" onclick="guardarCliente()">Guardar</button>-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     $( document ).ready(function() {
@@ -342,6 +377,17 @@
                 minLength: 2,
                 select: function(event, ui) {
                     elegirServicio(ui.item.id);
+                }
+            });
+        });
+        $(function() {     
+            $("#tbArticulo").autocomplete({
+                source: "php/obtenerArticulosJSON.php",
+                minLength: 2,
+                select: function(event, ui) {
+                    agregarRefaccion(ui.item.id, ui.item.precio);
+                    this.value = '';
+                    return false;
                 }
             });
         });

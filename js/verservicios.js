@@ -143,3 +143,36 @@ function reimprimir() {
         window.open("boletaservicio.php?idServicio=" + vs_IdServicioElegido,'_blank');
     }
 }
+
+function agregarRefaccion(idRefaccion, precio) {
+    $.ajax({url: "php/agregarRefaccion.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido, idRefaccion: idRefaccion, precio: precio }, success: function(res) {
+        if (res == "OK") {
+            $.ajax({url: "php/obtenerRefaccionesServicio.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido }, success: function(res) {
+                $("#divRefaccionesServicio").html(res);
+            }});
+        } else {
+            alert(res);
+        }
+    }});
+}
+
+function cargarRefacciones() {
+    $.ajax({url: "php/obtenerRefaccionesServicio.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido }, success: function(res) {
+        $("#divRefaccionesServicio").html(res);
+    }});
+}
+
+function actualizarRefaccion(idRefaccion) {
+    var cantidad = $("#tbRefaccionCantidad_" + idRefaccion).val();
+    var precio = $("#tbRefaccionPrecio_" + idRefaccion).val();
+    var estado = $("#selRefaccionEstado_" + idRefaccion).val();
+    var notas = $("#tbRefaccionNotas_" + idRefaccion).val();
+
+    $.ajax({url: "php/actualizarRefaccion.php", async: false, type: "POST", data: { idRefaccion: idRefaccion, cantidad: cantidad, precio: precio, estado: estado, notas: notas }, success: function(res) {
+        if (res == "OK") {
+
+        } else {
+            alert(res);
+        }
+    }});
+}
