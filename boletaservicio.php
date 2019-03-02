@@ -16,6 +16,7 @@
         $prefijo = $_COOKIE["prefijo"];
 
         $tienda = $prefijo . "servicios";
+        $idTienda = $_COOKIE["idtienda"];
 
         $con = new mysqli($hn, $un, $pw, $db);
 
@@ -58,7 +59,11 @@
 
     $pdf->SetFont('Arial','B',9);    
 
-    $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
+    if ($idTienda == 2) {
+        $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Edgar Adzzel Polanco Hernández'),'0',0,'C',false);
+    }
 
     $pdf->Image('imgs/tel.png',50,20,5);
 
@@ -69,13 +74,21 @@
 
     $pdf->Image('imgs/loc.png',140,20,5);
     
-    $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
+    if ($idTienda == 2) {
+        $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Hidalgo 145 Pte B Centro Tepic, Nayarit'),'0',0,'C',false);
+    }
     
     $pdf->Ln(10);
 
     $pdf->Image('imgs/fb-b.jpg',50,30,5);
 
-    $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);    
+    if ($idTienda == 2) {
+        $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia Hidalgo'),'0',0,'C',false);
+    }
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(10,10,'Folio',0,0,'L',true);
@@ -168,7 +181,14 @@
     $pdf->Cell(30,10,'Observaciones','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
     $pdf->SetTextColor(0,130,140);
-    $pdf->Cell(0,10,$row["observaciones"],'0',0,'C',true);
+    $pdf->Cell(80,10,$row["observaciones"],'0',0,'C',true);
+
+    $pdf->SetTextColor(0,0,0);
+    $pdf->SetFillColor(200,200,230);
+    $pdf->Cell(30,10,'Password','0',0,'L',true);
+    $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
+    $pdf->Cell(80,10,$row["contrasena"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
@@ -224,7 +244,11 @@
 
     $pdf->SetFont('Arial','B',9);    
 
-    $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
+    if ($idTienda == 2) {
+        $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Omar Alexander Alfaro Alarcón'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(0,10,iconv('UTF-8', 'windows-1252', 'Edgar Adzzel Polanco Hernández'),'0',0,'C',false);
+    }
 
     $pdf->Image('imgs/tel.png',50,162,5);
 
@@ -235,13 +259,21 @@
 
     $pdf->Image('imgs/loc.png',140,162,5);
     
-    $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
+    if ($idTienda == 2) {
+        $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Miñon 1-B Centro Tepic, Nayarit'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(15,5,iconv('UTF-8', 'windows-1252', 'Hidalgo 145 Pte B Centro Tepic, Nayarit'),'0',0,'C',false);
+    }
     
     $pdf->Ln(10);
 
     $pdf->Image('imgs/fb-b.jpg',50,172,5);
 
-    $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);    
+    if ($idTienda == 2) {
+        $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia movil'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(138,5,iconv('UTF-8', 'windows-1252', 'Sinergia Hidalgo'),'0',0,'C',false);
+    }
 
     $pdf->SetFillColor(200,200,230);
     $pdf->Cell(10,10,'Folio',0,0,'L',true);
@@ -334,7 +366,14 @@
     $pdf->Cell(30,10,'Observaciones','0',0,'L',true);
     $pdf->SetFillColor(235,235,235);
     $pdf->SetTextColor(0,130,140);
-    $pdf->Cell(0,10,$row["observaciones"],'0',0,'C',true);
+    $pdf->Cell(80,10,$row["observaciones"],'0',0,'C',true);
+
+    $pdf->SetTextColor(0,0,0);
+    $pdf->SetFillColor(200,200,230);
+    $pdf->Cell(30,10,'Password','0',0,'L',true);
+    $pdf->SetFillColor(235,235,235);
+    $pdf->SetTextColor(0,130,140);
+    $pdf->Cell(80,10,$row["contrasena"],'0',0,'C',true);
 
     $pdf->Ln(12);
 
