@@ -37,6 +37,7 @@ function cargarDatosServicio() {
                 $("#tbAnticipo").val($(this).find("anticipo").text());
                 vs_Botones = JSON.parse($(this).find("patron").text());
                 vs_EstadoServicio = $(this).find("estado").text();
+                $("#selEstado").val($(this).find("estado").text());
             });
         }});
         mostrarBotones();
@@ -109,6 +110,19 @@ function cargarDatosCliente() {
 function servicioListo() {
     if (vs_EstadoServicio != 'ACTIVO') {
         alert("El servicio ya ha sido finalizado.");
+    }
+}
+
+function actualizarEstadoServicio() {
+    var estado = $("#selEstado").val();
+    if (vs_IdServicioElegido > 0) {
+        $.ajax({url: "php/actualizarEstadoServicio.php", async: false, type: "POST", data: { idServicio: vs_IdServicioElegido, estado: estado }, success: function(res) {
+            if (res == "OK") {
+                alert("Se ha actualizado el estado del servicio.");
+            } else {
+                alert(res);
+            }
+        }});
     }
 }
 

@@ -195,9 +195,15 @@
                 </button>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-outline-primary btn-outline-success" onclick="servicioListo()">
+                <select id="selEstado" class="form-control btn-outline-success" onchange="actualizarEstadoServicio()">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="EN ESPERA">EN ESPERA</option>
+                    <option value="FINALIZADO">SERVICIO FINALIZADO</option>
+                    <option value="ENTREGADO">ENTREGADO</option>
+                </select>
+                <!--<button type="button" class="btn btn-outline-primary btn-outline-success" onclick="servicioListo()">
                     <i class="fas fa-check"></i> Servicio listo
-                </button>
+                </button>-->
             </div>
         </div>
         <div class="row divMargin" id="divVenta">

@@ -12,16 +12,16 @@
 
         $prefijo = $_COOKIE["prefijo"];
 
-        $tienda = $prefijo . "servicios";
+        $tabla = $prefijo . "servicios";
 
         $con = new mysqli($hn, $un, $pw, $db);
 
-        $sql = "Select *, marcas.marca, clientes.nombre As cliente
-                From $tienda
+        $sql = "Select $tabla.*, marcas.marca, clientes.nombre As cliente
+                From $tabla
                 Left Join marcas
-                On marcas.idmarca = $tienda.idmarca
+                On marcas.idmarca = $tabla.idmarca
                 Inner Join clientes
-                On clientes.idcliente = $tienda.idcliente
+                On clientes.idcliente = $tabla.idcliente
                 Where idservicio = $idServicio";
 
         $result = $con->query($sql);
