@@ -53,6 +53,19 @@
                             </div>
                         </li>';
         } else if ($_COOKIE["tipo"] == 'TIENDA') {
+            $inventarios = '<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Inventarios
+                        </a>                        
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                            
+                            <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
+                        </div>
+                    </li>';
             $tienda = '<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle mainMenuElement" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ventas

@@ -10,7 +10,7 @@
                 Inner Join tiendas M
                 On M.idtienda = envios.idtiendade
                 Inner Join tiendas S
-                On S.idtienda = envios.idtiendaa
+                On S.idtienda = envios.idtiendaa                
                 Order By envios.idenvio Desc
                 Limit 10";
 

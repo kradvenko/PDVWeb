@@ -5,11 +5,13 @@
 
         $con = new mysqli($hn, $un, $pw, $db);
 
+        $idTienda = $_COOKIE["idtienda"];
+
         $sql = "Select envios.*, tiendas.nombre
                 From envios
                 Inner Join tiendas
                 On tiendas.idtienda = envios.idtiendade
-                Where envios.estado = 'ACTIVO'";
+                Where envios.estado = 'ACTIVO' And envios.idtiendaa = $idTienda";
 
         $result = $con->query($sql);           
 

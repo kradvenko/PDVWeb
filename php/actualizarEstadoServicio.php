@@ -22,7 +22,7 @@
 
         $con->query($sql);
         
-        echo $sql;
+        echo "OK";
         
         mysqli_close($con);
     }
