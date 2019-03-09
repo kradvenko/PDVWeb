@@ -19,18 +19,22 @@
 
         $tabla = $prefijo . "articulos";
 
-        $sql = "Select * 
+        $sql = "Select $tabla.*, Concat(lotes.fechalote, ' - ', origeneslote.origen) As Lote
                 From $tabla
+                Join lotes
+                On lotes.idlote = $tabla.idlote
+                Join origeneslote
+                On origeneslote.idorigenlote = lotes.idorigen
                 Where $tabla.nombre Like '%$term%'
                 Or $tabla.codigo Like '%$term%'
                 Or $tabla.modelo Like '%$term%'
-                And estado = 'ACTIVO'
+                And $tabla.estado = 'ACTIVO'
                 And aprobado = 'SI'";
 
         $result = $con->query($sql);
 
         while ($row = $result->fetch_array()) {
-            $ciudad = array("id" => $row["idarticulo"] , "value" => ($row["nombre"] . " - " . $row["modelo"] . " - " . $row["color"] . " - " . $row["notas"]), "precio" => $row["costopublico"], "preciodistribuidor" => $row["preciodistribuidor"]);
+            $ciudad = array("id" => $row["idarticulo"] , "value" => ($row["nombre"] . " - " . $row["modelo"] . " - " . $row["color"] . " - " . $row["notas"] . " - L: " . $row["Lote"]), "precio" => $row["costopublico"], "preciodistribuidor" => $row["preciodistribuidor"]);
             array_push($data, $ciudad);
         }
         
