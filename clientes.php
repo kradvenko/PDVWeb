@@ -38,7 +38,7 @@
                 <label class="labelType01">Cliente</label>
             </div>
             <div class="col-5">
-                <input type="text" id="tbServicioCliente" class="form-control" />
+                <input type="text" id="tbCliente" class="form-control" />
             </div>
             <div class="col-3">
                 

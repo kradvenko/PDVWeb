@@ -24,7 +24,7 @@ function cargarDatosCliente() {
 }
 
 function limpiarCamposClientes() {
-    $("#tbServicioCliente").val("");
+    $("#tbCliente").val("");
     c_IdCliente = 0;
     $("#tbClienteNombre").val("");
     $("#tbClienteDireccion").val("");
