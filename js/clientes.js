@@ -36,3 +36,28 @@ function limpiarCamposClientes() {
     $("#selClienteTipo").val("");
     $("#taClienteNotas").val("");
 }
+
+function actualizarCliente() {
+    if (c_IdCliente == 0) {
+        alert("No ha elegido un cliente.");
+        return;
+    } else {
+        var nombre = $("#tbClienteNombre").val();
+        var direccion = $("#tbClienteDireccion").val();
+        var colonia = $("#tbClienteColonia").val();
+        var telefono1 = $("#tbClienteTelefono1").val();
+        var telefono2 = $("#tbClienteTelefono2").val();
+        var correo = $("#tbClienteCorreo").val();
+        var tipo = $("#selClienteTipo").val();
+        var notas = $("#taClienteNotas").val();
+        var estado = "ACTIVO";
+
+        $.ajax({url: "php/actualizarCliente.php", async: false, type: "POST", data: { idCliente: c_IdCliente, nombre: nombre, direccion: direccion,
+                colonia: colonia, telefono1: telefono1, telefono2: telefono2, correo: correo, tipo: tipo, notas: notas, estado: estado}, success: function(res) {
+                    if (res == "OK") {
+                        alert("Se ha actualizado el cliente.");
+                        limpiarCamposClientes();
+                    }
+        }});
+    }
+}

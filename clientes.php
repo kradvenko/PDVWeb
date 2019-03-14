@@ -102,6 +102,9 @@
             <div class="col-12">
                 <textarea id="taClienteNotas" rows="3" maxlength="200" class="form-control"></textarea>
             </div>
+            <div class="col-12">
+                <input type="button" class="btn btn-success" value="Actualizar datos" onclick="actualizarCliente()" />
+            </div>
         </div>
     </div>    
 </body>
@@ -111,7 +114,7 @@
         limpiarCamposClientes();
 
         $(function() {     
-            $("#tbServicioCliente").autocomplete({
+            $("#tbCliente").autocomplete({
                 source: "php/obtenerClientesJSON.php",
                 minLength: 2,
                 select: function(event, ui) {
