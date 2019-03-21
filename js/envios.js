@@ -1,8 +1,8 @@
-e_ArticulosEnvio = [];
-e_IdArticuloElegido = 0;
-e_IdEnvioElegido = 0;
-e_ArticulosRecepcion = [];
-e_IdTiendaA = 0;
+var e_ArticulosEnvio = [];
+var e_IdArticuloElegido = 0;
+var e_IdEnvioElegido = 0;
+var e_ArticulosRecepcion = [];
+var e_IdTiendaA = 0;
 
 function mostrarCantidadArticulo(id) {
     if (existeEnLista(id)) {
@@ -69,6 +69,10 @@ function mostrarListaArticulos() {
         deleting: true,
 
         deleteConfirm: "¿Eliminar el artículo?",
+
+        onItemDeleted: function (args) {
+            $("#divTotalArticulos").html(e_ArticulosEnvio.length);
+        },
  
         data: e_ArticulosEnvio,
 
@@ -111,18 +115,9 @@ function cambiarCantidadArticulo() {
 
 function agregarEnvio() {
     if (e_IdEnvioElegido > 0) {
-        obtenerUltimosEnvios();
-        limpiarCamposEnvio();
-        return;
-    }
-    if (e_ArticulosEnvio.length == 0) {
-        alert("No ha agregado ningún artículo al envío.");
-    } else {
         var idTiendaA = $("#selListaTiendas").val();
         var notas = $("#taNotas").val();
-        var fechaEnvio = obtenerFechaHoraActual("FULL");
-        $.ajax({url: "php/agregarEnvio.php", async: false, data: {idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio, fechaEnvio: fechaEnvio }, type: "POST", success: function(res) {
-//            mensaje = res;
+        $.ajax({url: "php/actualizarEnvio.php", async: false, data: {idEnvio: e_IdEnvioElegido, idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio }, type: "POST", success: function(res) {
             if (res == "OK") {
                 alert("Se ha guardado el envío.");
                 obtenerUltimosEnvios();
@@ -131,6 +126,24 @@ function agregarEnvio() {
                 alert(res);
             }
         }});
+    } else {
+        if (e_ArticulosEnvio.length == 0) {
+            alert("No ha agregado ningún artículo al envío.");
+        } else {
+            var idTiendaA = $("#selListaTiendas").val();
+            var notas = $("#taNotas").val();
+            var fechaEnvio = obtenerFechaHoraActual("FULL");
+            $.ajax({url: "php/agregarEnvio.php", async: false, data: { idTiendaA: idTiendaA, estado: "ACTIVO", notas: notas, articulos: e_ArticulosEnvio, fechaEnvio: fechaEnvio }, type: "POST", success: function(res) {
+    //            mensaje = res;
+                if (res == "OK") {
+                    alert("Se ha guardado el envío.");
+                    obtenerUltimosEnvios();
+                    limpiarCamposEnvio();
+                } else {
+                    alert(res);
+                }
+            }});
+        }
     }
 }
 
