@@ -70,7 +70,12 @@
     $pdf->Ln(10);
 
     $pdf->Cell(10);
-    $pdf->Cell(155,5,iconv('UTF-8', 'windows-1252', 'Cel 311 111 5145 y Local (311) 133 0773'),'0',0,'C',false);
+    if ($idTienda == 2)
+    {
+        $pdf->Cell(155,5,iconv('UTF-8', 'windows-1252', 'Cel 311 111 5145 y Local (311) 133 0773'),'0',0,'C',false);
+    } else if ($idTienda == 3) {
+        $pdf->Cell(155,5,iconv('UTF-8', 'windows-1252', 'Local (311) 236 1736'),'0',0,'C',false);
+    }
 
     $pdf->Image('imgs/loc.png',140,20,5);
     
