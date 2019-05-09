@@ -22,6 +22,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item mainMenuElement" href="enviosarticulos.php">Crear envío</a>
                             <a class="dropdown-item mainMenuElement" href="recibirenvio.php">Recibir envío</a>
+                            <a class="dropdown-item mainMenuElement" href="verenvios.php">Ver envíos</a>
                         </div>
                     </li>';
             $tienda = '<li class="nav-item dropdown">
